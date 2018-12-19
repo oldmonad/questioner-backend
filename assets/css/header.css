@@ -46,7 +46,7 @@
   display: block;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 500px) {
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -54,22 +54,6 @@
     height: 70px;
     align-items: center;
   }
-
-  /*
-  .main--nav {
-    display: flex;
-    margin-right: 30px;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
-  .main--nav li {
-    margin: 0;
-  }
-
-  .nav--links {
-    margin-left: 40px;
-  } */
 
   .main--nav {
     display: none;
