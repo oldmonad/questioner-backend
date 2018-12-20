@@ -6,12 +6,62 @@ main {
 }
 
 .landing--page {
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(../img/rawpixel-1080855-unsplash.jpg) no-repeat center center fixed;
   background-size: 100% 100vh;
   background-repeat: no-repeat;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
 }
+
+.banner {
+  padding: 1em;
+  color: #ffffff;
+}
+
+.banner h2 {
+  color: #ffffff;
+  font-size: 40px;
+  line-height: 45px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.banner h1 {
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 100;
+  line-height: 30px;
+}
+
+.button--section {
+  margin: 2rem 0;
+}
+
+.landing--button {
+  color: #ffffff;
+  padding: .5rem 1.5rem;
+  background: #3F45FF;
+  font-size: 1.2rem;
+  text-align: center;
+  border-radius: 50px;
+  transition: .5s ease all;
+}
+
+.landing--button:hover {
+  background-color: #232994;
+  padding: .7rem 1.7rem;
+  font-size: 1.4rem;
+}
+
+
+
+
 
 .signup--section {
   padding: .5rem 1rem 0;
@@ -106,7 +156,7 @@ main {
   cursor: pointer;
   width: 100%;
   padding: .5rem;
-  margin-bottom: 1rem;
+  margin-bottom: .3rem;
   border-radius: .2rem;
   background-color: #3F45FF;
   color: #ffffff;
@@ -116,18 +166,43 @@ main {
 }
 
 .submit--button input[type=submit]:hover {
-  cursor: pointer;
-  width: 100%;
-  padding: .5rem;
-  margin-bottom: 1rem;
-  border-radius: .2rem;
   background-color: #232994;
-  color: #ffffff;
-  border: #232994;
-  font-size: 1.2rem;
+}
+
+.instruction {
+  display: flex;
+  margin-top: .8rem;
+}
+
+.instruction__acount {
+  color: #444444;
+  margin-right: .5rem;
+}
+
+.instruction__login {
+  color: #3F45FF;
 }
 
 @media screen and (min-width: 500px) {
+
+
+  .main--nav {
+    display: flex;
+    margin-right: 1.3rem;
+  }
+
+  .nav--links {
+    margin: 0 .8rem;
+    transition: .5s ease all;
+  }
+
+  .nav--links:hover {
+    background: #3F45FF;
+    color: #ffffff;
+    padding: .4rem .8rem;
+    border-radius: 50px;
+  }
+
   main {
     display: flex;
     flex-direction: row;

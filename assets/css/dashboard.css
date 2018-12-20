@@ -38,6 +38,9 @@
     margin-left: 20px;
   }
 
+  .menu--item a {
+    transition: .5s ease all;
+  }
 
   .menu--item a:hover {
     background: #3F45FF;
