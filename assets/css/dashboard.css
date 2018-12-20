@@ -2,7 +2,7 @@
   display: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 500px) {
   .navbar {
     display: flex;
     padding-bottom: 0;
@@ -38,6 +38,9 @@
     margin-left: 20px;
   }
 
+  .menu--item a {
+    transition: .5s ease all;
+  }
 
   .menu--item a:hover {
     background: #3F45FF;
