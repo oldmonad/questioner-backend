@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./assets/css/header.css">
   <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/modal.css">
   <link rel="stylesheet" href="./assets/css/footer.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
     crossorigin="anonymous">
@@ -24,8 +25,8 @@
       </span>
       <a href="#" class="logo">Questioner</a>
       <ul class="main--nav" id="js--menu">
-        <li id="js-create-meetup" class="create-meetup menu--item">
-          <a href="#" class="nav--links">Create meetup</a>
+        <li class="create-meetup menu--item">
+          <a id="modalBtn" class="nav--links">Create meetup</a>
         </li>
         <li class="view-dashboard menu--item">
           <a href="#" class="nav--links">Dashboard</a>
@@ -42,6 +43,47 @@
     <main>
 
     </main>
+
+    <div id="simpleModal" class="modal">
+      <div class="modal--content">
+        <form action="#" class="custom-form">
+          <span class="closeBtn">&times;</span>
+          <h1 class="event--information__header">Event Information</h1>
+
+          <div class="form-group">
+            <input type="text" class="form-control" name="event-title" id="event-title" />
+            <label for="event-title" class="animated-label">What is the title of your event</label>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" name="address" id="address" />
+            <label for="address" class="animated-label">Address</label>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" name="image" id="image" />
+            <label for="image" class="animated-label">Image URL (optional)</label>
+          </div>
+
+          <!-- <div class="contact--date"> -->
+          <div class="form-group">
+            <label for="date" class="">Pick Date</label>
+            <input type="date" class="form-control" name="date" id="date" value="Pick date" />
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" name="phone-number" id="phone-number" />
+            <label for="phone-number" class="animated-label">Phone Number</label>
+          </div>
+          <!-- </div> -->
+
+          <div class="submit--button">
+            <input type="submit" value="Create meetup" />
+          </div>
+        </form>
+      </div>
+    </div>
+
   </div>
 
   <footer>
@@ -54,6 +96,7 @@
   </footer>
 
   <script src="./assets/js/toggle-navbar.js"></script>
+  <script src="./assets/js/modal.js"></script>
 </body>
 
 </html>
