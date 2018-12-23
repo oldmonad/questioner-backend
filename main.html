@@ -2,101 +2,187 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./assets/css/reset.css">
-  <link rel="stylesheet" href="./assets/css/header.css">
-  <link rel="stylesheet" href="./assets/css/main.css">
-  <link rel="stylesheet" href="./assets/css/modal.css">
-  <link rel="stylesheet" href="./assets/css/footer.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
-    crossorigin="anonymous">
-  <title>Questioner</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/header.css" />
+	<link rel="stylesheet" href="./assets/css/main.css" />
+	<link rel="stylesheet" href="./assets/css/modal.css" />
+	<link rel="stylesheet" href="./assets/css/footer.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+	 crossorigin="anonymous" />
+	<title>Questioner</title>
 </head>
 
 <body>
+	<div class="page--content">
+		<header class="navbar">
+			<span class="navbar--toggle" id="js-navbar-toggle">
+				<i class="fas fa-bars"></i>
+			</span>
+			<a href="#" class="logo">Questioner</a>
+			<ul class="main--nav" id="js--menu">
+				<li class="create-meetup menu--item">
+					<a id="modalBtn" class="nav--links">Create meetup</a>
+				</li>
+				<li class="view-dashboard menu--item">
+					<a href="#" class="nav--links">Dashboard</a>
+				</li>
+				<li class="change-password menu--item">
+					<a href="#" class="nav--links">Change password</a>
+				</li>
+				<img class="avatar" src="./assets/img/profile-user_318-80283.jpg" alt="" title="John doe" />
+			</ul>
+		</header>
 
-  <div class="page--content">
-    <header class="navbar">
+		<main class="meetup">
+			<h1 class="meetup--title">
+				Neque porro quisquam est qui dolorem Neque porro quisquam est qui
+				dolorem
+			</h1>
+			<div class="meetup--details">
+				<div class="meetup--detail">
+					<p class="meetup--detail__label">Location:</p>
+					<p class="meetup--detail__information">
+						Neque porro quisquam est qui dolorem Neque porro quisquam est qui
+						dolorem
+					</p>
+				</div>
 
-      <span class="navbar--toggle" id="js-navbar-toggle">
-        <i class="fas fa-bars"></i>
-      </span>
-      <a href="#" class="logo">Questioner</a>
-      <ul class="main--nav" id="js--menu">
-        <li class="create-meetup menu--item">
-          <a id="modalBtn" class="nav--links">Create meetup</a>
-        </li>
-        <li class="view-dashboard menu--item">
-          <a href="#" class="nav--links">Dashboard</a>
-        </li>
-        <li class="change-password menu--item">
-          <a href="#" class="nav--links">Change password</a>
-        </li>
-        <img class="avatar" src="./assets/img/profile-user_318-80283.jpg" alt="" title="John doe">
-      </ul>
+				<div class="meetup--detail">
+					<p class="meetup--detail__label">Date:</p>
+					<p class="meetup--detail__information">7th january 2019</p>
+				</div>
 
+				<div class="meetup--detail">
+					<p class="meetup--detail__label">Location URL:</p>
+					<p class="meetup--detail__information">www.google.com</p>
+				</div>
 
-    </header>
+				<div class="meetup--detail">
+					<p class="meetup--detail__label">Created on:</p>
+					<p class="meetup--detail__information">7th january 2019</p>
+				</div>
+			</div>
+			<div class="tags">
+				<div class="tag">technology</div>
+				<div class="tag">technology</div>
+			</div>
+			<div class="meetup--form">
+				<form action="#" class="meetup--custom__form">
+					<div class="form-group">
+						<input type="text" class="form-control" name="address" id="address" />
+						<label for="address" class="animated-label">Address</label>
+					</div>
 
-    <main>
+					<div class="submit--button">
+						<input type="submit" value="Ask Question" />
+					</div>
+				</form>
+			</div>
+			<div class="rsvp">
+				<p class="rsvp--question">Are you attending this meetup?</p>
+				<div class="rsvp--responses">
+					<a href="" class="rsvp--responses__yes rsvp--item">Yes</a>
+					<a href="" class="rsvp--responses__maybe rsvp--item">Maybe</a>
+					<a href="" class="rsvp--responses__no rsvp--item">No</a>
+				</div>
+			</div>
+			<div class="accordion">
+				<div class="accordion">
+					<button class="accordion--button" data-toggle="collapse" data-target=".collapse.first" data-text="Collapse">
+						View Questions
+					</button>
+				</div>
+			</div>
 
-    </main>
+			<div class="block collapse first">
+				<div class="questions">
+					<h1 class="question--poster">
+						John doe
+					</h1>
+					<span class="timestamp">3h ago</span>
+					<p class="question--body">
+						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad maiores provident fugit dignissimos iure aut
+						incidunt dicta? Omnis vero aut.
+					</p>
+					<div class="reply--vote">
+						<div class="reply reply--vote__item">
+							Reply
+						</div>
+						<div class="upvote reply--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+						<div class="downvote reply--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+					</div>
+					<div class="reply--question">
+						<h1 class="reply--name">Jane Doe</h1>
+						<p class="reply--body">
+							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum amet dolores ratione ducimus nihil
+							necessitatibus a animi eligendi!
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
 
-    <div id="simpleModal" class="modal">
-      <div class="modal--content">
-        <form action="#" class="custom-form">
-          <span class="closeBtn">&times;</span>
-          <h1 class="event--information__header">Event Information</h1>
+		<div id="simpleModal" class="modal">
+			<div class="modal--content">
+				<form action="#" class="meetup--custom__form">
+					<span class="closeBtn">&times;</span>
+					<h1 class="event--information__header">Event Information</h1>
 
-          <div class="form-group">
-            <input type="text" class="form-control" name="event-title" id="event-title" />
-            <label for="event-title" class="animated-label">What is the title of your event</label>
-          </div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="event-title" id="event-title" />
+						<label for="event-title" class="animated-label">What is the title of your event</label>
+					</div>
 
-          <div class="form-group">
-            <input type="text" class="form-control" name="address" id="address" />
-            <label for="address" class="animated-label">Address</label>
-          </div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="address" id="address" />
+						<label for="address" class="animated-label">Address</label>
+					</div>
 
-          <div class="form-group">
-            <input type="text" class="form-control" name="image" id="image" />
-            <label for="image" class="animated-label">Image URL (optional)</label>
-          </div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="image" id="image" />
+						<label for="image" class="animated-label">Image URL (optional)</label>
+					</div>
 
-          <!-- <div class="contact--date"> -->
-          <div class="form-group">
-            <label for="date" class="">Pick Date</label>
-            <input type="date" class="form-control" name="date" id="date" value="Pick date" />
-          </div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="tags" id="tags" />
+						<label for="tags" class="animated-label">Tags</label>
+					</div>
 
-          <div class="form-group">
-            <input type="text" class="form-control" name="phone-number" id="phone-number" />
-            <label for="phone-number" class="animated-label">Phone Number</label>
-          </div>
-          <!-- </div> -->
+					<!-- <div class="contact--date"> -->
+					<div class="form-group">
+						<label for="date" class="">Pick Date</label>
+						<input type="date" class="form-control" name="date" id="date" value="Pick date" />
+					</div>
 
-          <div class="submit--button">
-            <input type="submit" value="Create meetup" />
-          </div>
-        </form>
-      </div>
-    </div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="phone-number" id="phone-number" />
+						<label for="phone-number" class="animated-label">Phone Number</label>
+					</div>
+					<!-- </div> -->
 
-  </div>
+					<div class="submit--button">
+						<input type="submit" value="Create meetup" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-  <footer>
-    <ul>
-      <li><a href="">Contact</a></li>
-      <li><a href="">Privacy</a></li>
-      <li><a href="">Terms of use</a></li>
-      <li><a href="">Assecibility</a></li>
-    </ul>
-  </footer>
+	<footer>
+		<ul>
+			<li><a href="">Contact</a></li>
+			<li><a href="">Privacy</a></li>
+			<li><a href="">Terms of use</a></li>
+			<li><a href="">Assecibility</a></li>
+		</ul>
+	</footer>
 
-  <script src="./assets/js/toggle-navbar.js"></script>
-  <script src="./assets/js/modal.js"></script>
+	<script src="./assets/js/toggle-navbar.js"></script>
+	<script src="./assets/js/modal.js"></script>
+	<script src="./assets/js/accordion.js"></script>
 </body>
 
 </html>

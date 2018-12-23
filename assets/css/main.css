@@ -2,9 +2,162 @@
   display: none;
 }
 
+main {
+  padding: .5rem;
+  background: #ffffff;
+  margin: .5rem auto;
+  max-width: 500px;
+}
+
 .nav--links {
   cursor: pointer;
 }
+
+.meetup--title {
+  font-size: 1.1rem;
+  color: #444444;
+  margin-bottom: .3rem;
+}
+
+.meetup--detail {
+  display: flex;
+  margin-top: .5rem;
+  color: #444444;
+}
+
+.meetup--detail__label {
+  margin-right: .6rem;
+  font-weight: 800;
+}
+
+.tags {
+  display: flex;
+  margin: .5rem 0;
+}
+
+.tag {
+  margin-right: .3rem;
+  background-color: #999999;
+  color: #ffffff;
+  padding: .3rem;
+  border-radius: .1rem;
+}
+
+.rsvp {
+  color: #444444;
+  margin: .3rem 0;
+  text-align: center;
+}
+
+
+.rsvp--responses {
+  display: flex;
+  justify-content: space-evenly;
+  margin: .5rem 0;
+}
+
+.rsvp--item {
+  padding: .5rem .5rem;
+  border-radius: .2rem;
+  color: #ffffff;
+}
+
+.rsvp--responses__yes {
+  background-color: #1B8218;
+  width: 25%;
+}
+
+.rsvp--responses__maybe {
+  background-color: #3F45FF;
+  width: 25%;
+
+}
+
+.rsvp--responses__no {
+  background-color: #B21515;
+  width: 25%;
+}
+
+.accordion--button {
+  cursor: pointer;
+  width: 100%;
+  padding: .5rem;
+  margin-bottom: .3rem;
+  border-radius: .2rem;
+  background-color: #3F45FF;
+  color: #ffffff;
+  border: #3F45FF;
+  font-size: 1.2rem;
+  transition: 1s ease all;
+}
+
+.accordion--button:hover {
+  background-color: #232994;
+}
+
+.questions {
+  padding: .5rem;
+  background-color: #f2f2f2;
+  border-radius: .2rem;
+}
+
+.question--poster {
+  font-size: 1.1rem;
+  margin-bottom: .2rem;
+  font-weight: 600;
+}
+
+.timestamp {
+  font-size: .8rem;
+  color: #444444;
+  margin-bottom: .2rem;
+}
+
+.question--body {
+  margin: .2rem 0;
+  font-size: 1rem;
+}
+
+.reply--vote {
+  display: flex;
+}
+
+.reply--vote__item {
+  margin-right: .8rem;
+  font-size: .8rem;
+  cursor: pointer;
+  color: #444444;
+}
+
+.reply--vote__item:hover {
+  font-size: 1rem;
+  color: #222222;
+}
+
+.reply--question {
+  padding: .6rem 0 0 .6rem;
+  border-left: .1rem solid #888888;
+  margin-left: .2rem;
+  margin-top: .2rem;
+}
+
+.reply--body {
+  color: #555555;
+}
+
+.collapse {
+  display: block;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.collapse.show {
+  max-height: 99em;
+  transition: max-height 0.5s ease-in-out;
+}
+
+
 
 @media screen and (min-width: 700px) {
   .navbar {
@@ -60,4 +213,155 @@
   .navbar--toggle {
     display: none;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* .meetup--custom__form {
+    display: flex;
+  } */
+
+
+  .meetup--custom__form .form-group {
+    position: relative;
+    padding-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .meetup--custom__form .form-group .form-control {
+    position: relative;
+    z-index: 1;
+    border-radius: 0;
+    border-width: 0 0 1px;
+    border-bottom-color: rgba(0, 0, 0, 0.25);
+    height: auto;
+    /* padding: 3px 0 5px; */
+    width: 100%;
+    outline: none;
+  }
+
+
+  .meetup--custom__form .form-group {
+    position: relative;
+    padding-right: 1rem;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  .meetup--custom__form .form-group .animated-label {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    font-weight: 300;
+    opacity: 0.5;
+    cursor: text;
+    transition: 0.2s ease all;
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  .meetup--custom__form .form-group .animated-label:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+    height: 2px;
+    width: 10px;
+    visibility: hidden;
+    background-color: #3F45FF;
+    transition: 0.2s ease all;
+  }
+
+  .meetup--custom__form .form-group.not-empty .animated-label {
+    top: 0;
+    font-size: 12px;
+  }
+
+  .meetup--custom__form .form-group .form-control {
+    position: relative;
+    z-index: 1;
+    border-radius: 0;
+    border-width: 0 0 .1rem;
+    border-bottom-color: rgba(0, 0, 0, 0.25);
+    height: auto;
+    padding: .3rem 0 .3rem;
+    width: 100%;
+  }
+
+  .meetup--custom__form .form-group .form-control:focus {
+    box-shadow: none;
+    outline: none;
+    border-bottom-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .meetup--custom__form .form-group .form-control:focus~.animated-label {
+    top: 0;
+    opacity: 1;
+    color: #3F45FF;
+    font-size: .9rem;
+  }
+
+  .meetup--custom__form .form-group .form-control:focus~.animated-label:after {
+    visibility: visible;
+    width: 100%;
+    left: 0;
+  }
+
+  .submit--button {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .submit--button input[type=submit] {
+    cursor: pointer;
+    width: 20%;
+    padding: 2rem;
+    margin-bottom: .3rem;
+    border-radius: .2rem;
+    background-color: #3F45FF;
+    color: #ffffff;
+    border: #3F45FF;
+    font-size: 1.2rem;
+    transition: 1s ease all;
+  }
+
+  .submit--button input[type=submit]:hover {
+    background-color: #232994;
+  }
+
 }
