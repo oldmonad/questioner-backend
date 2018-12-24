@@ -9,7 +9,8 @@
     "build": "babel src --out-dir ./dist --source-maps",
     "serve": "node ./dist/server.js",
     "debug": "node --inspect-brk ./dist/server",
-    "test": "mocha --require @babel/register --exit"
+    "test": "mocha --require @babel/register --exit",
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
   },
   "repository": {
     "type": "git",
@@ -33,9 +34,11 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/register": "^7.0.0",
     "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
     "eslint": "^5.11.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.9"
   }
