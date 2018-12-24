@@ -1,0 +1,42 @@
+{
+  "name": "questioner",
+  "version": "1.0.0",
+  "description": "Crowd-source questions for a meetup. ​ Questioner​​ helps the meetup organizer prioritize questions to be answered.",
+  "main": "server.js",
+  "scripts": {
+    "lint": "eslint ./src --fix",
+    "start": "nodemon --exec babel-node ./src/server.js",
+    "build": "babel src --out-dir ./dist --source-maps",
+    "serve": "node ./dist/server.js",
+    "debug": "node --inspect-brk ./dist/server",
+    "test": "mocha --require @babel/register --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbytecoderc/Questioner.git"
+  },
+  "author": "DC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dbytecoderc/Questioner/issues"
+  },
+  "homepage": "https://github.com/dbytecoderc/Questioner#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.11.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9"
+  }
+}
