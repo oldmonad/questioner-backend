@@ -1,367 +1,335 @@
 .avatar {
-  display: none;
+	display: none;
 }
 
 main {
-  padding: .5rem;
-  background: #ffffff;
-  margin: .5rem auto;
-  max-width: 500px;
+	padding: 0.5rem;
+	/* background: #ffffff; */
+	margin: 0.5rem auto;
+	max-width: 500px;
 }
 
 .nav--links {
-  cursor: pointer;
+	cursor: pointer;
+}
+.meetup {
+	margin-bottom: 0.5rem;
+	background-color: #ffffff;
+	padding: 1rem;
+	border-radius: 0.2rem;
 }
 
 .meetup--title {
-  font-size: 1.1rem;
-  color: #444444;
-  margin-bottom: .3rem;
+	font-size: 1.1rem;
+	color: #444444;
+	margin-bottom: 0.3rem;
 }
 
 .meetup--detail {
-  display: flex;
-  margin-top: .5rem;
-  color: #444444;
+	display: flex;
+	margin-top: 0.5rem;
+	color: #444444;
 }
 
 .meetup--detail__label {
-  margin-right: .6rem;
-  font-weight: 800;
+	margin-right: 0.6rem;
+	font-weight: 800;
 }
 
 .tags {
-  display: flex;
-  margin: .5rem 0;
+	display: flex;
+	margin: 0.5rem 0;
 }
 
 .tag {
-  margin-right: .3rem;
-  background-color: #999999;
-  color: #ffffff;
-  padding: .3rem;
-  border-radius: .1rem;
+	margin-right: 0.3rem;
+	background-color: #999999;
+	color: #ffffff;
+	padding: 0.3rem;
+	border-radius: 0.1rem;
 }
 
 .rsvp {
-  color: #444444;
-  margin: .3rem 0;
-  text-align: center;
+	color: #444444;
+	margin: 0.3rem 0;
+	text-align: center;
 }
 
-
 .rsvp--responses {
-  display: flex;
-  justify-content: space-evenly;
-  margin: .5rem 0;
+	display: flex;
+	justify-content: space-evenly;
+	margin: 0.5rem 0;
 }
 
 .rsvp--item {
-  padding: .5rem .5rem;
-  border-radius: .2rem;
-  color: #ffffff;
+	padding: 0.5rem 0.5rem;
+	border-radius: 0.2rem;
+	color: #ffffff;
 }
 
 .rsvp--responses__yes {
-  background-color: #1B8218;
-  width: 25%;
+	background-color: #1b8218;
+	width: 25%;
 }
 
 .rsvp--responses__maybe {
-  background-color: #3F45FF;
-  width: 25%;
-
+	background-color: #3f45ff;
+	width: 25%;
 }
 
 .rsvp--responses__no {
-  background-color: #B21515;
-  width: 25%;
+	background-color: #b21515;
+	width: 25%;
 }
 
 .accordion--button {
-  cursor: pointer;
-  width: 100%;
-  padding: .5rem;
-  margin-bottom: .3rem;
-  border-radius: .2rem;
-  background-color: #3F45FF;
-  color: #ffffff;
-  border: #3F45FF;
-  font-size: 1.2rem;
-  transition: 1s ease all;
+	cursor: pointer;
+	width: 100%;
+	padding: 0.5rem;
+	margin-bottom: 0.3rem;
+	border-radius: 0.2rem;
+	background-color: #3f45ff;
+	color: #ffffff;
+	border: #3f45ff;
+	font-size: 1.2rem;
+	transition: 1s ease all;
 }
 
 .accordion--button:hover {
-  background-color: #232994;
+	background-color: #232994;
 }
 
 .questions {
-  padding: .5rem;
-  background-color: #f2f2f2;
-  border-radius: .2rem;
+	padding: 0.5rem;
+	background-color: #f2f2f2;
+	border-radius: 0.2rem;
 }
 
 .question--poster {
-  font-size: 1.1rem;
-  margin-bottom: .2rem;
-  font-weight: 600;
+	font-size: 1.1rem;
+	margin-bottom: 0.2rem;
+	font-weight: 600;
 }
 
 .timestamp {
-  font-size: .8rem;
-  color: #444444;
-  margin-bottom: .2rem;
+	font-size: 0.8rem;
+	color: #444444;
+	margin-bottom: 0.2rem;
 }
 
 .question--body {
-  margin: .2rem 0;
-  font-size: 1rem;
+	margin: 0.2rem 0;
+	font-size: 1rem;
 }
 
 .reply--vote {
-  display: flex;
+	display: flex;
 }
 
 .reply--vote__item {
-  margin-right: .8rem;
-  font-size: .8rem;
-  cursor: pointer;
-  color: #444444;
+	margin-right: 0.8rem;
+	font-size: 0.8rem;
+	cursor: pointer;
+	color: #444444;
 }
 
 .reply--vote__item:hover {
-  font-size: 1rem;
-  color: #222222;
+	font-size: 1rem;
+	color: #222222;
 }
 
 .reply--question {
-  padding: .6rem 0 0 .6rem;
-  border-left: .1rem solid #888888;
-  margin-left: .2rem;
-  margin-top: .2rem;
+	padding: 0.6rem 0 0 0.6rem;
+	border-left: 0.1rem solid #888888;
+	margin-left: 0.2rem;
+	margin-top: 0.2rem;
 }
 
 .reply--body {
-  color: #555555;
+	color: #555555;
 }
 
 .collapse {
-  display: block;
-  max-height: 0px;
-  overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+	display: block;
+	max-height: 0px;
+	overflow: hidden;
+	transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
 }
 
 .collapse.show {
-  max-height: 99em;
-  transition: max-height 0.5s ease-in-out;
+	max-height: 99em;
+	transition: max-height 0.5s ease-in-out;
 }
 
-
-
 @media screen and (min-width: 700px) {
-  .navbar {
-    display: flex;
-    padding-bottom: 0;
-    height: 70px;
-    align-items: center;
-  }
+	.navbar {
+		display: flex;
+		padding-bottom: 0;
+		height: 70px;
+		align-items: center;
+	}
 
-  .main--nav {
-    display: flex;
-    margin-right: 20px;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-  }
+	.main--nav {
+		display: flex;
+		margin-right: 20px;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+	}
 
-  .main--nav li {
-    margin: 0;
-  }
+	.main--nav li {
+		margin: 0;
+	}
 
-  img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    margin-left: 30px;
-    cursor: pointer;
-  }
+	img {
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+		margin-left: 30px;
+		cursor: pointer;
+	}
 
-  .avatar {
-    display: block;
-  }
+	.avatar {
+		display: block;
+	}
 
-  .nav--links {
-    margin-left: 20px;
-    transition: .5s ease all;
-  }
+	.nav--links {
+		margin-left: 20px;
+		transition: 0.5s ease all;
+	}
 
+	.menu--item a:hover {
+		background: #3f45ff;
+		color: #ffffff;
+		padding: 0.4em;
+		border-radius: 50px;
+	}
 
-  .menu--item a:hover {
-    background: #3F45FF;
-    color: #ffffff;
-    padding: .4em;
-    border-radius: 50px;
-  }
+	.logo {
+		margin-top: 0;
+		font-size: 2rem;
+		font-weight: 900;
+	}
 
-  .logo {
-    margin-top: 0;
-    font-size: 2rem;
-    font-weight: 900;
-  }
+	.navbar--toggle {
+		display: none;
+	}
 
-  .navbar--toggle {
-    display: none;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /* .meetup--custom__form {
+	/* .meetup--custom__form {
     display: flex;
   } */
 
+	.meetup--custom__form .form-group {
+		position: relative;
+		padding-top: 16px;
+		margin-bottom: 16px;
+	}
 
-  .meetup--custom__form .form-group {
-    position: relative;
-    padding-top: 16px;
-    margin-bottom: 16px;
-  }
+	.meetup--custom__form .form-group .form-control {
+		position: relative;
+		z-index: 1;
+		border-radius: 0;
+		border-width: 0 0 1px;
+		border-bottom-color: rgba(0, 0, 0, 0.25);
+		height: auto;
+		/* padding: 3px 0 5px; */
+		width: 100%;
+		outline: none;
+	}
 
-  .meetup--custom__form .form-group .form-control {
-    position: relative;
-    z-index: 1;
-    border-radius: 0;
-    border-width: 0 0 1px;
-    border-bottom-color: rgba(0, 0, 0, 0.25);
-    height: auto;
-    /* padding: 3px 0 5px; */
-    width: 100%;
-    outline: none;
-  }
+	.meetup--custom__form .form-group {
+		position: relative;
+		padding-right: 1rem;
+		margin-bottom: 16px;
+		width: 100%;
+	}
 
+	.meetup--custom__form .form-group .animated-label {
+		position: absolute;
+		top: 20px;
+		left: 0;
+		bottom: 0;
+		z-index: 2;
+		width: 100%;
+		font-weight: 300;
+		opacity: 0.5;
+		cursor: text;
+		transition: 0.2s ease all;
+		margin: 0;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
+	}
 
-  .meetup--custom__form .form-group {
-    position: relative;
-    padding-right: 1rem;
-    margin-bottom: 16px;
-    width: 100%;
-  }
+	.meetup--custom__form .form-group .animated-label:after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 45%;
+		height: 2px;
+		width: 10px;
+		visibility: hidden;
+		background-color: #3f45ff;
+		transition: 0.2s ease all;
+	}
 
-  .meetup--custom__form .form-group .animated-label {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-    width: 100%;
-    font-weight: 300;
-    opacity: 0.5;
-    cursor: text;
-    transition: 0.2s ease all;
-    margin: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
+	.meetup--custom__form .form-group.not-empty .animated-label {
+		top: 0;
+		font-size: 12px;
+	}
 
-  .meetup--custom__form .form-group .animated-label:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 45%;
-    height: 2px;
-    width: 10px;
-    visibility: hidden;
-    background-color: #3F45FF;
-    transition: 0.2s ease all;
-  }
+	.meetup--custom__form .form-group .form-control {
+		position: relative;
+		z-index: 1;
+		border-radius: 0;
+		border-width: 0 0 0.1rem;
+		border-bottom-color: rgba(0, 0, 0, 0.25);
+		height: auto;
+		padding: 0.3rem 0 0.3rem;
+		width: 100%;
+	}
 
-  .meetup--custom__form .form-group.not-empty .animated-label {
-    top: 0;
-    font-size: 12px;
-  }
+	.meetup--custom__form .form-group .form-control:focus {
+		box-shadow: none;
+		outline: none;
+		border-bottom-color: rgba(0, 0, 0, 0.12);
+	}
 
-  .meetup--custom__form .form-group .form-control {
-    position: relative;
-    z-index: 1;
-    border-radius: 0;
-    border-width: 0 0 .1rem;
-    border-bottom-color: rgba(0, 0, 0, 0.25);
-    height: auto;
-    padding: .3rem 0 .3rem;
-    width: 100%;
-  }
+	.meetup--custom__form .form-group .form-control:focus ~ .animated-label {
+		top: 0;
+		opacity: 1;
+		color: #3f45ff;
+		font-size: 0.9rem;
+	}
 
-  .meetup--custom__form .form-group .form-control:focus {
-    box-shadow: none;
-    outline: none;
-    border-bottom-color: rgba(0, 0, 0, 0.12);
-  }
+	.meetup--custom__form
+		.form-group
+		.form-control:focus
+		~ .animated-label:after {
+		visibility: visible;
+		width: 100%;
+		left: 0;
+	}
 
-  .meetup--custom__form .form-group .form-control:focus~.animated-label {
-    top: 0;
-    opacity: 1;
-    color: #3F45FF;
-    font-size: .9rem;
-  }
+	.submit--button {
+		padding: 0 !important;
+		margin: 0 !important;
+	}
 
-  .meetup--custom__form .form-group .form-control:focus~.animated-label:after {
-    visibility: visible;
-    width: 100%;
-    left: 0;
-  }
+	.submit--button input[type="submit"] {
+		cursor: pointer;
+		width: 20%;
+		padding: 2rem;
+		margin-bottom: 0.3rem;
+		border-radius: 0.2rem;
+		background-color: #3f45ff;
+		color: #ffffff;
+		border: #3f45ff;
+		font-size: 1.2rem;
+		transition: 1s ease all;
+	}
 
-  .submit--button {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .submit--button input[type=submit] {
-    cursor: pointer;
-    width: 20%;
-    padding: 2rem;
-    margin-bottom: .3rem;
-    border-radius: .2rem;
-    background-color: #3F45FF;
-    color: #ffffff;
-    border: #3F45FF;
-    font-size: 1.2rem;
-    transition: 1s ease all;
-  }
-
-  .submit--button input[type=submit]:hover {
-    background-color: #232994;
-  }
-
+	.submit--button input[type="submit"]:hover {
+		background-color: #232994;
+	}
 }

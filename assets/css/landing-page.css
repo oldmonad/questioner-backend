@@ -179,7 +179,7 @@ main {
   margin-right: .5rem;
 }
 
-.instruction__login {
+.instruction__login a {
   color: #3F45FF;
 }
 
