@@ -1,49 +1,40 @@
-/* eslint-disable eol-last */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-undef */
-// eslint-disable-next-line prefer-destructuring
+/* eslint-disable eol-last */
 import {
   expect,
+  should,
 } from 'chai';
-import numFormatter from '../../index';
 
-describe('#numFormatter', () => {
-  it('should convert single digits', () => {
-    const result = numFormatter(1);
-    expect(result).to.equal('1');
+import DataStore from '../../src/api/usingJsDataStructures/models/jsDataStorage';
+
+should();
+
+describe('#Meetups Storage', () => {
+  it('It should create a meetup', () => {
+    const data = {
+      topic: 'helping hands',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+
+    const createdMeetup = DataStore.create(data);
+    createdMeetup.should.be.an('object');
+    (createdMeetup.id).should.be.a('number');
+    expect(createdMeetup.topic).to.be.a('string');
+    expect(createdMeetup.topic).to.equal('helping hands');
+    expect(createdMeetup.location).to.be.a('string');
+    expect(createdMeetup.location).to.equal('ikorodu');
+    (createdMeetup.date).should.be.a('string');
+    expect(createdMeetup.date).to.equal('18 june 1996');
+    (createdMeetup.tags).should.be.an('array');
+    // expect(createdMeetup.tags).to.equal(['goal', 'yeah']);
   });
 
-  it('should convert double digits', () => {
-    const result = numFormatter(12);
-    expect(result).to.equal('12');
-  });
+  it('Meetups should be an array', () => {
+    const meetups = DataStore.findAll();
 
-  it('should convert triple digits', () => {
-    const result = numFormatter(123);
-    expect(result).to.equal('123');
-  });
-
-  it('should convert 4 digits', () => {
-    const result = numFormatter(1234);
-    expect(result).to.equal('1,234');
-  });
-
-  it('should convert 5 digits', () => {
-    const result = numFormatter(12345);
-    expect(result).to.equal('12,345');
-  });
-
-  it('should convert 6 digits', () => {
-    const result = numFormatter(123456);
-    expect(result).to.equal('123,456');
-  });
-
-  it('should convert 7 digits', () => {
-    const result = numFormatter(1234567);
-    expect(result).to.equal('1,234,567');
-  });
-
-  it('should convert 8 digits', () => {
-    const result = numFormatter(12345678);
-    expect(result).to.equal('12,345,678');
+    meetups.should.be.an('array');
   });
 });
