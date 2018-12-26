@@ -1,48 +1,50 @@
 {
-  "name": "questioner",
-  "version": "1.0.0",
-  "description": "Crowd-source questions for a meetup. ​ Questioner​​ helps the meetup organizer prioritize questions to be answered.",
-  "main": "server.js",
-  "scripts": {
-    "lint": "eslint ./src --fix",
-    "start": "nodemon --exec babel-node ./src/server.js",
-    "build": "babel src --out-dir ./dist --source-maps",
-    "serve": "node ./dist/server.js",
-    "debug": "node --inspect-brk ./dist/server",
-    "cover": "nyc --require @babel/register mocha test/**/*.js",
-    "test": "mocha --require @babel/register test/**/*.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dbytecoderc/Questioner.git"
-  },
-  "author": "DC",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dbytecoderc/Questioner/issues"
-  },
-  "homepage": "https://github.com/dbytecoderc/Questioner#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "morgan": "^1.9.1"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/register": "^7.0.0",
-    "babel-istanbul": "^0.12.2",
-    "babel-plugin-istanbul": "^5.1.0",
-    "chai": "^4.2.0",
-    "coveralls": "^3.0.2",
-    "eslint": "^5.11.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^5.2.0",
-    "mocha-lcov-reporter": "^1.3.0",
-    "nodemon": "^1.18.9"
-  }
+	"name": "questioner",
+	"version": "1.0.0",
+	"description": "Crowd-source questions for a meetup. ​ Questioner​​ helps the meetup organizer prioritize questions to be answered.",
+	"main": "server.js",
+	"scripts": {
+		"lint": "eslint ./src --fix",
+		"start": "nodemon --exec babel-node ./src/server.js",
+		"build": "babel src --out-dir ./dist --source-maps",
+		"serve": "node ./dist/server.js",
+		"debug": "node --inspect-brk ./dist/server",
+		"cover": "nyc --require @babel/register mocha test/**/*.js",
+		"test": "mocha --require @babel/register test/**/*.js --exit"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dbytecoderc/Questioner.git"
+	},
+	"author": "DC",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/dbytecoderc/Questioner/issues"
+	},
+	"homepage": "https://github.com/dbytecoderc/Questioner#readme",
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"express": "^4.16.4",
+		"moment": "^2.23.0",
+		"morgan": "^1.9.1",
+		"uuid": "^3.3.2"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.2.3",
+		"@babel/core": "^7.2.2",
+		"@babel/node": "^7.2.2",
+		"@babel/preset-env": "^7.2.3",
+		"@babel/register": "^7.0.0",
+		"babel-istanbul": "^0.12.2",
+		"babel-plugin-istanbul": "^5.1.0",
+		"chai": "^4.2.0",
+		"coveralls": "^3.0.2",
+		"eslint": "^5.11.0",
+		"eslint-config-airbnb-base": "^13.1.0",
+		"eslint-plugin-import": "^2.14.0",
+		"istanbul": "^0.4.5",
+		"mocha": "^5.2.0",
+		"mocha-lcov-reporter": "^1.3.0",
+		"nodemon": "^1.18.9"
+	}
 }
