@@ -9,7 +9,7 @@
 		"build": "babel src --out-dir ./dist --source-maps",
 		"serve": "node ./dist/server.js",
 		"debug": "node --inspect-brk ./dist/server",
-		"cover": "nyc --require @babel/register mocha test/**/*.js",
+		"coverage": "bin/coverage.sh",
 		"test": "mocha --require @babel/register test/**/*.js --exit"
 	},
 	"repository": {
@@ -45,6 +45,7 @@
 		"istanbul": "^0.4.5",
 		"mocha": "^5.2.0",
 		"mocha-lcov-reporter": "^1.3.0",
-		"nodemon": "^1.18.9"
+		"nodemon": "^1.18.9",
+		"remap-istanbul": "^0.12.0"
 	}
 }
