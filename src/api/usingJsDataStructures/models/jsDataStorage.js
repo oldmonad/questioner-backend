@@ -14,6 +14,7 @@ class Storage {
       location: data.location,
       date: data.date,
       tags: tag,
+      upcoming: true,
     };
     this.meetups.push(newMeetup);
     return newMeetup;
@@ -23,8 +24,13 @@ class Storage {
     return this.meetups;
   }
 
-  
+  findOne(id) {
+    return this.meetups.find(meetup => meetup.id === id);
+  }
 
+  getUpcoming() {
+    return this.meetups.filter(meetup => meetup.upcoming === true);
+  }
 }
 
 
