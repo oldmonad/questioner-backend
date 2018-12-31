@@ -10,6 +10,7 @@ const routes = (router) => {
   });
 
   router.route('/meetups')
+  /** POST api/v1/meetups - Create a meetup */
     .post(meetupsWithObject.create);
 };
 

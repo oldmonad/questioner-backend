@@ -2,7 +2,12 @@
 import Storage from '../models/jsDataStorage';
 
 const meetupController = {
-
+  /**
+   *
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} meetup object,
+   */
   create(req, res) {
     const meetup = Storage.create(req.body);
     const response = {
@@ -12,7 +17,7 @@ const meetupController = {
       date: meetup.date,
       tags: meetup.tags,
     };
-    res.status(201).json({
+    return res.status(201).json({
       status: 201,
       data: [response],
     });
