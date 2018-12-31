@@ -7,7 +7,7 @@ import {
   should,
 } from 'chai';
 
-import DataStore from '../../src/api/usingJsDataStructures/models/jsDataStorage';
+import DataStore from '../../usingJsDataStructures/models/jsDataStorage';
 
 should();
 
