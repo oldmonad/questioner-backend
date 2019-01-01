@@ -64,4 +64,4 @@ describe('Meetups Create function', () => {
   });
 });
 
-describe('Should be able to retrieve a single function', )
+describe('Should be able to retrieve a single function', () => {});
