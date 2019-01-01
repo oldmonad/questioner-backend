@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable eol-last */
 // import uuid from 'uuid';
 
@@ -9,7 +10,7 @@ class Storage {
   create(data) {
     const tag = data.tags.trim().split(' ');
     const newMeetup = {
-      id: this.meetups.length + 1,
+      meetupId: this.meetups.length + 1,
       topic: data.topic,
       location: data.location,
       date: data.date,
@@ -24,12 +25,16 @@ class Storage {
     return this.meetups;
   }
 
-  findOne(id) {
-    return this.meetups.find(meetup => meetup.id === id);
+  findOne(meetupId) {
+    return this.meetups.find(meetup => meetup.meetupId === meetupId);
   }
 
   getUpcoming() {
     return this.meetups.filter(meetup => meetup.upcoming === true);
+  }
+
+  clearAll() {
+    return this.meetups = [];
   }
 }
 
