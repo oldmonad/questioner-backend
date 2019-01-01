@@ -13,10 +13,6 @@ const routes = (router) => {
     /** POST api/v1/meetups - Create a meetup */
     .post(meetupsWithObject.create);
 
-  router.route('/meetups')
-    /** GET api/v1/meetups - Create a meetup */
-    .get(meetupsWithObject.getAll);
-
   router.route('/meetups/:meetupId')
     /** GET api/v1/meetups - Create a meetup */
     .get(meetupsWithObject.getOne);

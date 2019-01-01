@@ -30,25 +30,24 @@ const meetupController = {
     });
   },
 
-  // getAll(req, res) {
-  //   const meetups = Storage.findAll();
-
-  //   return res.status(200).json({
-  //     status: 200,
-  //     data: meetups,
-  //   });
-  // },
-
   getOne(req, res) {
-    const meetup = Storage.findOne(req.params.meetupId);
-    console.log(meetup);
-    // if (!meetup) {
-    //   return res.status(404).json({
-    //     message: 'meetup not found',
-    //   });
-    // }
+    const id = parseInt(req.params.meetupId);
+    const meetup = Storage.findOne(id);
+    if (!meetup) {
+      return res.status(404).json({
+        message: 'meetup not found',
+      });
+    }
+    const response = {
+      meetupId: meetup.meetupId,
+      topic: meetup.topic,
+      location: meetup.location,
+      date: meetup.date,
+      tags: meetup.tags,
+    };
     return res.status(200).json({
-      data: meetup,
+      status: 200,
+      data: [response],
     });
   },
 };
