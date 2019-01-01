@@ -27,7 +27,6 @@ describe('Meetups Create function', () => {
   });
 
   it('It should create a meetup', () => {
-
     const createdMeetup = DataStore.findAll()[0];
     createdMeetup.should.be.an('object');
     (createdMeetup.meetupId).should.be.a('number');
@@ -62,6 +61,42 @@ describe('Meetups Create function', () => {
 
     meetups.should.be.an('array');
   });
+  console.log(DataStore.findAll());
 });
 
-describe('Should be able to retrieve a single function', () => {});
+
+describe('Retrive single meetup from meetups', () => {
+  before(() => {
+    const data1 = {
+      topic: 'helping hands from datastructure test 1',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    const data2 = {
+      topic: 'helping hands from datastructure test 2',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    DataStore.create(data1);
+    DataStore.create(data2);
+  });
+
+  after(() => {
+    DataStore.clearAll();
+  });
+
+  it('Should get a single meetup', () => {
+    // console.log(DataStore.findAll());
+    const firstSingleMeetupId = DataStore.findAll()[0].meetupId;
+    const secondSingleMeetupId = DataStore.findAll()[1].meetupId;
+    const firstMeetup = DataStore.findOne(firstSingleMeetupId);
+    const secondMeetup = DataStore.findOne(secondSingleMeetupId);
+
+    firstMeetup.should.be.an('object');
+    secondMeetup.should.be.an('object');
+    (firstMeetup.meetupId).should.equal(1);
+    (secondMeetup.meetupId).should.equal(2);
+  });
+});

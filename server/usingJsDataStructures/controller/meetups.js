@@ -30,14 +30,14 @@ const meetupController = {
     });
   },
 
-  getAll(req, res) {
-    const meetups = Storage.findAll();
+  // getAll(req, res) {
+  //   const meetups = Storage.findAll();
 
-    return res.status(200).json({
-      status: 200,
-      data: meetups,
-    });
-  },
+  //   return res.status(200).json({
+  //     status: 200,
+  //     data: meetups,
+  //   });
+  // },
 
   getOne(req, res) {
     const meetup = Storage.findOne(req.params.meetupId);
