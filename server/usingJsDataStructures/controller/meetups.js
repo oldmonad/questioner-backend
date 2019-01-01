@@ -9,9 +9,16 @@ const meetupController = {
    * @returns {object} meetup object,
    */
   create(req, res) {
-    const meetup = Storage.create(req.body);
+    const content = req.body;
+    // console.log(content);
+    if (!content.topic || !content.location || !content.date || !content.tags) {
+      res.status(400).json({
+        message: 'Al fields are required',
+      });
+    }
+    const meetup = Storage.create(content);
     const response = {
-      id: meetup.id,
+      meetupId: meetup.meetupId,
       topic: meetup.topic,
       location: meetup.location,
       date: meetup.date,
@@ -20,6 +27,28 @@ const meetupController = {
     return res.status(201).json({
       status: 201,
       data: [response],
+    });
+  },
+
+  getAll(req, res) {
+    const meetups = Storage.findAll();
+
+    return res.status(200).json({
+      status: 200,
+      data: meetups,
+    });
+  },
+
+  getOne(req, res) {
+    const meetup = Storage.findOne(req.params.meetupId);
+    console.log(meetup);
+    // if (!meetup) {
+    //   return res.status(404).json({
+    //     message: 'meetup not found',
+    //   });
+    // }
+    return res.status(200).json({
+      data: meetup,
     });
   },
 };

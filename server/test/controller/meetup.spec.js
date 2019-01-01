@@ -16,9 +16,14 @@ import {
 
 import server from '../../../server';
 
+import DataStore from '../../usingJsDataStructures/models/jsDataStorage';
+
 // chai.use(chaiHttp);
 
 describe('Meetup API', () => {
+  // after(() => {
+  //   DataStore.clearAll();
+  // });
   const data = {
     topic: 'helping hands',
     location: 'ikorodu',
@@ -38,8 +43,8 @@ describe('Meetup API', () => {
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('data');
         expect(res.body.data).to.be.an('array');
-        expect(res.body.data[0]).to.have.property('id');
-        expect(res.body.data[0].id).to.equal(1);
+        expect(res.body.data[0]).to.have.property('meetupId');
+        expect(res.body.data[0].meetupId).to.equal(1);
         expect(res.body.data[0]).to.have.property('topic');
         expect(res.body.data[0].topic).to.equal('helping hands');
         expect(res.body.data[0]).to.have.property('location');
@@ -51,9 +56,8 @@ describe('Meetup API', () => {
         expect(res.body.data[0].tags).to.be.an('array');
         expect(res.body.status).to.be.a('number');
         expect(res.body.status).to.equal(201);
+        DataStore.clearAll();
         done();
       });
   });
 });
-
-

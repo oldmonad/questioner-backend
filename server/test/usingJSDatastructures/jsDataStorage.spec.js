@@ -11,20 +11,28 @@ import DataStore from '../../usingJsDataStructures/models/jsDataStorage';
 
 should();
 
-describe('#Meetups Storage', () => {
-  it('It should create a meetup', () => {
+describe('Meetups Create function', () => {
+  before(() => {
     const data = {
-      topic: 'helping hands',
+      topic: 'helping hands from datastructure test',
       location: 'ikorodu',
       date: '18 june 1996',
       tags: 'goal yeah',
     };
+    DataStore.create(data);
+  });
 
-    const createdMeetup = DataStore.create(data);
+  after(() => {
+    DataStore.clearAll();
+  });
+
+  it('It should create a meetup', () => {
+
+    const createdMeetup = DataStore.findAll()[0];
     createdMeetup.should.be.an('object');
-    (createdMeetup.id).should.be.a('number');
+    (createdMeetup.meetupId).should.be.a('number');
     expect(createdMeetup.topic).to.be.a('string');
-    expect(createdMeetup.topic).to.equal('helping hands');
+    expect(createdMeetup.topic).to.equal('helping hands from datastructure test');
     expect(createdMeetup.location).to.be.a('string');
     expect(createdMeetup.location).to.equal('ikorodu');
     (createdMeetup.date).should.be.a('string');
@@ -34,25 +42,26 @@ describe('#Meetups Storage', () => {
     // expect(createdMeetup.tags).to.equal(['goal', 'yeah']);
   });
 
-  it('Meetups should be an array', () => {
-    const meetups = DataStore.findAll();
 
-    meetups.should.be.an('array');
-  });
-
-
-  it('It should create a meetup', () => {
-    const data = {
-      topic: 'helping hands',
-      location: 'ikorodu',
-      date: '18 june 1996',
-      tags: 'goal yeah',
-    };
-
-    const createdMeetup = DataStore.create(data);
+  it('It should create a meetup get upcoming status', () => {
+    const createdMeetup = DataStore.findAll()[0];
     const upcoming = DataStore.getUpcoming();
     expect(createdMeetup.upcoming).to.be.true;
     expect(createdMeetup.upcoming).to.not.be.false;
     upcoming.should.be.an('array');
   });
+
+  it('Meetups content should be an object', () => {
+    const createdMeetup = DataStore.findAll()[0];
+    expect(createdMeetup).to.be.an('object');
+    expect(createdMeetup).to.be.an('object');
+  });
+
+  it('Meetups should be an array', () => {
+    const meetups = DataStore.findAll();
+
+    meetups.should.be.an('array');
+  });
 });
+
+describe('Should be able to retrieve a single function', )
