@@ -5,7 +5,6 @@
 /* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
 /* eslint-disable eol-last */
-import chaiHttp from 'chai-http';
 import request from 'supertest';
 import {
   expect,
@@ -13,17 +12,11 @@ import {
   assert,
 } from 'chai';
 
-
 import server from '../../../server';
 
 import DataStore from '../../usingJsDataStructures/models/jsDataStorage';
 
-// chai.use(chaiHttp);
-
-describe('Meetup API', () => {
-  // after(() => {
-  //   DataStore.clearAll();
-  // });
+describe('Create Meetup API', () => {
   const data = {
     topic: 'helping hands',
     location: 'ikorodu',
@@ -57,6 +50,19 @@ describe('Meetup API', () => {
         expect(res.body.status).to.be.a('number');
         expect(res.body.status).to.equal(201);
         DataStore.clearAll();
+        done();
+      });
+  });
+});
+
+describe('Get a single Meetup API', () => {
+  it('Should return a 404 response if meetup is empty', (done) => {
+    request(server)
+      .get('/api/v1/meetups')
+      .expect(404)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body.message).to.equal('You have not created any meetup');
         done();
       });
   });
