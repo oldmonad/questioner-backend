@@ -7,6 +7,7 @@
 /* eslint-disable eol-last */
 import request from 'supertest';
 import {
+  should,
   expect,
   chai,
   assert,
@@ -15,6 +16,8 @@ import {
 import server from '../../../server';
 
 import DataStore from '../../usingJsDataStructures/models/jsDataStorage';
+
+should();
 
 describe('Create Meetup API', () => {
   const data = {
@@ -55,7 +58,7 @@ describe('Create Meetup API', () => {
   });
 });
 
-describe('GET a single Meetup API', () => {
+describe('It display error if meetup is empty', () => {
   it('Should return a 404 response if meetup is empty', (done) => {
     request(server)
       .get('/api/v1/meetups')
@@ -63,6 +66,47 @@ describe('GET a single Meetup API', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.body.message).to.equal('You have not created any meetup');
+        done();
+      });
+  });
+});
+
+describe('GET Meetups API', () => {
+  before(() => {
+    const data = {
+      topic: 'helping hands from datastructure test',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    const data1 = {
+      topic: 'helping hands from datastructure test1',
+      location: '1 ikorodu',
+      date: '18 june 1997',
+      tags: 'goal yeah',
+    };
+    DataStore.create(data);
+    DataStore.create(data1);
+  });
+
+  after(() => {
+    DataStore.clearAll();
+  });
+
+  it('Should return a 201 response if meetup is populated', (done) => {
+    const meetups = DataStore.findAll();
+    request(server)
+      .get('/api/v1/meetups')
+      .expect(201)
+      .end((err, res) => {
+        if (err) return done(err);
+        meetups.should.be.an('array');
+        (meetups[0]).should.be.an('object');
+        (meetups[1]).should.be.an('object');
+        (meetups[0].meetupId).should.equal(1);
+        (meetups[1].meetupId).should.equal(2);
+        (res.body.status).should.equal(201);
+        (res.body.data).should.be.an('array');
         done();
       });
   });
