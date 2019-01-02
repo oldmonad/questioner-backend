@@ -70,6 +70,10 @@ describe('It disaplays an error if a meetup does not exist', () => {
   });
 });
 
+// describe('GET a single meetup', () => {
+
+// });
+
 describe('It displays error if meetup is empty', () => {
   it('Should return a 404 response if meetup is empty', (done) => {
     request(server)
