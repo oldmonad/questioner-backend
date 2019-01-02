@@ -58,7 +58,19 @@ describe('Create Meetup API', () => {
   });
 });
 
-describe('It display error if meetup is empty', () => {
+describe('It disaplays an error if a meetup does not exist', () => {
+  it('Should return a 404 response if meetup does not exist', (done) => {
+    request(server)
+      .get('/api/v1/meetups/900')
+      .expect(404)
+      .end((err, res) => {
+        if (err) return done(err);
+        done();
+      });
+  });
+});
+
+describe('It displays error if meetup is empty', () => {
   it('Should return a 404 response if meetup is empty', (done) => {
     request(server)
       .get('/api/v1/meetups')
@@ -66,54 +78,6 @@ describe('It display error if meetup is empty', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.body.message).to.equal('You have not created any meetup');
-        done();
-      });
-  });
-});
-
-describe('GET Single Meetup API', () => {
-  before(() => {
-    const data = {
-      topic: 'helping hands from datastructure test',
-      location: 'ikorodu',
-      date: '18 june 1996',
-      tags: 'goal yeah',
-    };
-    const data1 = {
-      topic: 'helping hands from datastructure test1',
-      location: '1 ikorodu',
-      date: '18 june 1997',
-      tags: 'goal yeah',
-    };
-    DataStore.create(data);
-    DataStore.create(data1);
-  });
-
-  after(() => {
-    DataStore.clearAll();
-  });
-
-  it('Should return a 201 response if meetup is populated', (done) => {
-    const firstSingleMeetupId = DataStore.findAll()[0].meetupId;
-    const secondSingleMeetupId = DataStore.findAll()[1].meetupId;
-    const firstMeetup = DataStore.findOne(firstSingleMeetupId);
-    const secondMeetup = DataStore.findOne(secondSingleMeetupId);
-    request(server)
-      .get('/api/v1/meetups/:meetupId')
-      .expect(201)
-      .end((err, res) => {
-        if (err) return done(err);
-        // meetups.should.be.an('array');
-        // (meetups[0]).should.be.an('object');
-        // (meetups[1]).should.be.an('object');
-        // (meetups[0].meetupId).should.equal(1);
-        // (meetups[1].meetupId).should.equal(2);
-        (res.body.status).should.equal(201);
-        (res.body.data).should.be.an('array');
-        firstMeetup.should.be.an('object');
-        secondMeetup.should.be.an('object');
-        (firstMeetup.meetupId).should.equal(1);
-        (secondMeetup.meetupId).should.equal(2);
         done();
       });
   });
