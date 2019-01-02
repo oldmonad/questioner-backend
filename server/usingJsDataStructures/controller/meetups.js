@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 /* eslint-disable eol-last */
 import Storage from '../models/jsDataStorage';
 
@@ -48,6 +49,19 @@ const meetupController = {
     return res.status(200).json({
       status: 200,
       data: [response],
+    });
+  },
+
+  getAll(req, res) {
+    const meetups = Storage.findAll();
+    if (meetups.length === 0) {
+      return res.status(404).json({
+        message: 'You have not created any meetup',
+      });
+    }
+    return res.status(201).json({
+      status: 201,
+      data: meetups,
     });
   },
 };
