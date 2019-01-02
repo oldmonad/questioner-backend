@@ -55,7 +55,7 @@ describe('Create Meetup API', () => {
   });
 });
 
-describe('Get a single Meetup API', () => {
+describe('GET a single Meetup API', () => {
   it('Should return a 404 response if meetup is empty', (done) => {
     request(server)
       .get('/api/v1/meetups')
