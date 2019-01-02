@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable eol-last */
 import http from 'http';
