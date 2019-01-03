@@ -61,7 +61,6 @@ describe('Meetups Create function', () => {
 
     meetups.should.be.an('array');
   });
-  console.log(DataStore.findAll());
 });
 
 
@@ -88,7 +87,6 @@ describe('Retrive single meetup from meetups', () => {
   });
 
   it('Should get a single meetup', () => {
-    // console.log(DataStore.findAll());
     const firstSingleMeetupId = DataStore.findAll()[0].meetupId;
     const secondSingleMeetupId = DataStore.findAll()[1].meetupId;
     const firstMeetup = DataStore.findOne(firstSingleMeetupId);

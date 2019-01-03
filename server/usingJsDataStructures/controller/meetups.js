@@ -11,7 +11,6 @@ const meetupController = {
    */
   create(req, res) {
     const content = req.body;
-    // console.log(content);
     if (!content.topic || !content.location || !content.date || !content.tags) {
       res.status(400).json({
         message: 'Al fields are required',

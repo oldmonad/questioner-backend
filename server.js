@@ -6,7 +6,6 @@ import express from 'express';
 import dotenv from 'dotenv';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-// import path from 'path';
 import dataStructureRoutes from './server/usingJsDataStructures/routes/routes';
 // import dbRoutes from './server/usingDB/routes/routes';
 
