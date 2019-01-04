@@ -7,6 +7,10 @@ const routes = (router) => {
       status: 'Welcome to Home API',
     });
   });
+
+  router.route('/meetups')
+    /** POST api/v1/meetups - Create a meetup */
+    .post(meetupsWithObject.create);
 };
 
 export default routes;
