@@ -7,7 +7,8 @@
     "node": ">=4.2.4"
   },
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha --reporter spec",
+    "start": "nodemon --exec babel-node server.js",
+    "test": "nyc --reporter=html --reporter=text mocha --reporter spec @babel/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
   },
@@ -23,6 +24,10 @@
   },
   "homepage": "https://github.com/dbytecoderc/Questioner#readme",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
     "istanbul": "^0.4.5",

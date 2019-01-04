@@ -1,7 +1,9 @@
 'use strict';
 
-var expect = require('chai').expect;
-var numFormatter = require('../server');
+import {
+  expect
+} from 'chai';
+import numFormatter from '../server';
 
 describe('#numFormatter', function () {
   it('should convert single digits', function () {
