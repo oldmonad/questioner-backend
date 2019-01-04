@@ -17,6 +17,10 @@ class Storage {
     return newMeetup;
   }
 
+  findAll() {
+    return this.meetups;
+  }
+
 
 }
 
