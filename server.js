@@ -2,6 +2,7 @@ import http from 'http';
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import routes from './server/usingJsDataStructures/routes/routes'
 
 // Set up express app
 const server = express();
