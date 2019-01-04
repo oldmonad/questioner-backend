@@ -15,7 +15,7 @@ import {
 
 import server from '../../server';
 
-// import Store from '../../server/usingJsDataStructures/models/storage';
+import Store from '../../server/usingJsDataStructures/models/storage';
 
 should();
 
@@ -52,7 +52,7 @@ describe('Create Meetup API', () => {
         expect(res.body.data[0].tags).to.be.an('array');
         expect(res.body.status).to.be.a('number');
         expect(res.body.status).to.equal(201);
-        DataStore.clearAll();
+        Store.clearAll();
         done();
       });
   });
