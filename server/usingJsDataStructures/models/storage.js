@@ -21,6 +21,10 @@ class Storage {
     return this.meetups;
   }
 
+  findOne(meetupId) {
+    return this.meetups.find(meetup => meetup.meetupId === meetupId);
+  }
+
   getUpcoming() {
     return this.meetups.filter(meetup => meetup.upcoming === true);
   }
