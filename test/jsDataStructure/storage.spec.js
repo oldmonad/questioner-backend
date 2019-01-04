@@ -58,3 +58,38 @@ describe('Meetups Create function', () => {
     meetups.should.be.an('array');
   });
 });
+
+describe('Retrive single meetup from meetups', () => {
+  before(() => {
+    const data1 = {
+      topic: 'helping hands from datastructure test 1',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    const data2 = {
+      topic: 'helping hands from datastructure test 2',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    Store.create(data1);
+    Store.create(data2);
+  });
+
+  after(() => {
+    Store.clearAll();
+  });
+
+  it('Should get a single meetup', () => {
+    const firstSingleMeetupId = Store.findAll()[0].meetupId;
+    const secondSingleMeetupId = Store.findAll()[1].meetupId;
+    const firstMeetup = Store.findOne(firstSingleMeetupId);
+    const secondMeetup = Store.findOne(secondSingleMeetupId);
+
+    firstMeetup.should.be.an('object');
+    secondMeetup.should.be.an('object');
+    (firstMeetup.meetupId).should.equal(1);
+    (secondMeetup.meetupId).should.equal(2);
+  });
+});
