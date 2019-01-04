@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/dbytecoderc/Questioner.svg?branch=develop)](https://travis-ci.org/dbytecoderc/Questioner)
+[![Build Status](https://travis-ci.org/dbytecoderc/Questioner.svg?branch=develop)](https://travis-ci.org/dbytecoderc/Questioner) [![Coverage Status](https://coveralls.io/repos/github/dbytecoderc/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/dbytecoderc/Questioner?branch=develop)
