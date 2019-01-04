@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node server.js",
-    "test": "nyc --reporter=html --reporter=text mocha --compilers js:@babel/register --reporter spec",
+    "test": "nyc --reporter=html --reporter=text mocha --compilers js:@babel/register --recursive ./server/test/**/*.spec.js --reporter spec",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
