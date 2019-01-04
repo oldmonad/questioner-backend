@@ -21,7 +21,9 @@ class Storage {
     return this.meetups;
   }
 
-
+  clearAll() {
+    return this.meetups = [];
+  }
 }
 
 
