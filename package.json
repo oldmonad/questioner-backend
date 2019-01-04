@@ -7,8 +7,9 @@
     "node": ">=4.2.4"
   },
   "scripts": {
+    "lint": "eslint",
     "start": "nodemon --exec babel-node server.js",
-    "test": "nyc --reporter=html --reporter=text mocha --compilers js:@babel/register --recursive ./server/test/**/*.spec.js --reporter spec",
+    "test": "nyc --reporter=html --reporter=text mocha --compilers js:@babel/register --recursive ./test/**/*.spec.js --reporter spec",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -29,6 +30,9 @@
     "@babel/preset-env": "^7.2.3",
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0"
