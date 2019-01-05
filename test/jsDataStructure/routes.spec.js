@@ -13,7 +13,7 @@ import {
   assert,
 } from 'chai';
 
-import server from '../../server';
+import server from '../../server/server';
 
 import Store from '../../server/usingJsDataStructures/models/storage';
 
