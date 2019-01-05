@@ -1,10 +1,10 @@
 {
   "name": "Questioner",
   "version": "1.0.0",
-  "description": "",
+  "description": "a really cool app",
   "main": "index.js",
   "engines": {
-    "node": ">=4.2.4"
+    "node": ">=8.14.0"
   },
   "scripts": {
     "clean": "rm -rf build && mkdir build",
