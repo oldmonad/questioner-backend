@@ -69,3 +69,16 @@ describe('It disaplays an error if a meetup does not exist', () => {
       });
   });
 });
+
+describe('It displays error if meetup is empty', () => {
+  it('Should return a 404 response if meetup is empty', (done) => {
+    request(server)
+      .get('/api/v1/meetups')
+      .expect(404)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body.message).to.equal('You have not created any meetup');
+        done();
+      });
+  });
+});
