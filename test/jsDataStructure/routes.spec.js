@@ -57,3 +57,15 @@ describe('Create Meetup API', () => {
       });
   });
 });
+
+describe('It disaplays an error if a meetup does not exist', () => {
+  it('Should return a 404 response if meetup does not exist', (done) => {
+    request(server)
+      .get('/api/v1/meetups/900')
+      .expect(404)
+      .end((err, res) => {
+        if (err) return done(err);
+        done();
+      });
+  });
+});
