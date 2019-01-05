@@ -19,6 +19,10 @@ const routes = (router) => {
   router.route('/meetups')
     /** GET api/v1/meetups - Create a meetup */
     .get(meetupsWithObject.getAll);
+
+  router.route('/meetups/:upcoming')
+    /** GET api/v1/meetups - Create a meetup */
+    .get(meetupsWithObject.getAll);
 };
 
 export default routes;
