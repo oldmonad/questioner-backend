@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 class Storage {
   constructor() {
     this.meetups = [];
