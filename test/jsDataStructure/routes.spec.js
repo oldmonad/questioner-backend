@@ -82,3 +82,44 @@ describe('It displays error if meetup is empty', () => {
       });
   });
 });
+
+describe('GET Meetups API', () => {
+  before(() => {
+    const data = {
+      topic: 'helping hands from datastructure test',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    const data1 = {
+      topic: 'helping hands from datastructure test1',
+      location: '1 ikorodu',
+      date: '18 june 1997',
+      tags: 'goal yeah',
+    };
+    Store.create(data);
+    Store.create(data1);
+  });
+
+  after(() => {
+    Store.clearAll();
+  });
+
+  it('Should return a 201 response if meetup is populated', (done) => {
+    const meetups = Store.findAll();
+    request(server)
+      .get('/api/v1/meetups')
+      .expect(201)
+      .end((err, res) => {
+        if (err) return done(err);
+        meetups.should.be.an('array');
+        (meetups[0]).should.be.an('object');
+        (meetups[1]).should.be.an('object');
+        (meetups[0].meetupId).should.equal(1);
+        (meetups[1].meetupId).should.equal(2);
+        (res.body.status).should.equal(201);
+        (res.body.data).should.be.an('array');
+        done();
+      });
+  });
+});
