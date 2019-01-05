@@ -1,3 +1,4 @@
+/* eslint-disable eol-last */
 /* eslint-disable no-undef */
 import http from 'http';
 import express from 'express';
