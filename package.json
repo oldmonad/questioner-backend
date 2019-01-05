@@ -1,0 +1,54 @@
+{
+  "name": "Questioner",
+  "version": "1.0.0",
+  "description": "a really cool app",
+  "main": "index.js",
+  "engines": {
+    "node": "8.x",
+    "npm": "6.x"
+  },
+  "scripts": {
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./server -s",
+    "build": "npm run clean && npm run build-babel",
+    "start-build": "npm run build && node ./build/server.js",
+    "lint": "eslint",
+    "start:dev": "nodemon --exec babel-node ./server/server.js",
+    "start": "node ./build/server.js",
+    "test": "nyc --reporter=html --reporter=text mocha --compilers js:@babel/register --recursive ./test/**/*.spec.js --reporter spec --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbytecoderc/Questioner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dbytecoderc/Questioner/issues"
+  },
+  "homepage": "https://github.com/dbytecoderc/Questioner#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "supertest": "^3.3.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "morgan": "^1.9.1"
+  }
+}
