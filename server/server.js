@@ -1,15 +1,18 @@
+/* eslint-disable no-undef */
 import http from 'http';
 import express from 'express';
+import dotenv from 'dotenv';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import routes from './usingJsDataStructures/routes/routes';
 
+dotenv.config();
 // Set up express app
 const server = express();
 const router = express.Router();
 
 // Port configuration
-const port = parseInt(process.env.PORT, 10) || 8000;
+const port = process.env.PORT || 8000;
 
 routes(router);
 

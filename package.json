@@ -4,7 +4,8 @@
   "description": "a really cool app",
   "main": "index.js",
   "engines": {
-    "node": ">=8.14.0"
+    "node": "8.x",
+    "npm": "6.x"
   },
   "scripts": {
     "clean": "rm -rf build && mkdir build",
@@ -12,7 +13,8 @@
     "build": "npm run clean && npm run build-babel",
     "start-build": "npm run build && node ./build/server.js",
     "lint": "eslint",
-    "start": "nodemon --exec babel-node ./server/server.js",
+    "start:dev": "nodemon --exec babel-node ./server/server.js",
+    "start": "node ./build/server.js",
     "test": "nyc --reporter=html --reporter=text mocha --compilers js:@babel/register --recursive ./test/**/*.spec.js --reporter spec --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },

@@ -9,6 +9,8 @@ var _http = _interopRequireDefault(require("http"));
 
 var _express = _interopRequireDefault(require("express"));
 
+var _dotenv = _interopRequireDefault(require("dotenv"));
+
 var _morgan = _interopRequireDefault(require("morgan"));
 
 var _bodyParser = _interopRequireDefault(require("body-parser"));
@@ -17,13 +19,16 @@ var _routes = _interopRequireDefault(require("./usingJsDataStructures/routes/rou
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Set up express app
+/* eslint-disable no-undef */
+_dotenv.default.config(); // Set up express app
+
+
 var server = (0, _express.default)();
 
 var router = _express.default.Router(); // Port configuration
 
 
-var port = parseInt(process.env.PORT, 10) || 8000;
+var port = process.env.PORT || 8000;
 (0, _routes.default)(router); // Log requests to the console
 
 server.use((0, _morgan.default)('dev')); // Parse incoming request data
