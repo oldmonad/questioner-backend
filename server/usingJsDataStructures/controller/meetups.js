@@ -29,6 +29,27 @@ const meetupController = {
       data: [response],
     });
   },
+
+  getOne(req, res) {
+    const id = parseInt(req.params.meetupId);
+    const meetup = Storage.findOne(id);
+    if (!meetup) {
+      return res.status(404).json({
+        message: 'meetup not found',
+      });
+    }
+    const response = {
+      meetupId: meetup.meetupId,
+      topic: meetup.topic,
+      location: meetup.location,
+      date: meetup.date,
+      tags: meetup.tags,
+    };
+    return res.status(200).json({
+      status: 200,
+      data: [response],
+    });
+  },
 };
 
 export default meetupController;
