@@ -12,6 +12,7 @@ class Storage {
       location: data.location,
       date: data.date,
       tags: tag,
+      questions: [],
       upcoming: true,
     };
     this.meetups.push(newMeetup);
@@ -32,6 +33,20 @@ class Storage {
 
   clearAll() {
     return this.meetups = [];
+  }
+
+  question(meetupId, data) {
+    const meetup = this.findOne(meetupId);
+    const index = this.meetups.indexOf(meetup);
+    const newQuestion = {
+      questionId: this.meetups[index].questions.length + 1,
+      user: data.user,
+      meetup: data.meetup,
+      title: data.title,
+      body: data.body,
+    };
+    this.meetups[index].questions.push(newQuestion);
+    return newQuestion;
   }
 }
 
