@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable eol-last */
 /* eslint-disable no-undef */
 import http from 'http';
@@ -39,6 +40,21 @@ const app = http.createServer(server);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+});
+
+app.use((req, res, next) => {
+  const error = new Error('Not Found');
+  error.status = 400;
+  next(error);
+});
+
+app.use((error, req, res) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message,
+    },
+  });
 });
 
 export default server;
