@@ -12,6 +12,7 @@ class Storage {
       location: data.location,
       date: data.date,
       tags: tag,
+      questions: [],
       upcoming: true,
     };
     this.meetups.push(newMeetup);

@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-expressions */
 import {
   expect,
-  should,
+  should
 } from 'chai';
 
 import Store from '../../server/usingJsDataStructures/models/storage';
@@ -28,18 +28,17 @@ describe('Meetups Create function', () => {
   it('It should create a meetup', () => {
     const createdMeetup = Store.findAll()[0];
     createdMeetup.should.be.an('object');
-    (createdMeetup.meetupId).should.be.a('number');
+    createdMeetup.meetupId.should.be.a('number');
     expect(createdMeetup.topic).to.be.a('string');
     expect(createdMeetup.topic).to.equal('helping hands from datastructure test');
     expect(createdMeetup.location).to.be.a('string');
     expect(createdMeetup.location).to.equal('ikorodu');
-    (createdMeetup.date).should.be.a('string');
+    createdMeetup.date.should.be.a('string');
     expect(createdMeetup.date).to.equal('18 june 1996');
-    (createdMeetup.tags).should.be.an('array');
-    (createdMeetup.upcoming).should.be.be.true;
+    createdMeetup.tags.should.be.an('array');
+    createdMeetup.upcoming.should.be.be.true;
     // expect(createdMeetup.tags).to.equal(['goal', 'yeah']);
   });
-
 
   it('It should create a meetup get upcoming status', () => {
     const createdMeetup = Store.findAll()[0];
@@ -92,11 +91,10 @@ describe('Retrive single meetup from meetups', () => {
 
     firstMeetup.should.be.an('object');
     secondMeetup.should.be.an('object');
-    (firstMeetup.meetupId).should.equal(1);
-    (secondMeetup.meetupId).should.equal(2);
+    firstMeetup.meetupId.should.equal(1);
+    secondMeetup.meetupId.should.equal(2);
   });
 });
-
 
 describe('Retrive upcoming meetup from meetups', () => {
   before(() => {
@@ -131,8 +129,8 @@ describe('Retrive upcoming meetup from meetups', () => {
     const meetups = Store.findUpcoming();
 
     meetups.should.be.an('array');
-    (meetups[0]).should.be.an('object');
-    (meetups.length).should.equal(3);
-    (meetups[2].upcoming).should.be.true;
+    meetups[0].should.be.an('object');
+    meetups.length.should.equal(3);
+    meetups[2].upcoming.should.be.true;
   });
 });

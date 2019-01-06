@@ -1,5 +1,6 @@
 /* eslint-disable eol-last */
 import meetupsWithObject from '../controller/meetups';
+import questionsWithObject from '../controller/questions';
 
 const routes = (router) => {
   router.get('/', (req, res) => {
@@ -23,6 +24,10 @@ const routes = (router) => {
   router.route('/upcoming/')
     /** GET api/v1/meetups - Create a meetup */
     .get(meetupsWithObject.getUpcoming);
+
+  router.route('/questions')
+    /** POST api/v1/question - post a question */
+    .post(questionsWithObject.create);
 };
 
 export default routes;

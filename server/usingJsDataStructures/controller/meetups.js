@@ -23,6 +23,7 @@ const meetupController = {
       location: meetup.location,
       date: meetup.date,
       tags: meetup.tags,
+      questions: meetup.questions,
     };
     return res.status(201).json({
       status: 201,
