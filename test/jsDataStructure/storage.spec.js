@@ -43,7 +43,7 @@ describe('Meetups Create function', () => {
 
   it('It should create a meetup get upcoming status', () => {
     const createdMeetup = Store.findAll()[0];
-    const upcoming = Store.getUpcoming();
+    const upcoming = Store.findUpcoming();
     expect(createdMeetup.upcoming).to.be.true;
     expect(createdMeetup.upcoming).to.not.be.false;
     upcoming.should.be.an('array');
@@ -94,5 +94,45 @@ describe('Retrive single meetup from meetups', () => {
     secondMeetup.should.be.an('object');
     (firstMeetup.meetupId).should.equal(1);
     (secondMeetup.meetupId).should.equal(2);
+  });
+});
+
+
+describe('Retrive upcoming meetup from meetups', () => {
+  before(() => {
+    const data1 = {
+      topic: 'helping hands from datastructure test 1',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    const data2 = {
+      topic: 'helping hands from datastructure test 2',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    const data3 = {
+      topic: 'helping hands from datastructure test 2',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    Store.create(data1);
+    Store.create(data2);
+    Store.create(data3);
+  });
+
+  after(() => {
+    Store.clearAll();
+  });
+
+  it('Should retrieve only meetups that have not happened', () => {
+    const meetups = Store.findUpcoming();
+
+    meetups.should.be.an('array');
+    (meetups[0]).should.be.an('object');
+    (meetups.length).should.equal(3);
+    (meetups[2].upcoming).should.be.true;
   });
 });

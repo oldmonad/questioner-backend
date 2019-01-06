@@ -63,6 +63,8 @@ const meetupController = {
       data: meetups,
     });
   },
+
+
 };
 
 export default meetupController;
