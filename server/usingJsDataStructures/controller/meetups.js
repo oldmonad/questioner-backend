@@ -64,7 +64,13 @@ const meetupController = {
     });
   },
 
-
+  getUpcoming(req, res) {
+    const upcoming = Storage.findUpcoming();
+    res.status(200).json({
+      status: 200,
+      data: upcoming,
+    });
+  },
 };
 
 export default meetupController;
