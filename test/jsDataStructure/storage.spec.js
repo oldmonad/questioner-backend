@@ -134,3 +134,36 @@ describe('Retrive upcoming meetup from meetups', () => {
     meetups[2].upcoming.should.be.true;
   });
 });
+
+describe('Questions Create function', () => {
+  before(() => {
+    const data = {
+      topic: 'helping hands from datastructure test',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    Store.create(data);
+
+    const question = {
+      user: 1,
+      meetup: 1,
+      title: 'yolo',
+      body: 'qestions ghghdn???',
+    };
+    const id = Store.findAll()[0].meetupId;
+    Store.question(id, question);
+  });
+
+  after(() => {
+    Store.clearAll();
+  });
+
+  it('It should create a question', () => {
+    const createdQuestions = Store.findAll()[0].questions;
+    const createdQuestion = Store.findAll()[0].questions[0];
+    createdQuestions.should.be.an('array');
+    createdQuestion.should.be.an('object');
+    createdQuestion.body.should.equal('qestions ghghdn???');
+  });
+});
