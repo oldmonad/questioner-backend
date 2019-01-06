@@ -41,6 +41,43 @@ var meetupController = {
       status: 201,
       data: [response]
     });
+  },
+  getOne: function getOne(req, res) {
+    var id = parseInt(req.params.meetupId);
+
+    var meetup = _storage.default.findOne(id);
+
+    if (!meetup) {
+      return res.status(404).json({
+        message: 'meetup not found'
+      });
+    }
+
+    var response = {
+      meetupId: meetup.meetupId,
+      topic: meetup.topic,
+      location: meetup.location,
+      date: meetup.date,
+      tags: meetup.tags
+    };
+    return res.status(200).json({
+      status: 200,
+      data: [response]
+    });
+  },
+  getAll: function getAll(req, res) {
+    var meetups = _storage.default.findAll();
+
+    if (meetups.length === 0) {
+      return res.status(404).json({
+        message: 'You have not created any meetup'
+      });
+    }
+
+    return res.status(201).json({
+      status: 201,
+      data: meetups
+    });
   }
 };
 var _default = meetupController;

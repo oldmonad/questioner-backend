@@ -19,6 +19,15 @@ var routes = function routes(router) {
   router.route('/meetups')
   /** POST api/v1/meetups - Create a meetup */
   .post(_meetups.default.create);
+  router.route('/meetups/:meetupId')
+  /** GET api/v1/meetups - Create a meetup */
+  .get(_meetups.default.getOne);
+  router.route('/meetups')
+  /** GET api/v1/meetups - Create a meetup */
+  .get(_meetups.default.getAll);
+  router.route('/meetups/upcoming')
+  /** GET api/v1/meetups - Create a meetup */
+  .get(_meetups.default.getAll);
 };
 
 var _default = routes;

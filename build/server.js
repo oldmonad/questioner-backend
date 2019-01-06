@@ -19,6 +19,8 @@ var _routes = _interopRequireDefault(require("./usingJsDataStructures/routes/rou
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* eslint-disable eol-last */
+
 /* eslint-disable no-undef */
 _dotenv.default.config(); // Set up express app
 

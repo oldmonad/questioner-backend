@@ -11,10 +11,9 @@
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./server -s",
     "build": "npm run clean && npm run build-babel",
-    "start-build": "npm run build && node ./build/server.js",
+    "start": "npm run build && node ./build/server.js",
     "lint": "eslint",
     "start:dev": "nodemon --exec babel-node ./server/server.js",
-    "start": "node ./build/server.js",
     "test": "nyc --reporter=html --reporter=text mocha --compilers js:@babel/register --recursive ./test/**/*.spec.js --reporter spec --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
