@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable eol-last */
 /* eslint-disable no-undef */
 import http from 'http';
@@ -35,26 +34,26 @@ server.get('*', (req, res) => res.status(404).send({
   message: 'That route does not exist',
 }));
 
-// Create server
-const app = http.createServer(server);
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
-app.use((req, res, next) => {
+server.use((req, res, next) => {
   const error = new Error('Not Found');
   error.status = 400;
   next(error);
 });
 
-app.use((error, req, res) => {
+server.use((error, req, res) => {
   res.status(error.status || 500);
   res.json({
     error: {
       message: error.message,
     },
   });
+});
+
+// Create server
+const app = http.createServer(server);
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
 
 export default server;
