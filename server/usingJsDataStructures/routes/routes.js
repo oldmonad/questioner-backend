@@ -1,6 +1,7 @@
 /* eslint-disable eol-last */
 import meetupsWithObject from '../controller/meetups';
 import questionsWithObject from '../controller/questions';
+import voteWithObject from '../controller/vote';
 
 const routes = (router) => {
   router.get('/', (req, res) => {
@@ -28,6 +29,14 @@ const routes = (router) => {
   router.route('/questions')
     /** POST api/v1/question - post a question */
     .post(questionsWithObject.create);
+
+  router.route('/questions/:questionId/upvote')
+    /** PATCH api/v1/question/:questionId/upvote - post an upvote */
+    .patch(voteWithObject.upvote);
+
+  router.route('/questions/:questionId/downvote')
+    /** PATCH api/v1/question - post a question */
+    .patch(voteWithObject.downvote);
 };
 
 export default routes;

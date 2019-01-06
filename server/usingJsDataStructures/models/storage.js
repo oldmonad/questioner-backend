@@ -1,3 +1,4 @@
+/* eslint-disable eol-last */
 /* eslint-disable no-return-assign */
 class Storage {
   constructor() {
@@ -44,9 +45,17 @@ class Storage {
       meetup: data.meetup,
       title: data.title,
       body: data.body,
+      voteLog: {
+        voteCount: 0,
+        voters: [],
+      },
     };
     this.meetups[index].questions.push(newQuestion);
     return newQuestion;
+  }
+
+  upvote() {
+
   }
 }
 
