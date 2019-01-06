@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
@@ -124,31 +125,32 @@ describe('GET Meetups API', () => {
   });
 });
 
-// describe('GET upcoming', () => {
-//   before(() => {
-//     const data = {
-//       topic: 'helping hands from datastructure test',
-//       location: 'ikorodu',
-//       date: '18 june 1996',
-//       tags: 'goal yeah',
-//     };
-//     const data1 = {
-//       topic: 'helping hands from datastructure test1',
-//       location: '1 ikorodu',
-//       date: '18 june 1997',
-//       tags: 'goal yeah',
-//     };
-//     Store.create(data);
-//     Store.create(data1);
-//   });
-//   it('Should get only meetups that have not happened', () => {
-//     const meetups = Store.getUpcoming();
-//     request(server)
-//       .get('/api/v1/meetups/upcoming')
-//       .expect(200)
-//       .end((err, res) => {
-//         if (err) return done(err);
-//         ()
-//       });
-//   });
-// });
+describe('GET upcoming', () => {
+  before(() => {
+    const data = {
+      topic: 'helping hands from datastructure test',
+      location: 'ikorodu',
+      date: '18 june 1996',
+      tags: 'goal yeah',
+    };
+    const data1 = {
+      topic: 'helping hands from datastructure test1',
+      location: '1 ikorodu',
+      date: '18 june 1997',
+      tags: 'goal yeah',
+    };
+    Store.create(data);
+    Store.create(data1);
+  });
+  it('Should get only meetups that have not happened', () => {
+    const meetups = Store.findUpcoming();
+    request(server)
+      .get('/api/v1/upcoming')
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
+        (meetups[0].upcoming).should.be.true;
+        (meetups[1].upcoming).should.be.true;
+      });
+  });
+});
