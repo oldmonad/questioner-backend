@@ -33,10 +33,6 @@ const routes = (router) => {
   router.route('/questions/:questionId/upvote')
     /** PATCH api/v1/question/:questionId/upvote - post an upvote */
     .patch(voteWithObject.upvote);
-
-  router.route('/questions/:questionId/downvote')
-    /** PATCH api/v1/question - post a question */
-    .patch(voteWithObject.downvote);
 };
 
 export default routes;

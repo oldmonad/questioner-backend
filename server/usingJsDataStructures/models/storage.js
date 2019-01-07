@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable eol-last */
 /* eslint-disable no-return-assign */
 class Storage {
@@ -46,16 +47,12 @@ class Storage {
       title: data.title,
       body: data.body,
       voteLog: {
-        voteCount: 0,
-        voters: [],
+        upVote: 0,
+        downVote: 0,
       },
     };
     this.meetups[index].questions.push(newQuestion);
     return newQuestion;
-  }
-
-  upvote() {
-
   }
 }
 

@@ -35,7 +35,8 @@ var meetupController = {
       topic: meetup.topic,
       location: meetup.location,
       date: meetup.date,
-      tags: meetup.tags
+      tags: meetup.tags,
+      questions: meetup.questions
     };
     return res.status(201).json({
       status: 201,
@@ -77,6 +78,14 @@ var meetupController = {
     return res.status(201).json({
       status: 201,
       data: meetups
+    });
+  },
+  getUpcoming: function getUpcoming(req, res) {
+    var upcoming = _storage.default.findUpcoming();
+
+    res.status(200).json({
+      status: 200,
+      data: upcoming
     });
   }
 };
