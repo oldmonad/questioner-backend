@@ -54,6 +54,37 @@ class Storage {
     this.meetups[index].questions.push(newQuestion);
     return newQuestion;
   }
+
+  makeUpvote(meetupId, questionId) {
+    const meetup = this.findOne(meetupId);
+    const index = this.meetups.indexOf(meetup);
+    const singleQuestion = this.meetups[index].questions
+      .find(question => question.questionId === questionId);
+    return singleQuestion.voteLog.upVote += 1;
+  }
+
+  makeDownVote(meetupId, questionId) {
+    const meetup = this.findOne(meetupId);
+    const index = this.meetups.indexOf(meetup);
+    const singleQuestion = this.meetups[index].questions
+      .find(question => question.questionId === questionId);
+    return singleQuestion.voteLog.upVote -= 1;
+  }
+
+  getVotes(meetupId, questionId) {
+    const meetup = this.findOne(meetupId);
+    const index = this.meetups.indexOf(meetup);
+    const question = this.meetups[index].questions
+      .find(singleQuestion => singleQuestion.questionId === questionId);
+
+    const {
+      upVote,
+      downVote,
+    } = question.voteLog;
+
+    const voteCount = upVote - downVote;
+    return voteCount;
+  }
 }
 
 
