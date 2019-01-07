@@ -43,6 +43,9 @@ const routes = (router) => {
     /** PATCH api/v1/question - post a question */
     .post(voteWithObject.downvote);
 
+  router.route('/meetups/:meetupId/rsvps')
+    /** PATCH api/v1/question - post a question */
+    .post(rsvpWithObject.respond);
 };
 
 export default routes;
