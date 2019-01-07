@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable eol-last */
 /* eslint-disable no-return-assign */
 class Storage {
   constructor() {
@@ -44,9 +46,44 @@ class Storage {
       meetup: data.meetup,
       title: data.title,
       body: data.body,
+      voteLog: {
+        upVote: 0,
+        downVote: 0,
+      },
     };
     this.meetups[index].questions.push(newQuestion);
     return newQuestion;
+  }
+
+  makeUpvote(meetupId, questionId) {
+    const meetup = this.findOne(meetupId);
+    const index = this.meetups.indexOf(meetup);
+    const singleQuestion = this.meetups[index].questions
+      .find(question => question.questionId === questionId);
+    return singleQuestion.voteLog.upVote += 1;
+  }
+
+  makeDownVote(meetupId, questionId) {
+    const meetup = this.findOne(meetupId);
+    const index = this.meetups.indexOf(meetup);
+    const singleQuestion = this.meetups[index].questions
+      .find(question => question.questionId === questionId);
+    return singleQuestion.voteLog.upVote -= 1;
+  }
+
+  getVotes(meetupId, questionId) {
+    const meetup = this.findOne(meetupId);
+    const index = this.meetups.indexOf(meetup);
+    const question = this.meetups[index].questions
+      .find(singleQuestion => singleQuestion.questionId === questionId);
+
+    const {
+      upVote,
+      downVote,
+    } = question.voteLog;
+
+    const voteCount = upVote - downVote;
+    return voteCount;
   }
 }
 

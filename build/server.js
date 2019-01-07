@@ -46,6 +46,19 @@ server.get('*', function (req, res) {
   return res.status(404).send({
     message: 'That route does not exist'
   });
+});
+server.use(function (req, res, next) {
+  var error = new Error('Not Found');
+  error.status = 400;
+  next(error);
+});
+server.use(function (error, req, res) {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message
+    }
+  });
 }); // Create server
 
 var app = _http.default.createServer(server);
