@@ -86,6 +86,12 @@ class Storage {
     const voteCount = upVote - downVote;
     return voteCount;
   }
+
+  svp(meetupId, status) {
+    const meetup = this.findOne(meetupId);
+    const index = this.meetups.indexOf(meetup);
+    return this.meetups[index].questions.status = status;
+  }
 }
 
 
