@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable eol-last */
 /* eslint-disable no-return-assign */
@@ -84,6 +85,12 @@ class Storage {
 
     const voteCount = upVote - downVote;
     return voteCount;
+  }
+
+  svp(meetupId, status) {
+    const meetup = this.findOne(meetupId);
+    const index = this.meetups.indexOf(meetup);
+    return this.meetups[index].questions.status = status;
   }
 }
 

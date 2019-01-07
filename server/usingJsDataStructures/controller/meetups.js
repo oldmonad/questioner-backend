@@ -3,12 +3,7 @@
 import Storage from '../models/storage';
 
 const meetupController = {
-  /**
-   *
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} meetup object,
-   */
+  
   create(req, res) {
     const content = req.body;
     if (!content.topic || !content.location || !content.date || !content.tags) {
