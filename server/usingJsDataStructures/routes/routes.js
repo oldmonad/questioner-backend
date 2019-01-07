@@ -2,6 +2,7 @@
 import meetupsWithObject from '../controller/meetups';
 import questionsWithObject from '../controller/questions';
 import voteWithObject from '../controller/vote';
+import rsvpWithObject from '../controller/rsvp';
 
 const routes = (router) => {
   router.get('/', (req, res) => {
@@ -37,6 +38,11 @@ const routes = (router) => {
   router.route('/questions/:questionId/downvote')
     /** PATCH api/v1/question - post a question */
     .patch(voteWithObject.downvote);
+
+  router.route('/questions/:questionId/downvote')
+    /** PATCH api/v1/question - post a question */
+    .post(voteWithObject.downvote);
+
 };
 
 export default routes;
