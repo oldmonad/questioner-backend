@@ -17,6 +17,19 @@ const voteController = {
     });
   },
 
+  downvote(req, res) {
+    const question = parseInt(req.params.questionId);
+    // console.log(typeof (question));
+    const meetup = req.body.meetupId;
+    Storage.makeDownVote(meetup, question);
+    // console.log(upvote);
+    const votes = Storage.getVotes(meetup, question);
+    res.status(200).json({
+      status: 200,
+      data: votes,
+    });
+  },
+
 };
 
 export default voteController;
