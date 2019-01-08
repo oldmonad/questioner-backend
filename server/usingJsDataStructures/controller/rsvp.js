@@ -7,6 +7,9 @@ const rsvpController = {
     const meetup = parseInt(req.params.meetupId);
     const currentStatus = req.body.status;
     const rsvps = Storage.rsvp(meetup, currentStatus);
+    const response = {
+
+    };
     res.status(200).json({
       message: 'Hitting rsvp route',
       data: [rsvps],
