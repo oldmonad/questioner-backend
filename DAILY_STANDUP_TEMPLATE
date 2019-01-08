@@ -8,3 +8,18 @@
 
 *Blockers:*
 >--None for now
+
+
+**As** User
+**I want** To be able to signup and login via a web page
+**So that** I can access protected resources
+
+---
+Acceptance Criteria
+---
+
+*When* User makes tries to signup or login
+*Then* They should be directed to an appropriate page if their attempt was successful
+
+**Dev Notes**
+Set up routing in this task
