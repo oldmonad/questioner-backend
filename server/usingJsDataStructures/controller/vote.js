@@ -6,27 +6,32 @@ const voteController = {
 
   upvote(req, res) {
     const question = parseInt(req.params.questionId);
-    // console.log(typeof (question));
     const meetup = req.body.meetupId;
     Storage.makeUpvote(meetup, question);
-    // console.log(upvote);
     const votes = Storage.getVotes(meetup, question);
+    const response = {
+      meetup,
+      votes,
+    };
     res.status(200).json({
       status: 200,
-      data: votes,
+      data: [response],
     });
   },
 
   downvote(req, res) {
     const question = parseInt(req.params.questionId);
-    // console.log(typeof (question));
     const meetup = req.body.meetupId;
     Storage.makeDownVote(meetup, question);
-    // console.log(upvote);
+    // const title =
     const votes = Storage.getVotes(meetup, question);
+    const response = {
+      meetup,
+      votes,
+    };
     res.status(200).json({
       status: 200,
-      data: votes,
+      data: [response],
     });
   },
 
