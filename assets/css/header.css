@@ -72,3 +72,10 @@
     display: none;
   }
 }
+
+@media screen and (min-width: 1450) {
+  .navbar {
+    height: 1000px;
+  }
+
+}
