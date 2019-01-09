@@ -19,16 +19,19 @@ main {
 
 
 .meetup {
+  display: block;
   margin: 1rem 1.5rem;
   background-color: #ffffff;
   padding: 0.5rem 1rem;
   border-radius: 0.2rem;
   border: 1px solid #444444;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .closeBtn i {
   font-size: 1.3rem;
+  display: inline-block;
 }
 
 .meetup--header {
