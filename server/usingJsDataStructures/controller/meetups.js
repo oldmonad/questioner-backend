@@ -3,12 +3,7 @@
 import Storage from '../models/storage';
 
 const meetupController = {
-  /**
-   *
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} meetup object,
-   */
+  
   create(req, res) {
     const content = req.body;
     if (!content.topic || !content.location || !content.date || !content.tags) {
@@ -23,6 +18,7 @@ const meetupController = {
       location: meetup.location,
       date: meetup.date,
       tags: meetup.tags,
+      questions: meetup.questions,
     };
     return res.status(201).json({
       status: 201,
@@ -61,6 +57,14 @@ const meetupController = {
     return res.status(201).json({
       status: 201,
       data: meetups,
+    });
+  },
+
+  getUpcoming(req, res) {
+    const upcoming = Storage.findUpcoming();
+    res.status(200).json({
+      status: 200,
+      data: upcoming,
     });
   },
 };

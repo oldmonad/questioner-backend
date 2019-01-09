@@ -11,6 +11,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+/* eslint-disable no-unused-expressions */
+
+/* eslint-disable eol-last */
+
+/* eslint-disable no-return-assign */
 var Storage =
 /*#__PURE__*/
 function () {
@@ -30,6 +35,7 @@ function () {
         location: data.location,
         date: data.date,
         tags: tag,
+        questions: [],
         upcoming: true
       };
       this.meetups.push(newMeetup);
@@ -48,8 +54,8 @@ function () {
       });
     }
   }, {
-    key: "getUpcoming",
-    value: function getUpcoming() {
+    key: "findUpcoming",
+    value: function findUpcoming() {
       return this.meetups.filter(function (meetup) {
         return meetup.upcoming === true;
       });
@@ -59,6 +65,68 @@ function () {
     value: function clearAll() {
       return this.meetups = [];
     }
+  }, {
+    key: "question",
+    value: function question(meetupId, data) {
+      var meetup = this.findOne(meetupId);
+      var index = this.meetups.indexOf(meetup);
+      var newQuestion = {
+        questionId: this.meetups[index].questions.length + 1,
+        user: data.user,
+        meetup: data.meetup,
+        title: data.title,
+        body: data.body,
+        voteLog: {
+          upVote: 0,
+          downVote: 0,
+          voters: []
+        }
+      };
+      this.meetups[index].questions.push(newQuestion);
+      return newQuestion;
+    }
+  }, {
+    key: "findQuestion",
+    value: function findQuestion(meetup, question) {
+      var singleMeetup = this.findOne(meetup);
+      var index = this.meetups.indexOf(singleMeetup);
+      return this.meetups[index].questions.find(function (singleQuestion) {
+        return singleQuestion.questionId === question;
+      });
+    }
+  }, {
+    key: "updateVoter",
+    value: function updateVoter(meetup, question, data) {
+      var newVoter = {
+        user: data.user,
+        vote: data.vote
+      };
+      var existingQuestion = this.findQuestion(meetup, question);
+      return existingQuestion.voteLog.voters.push(newVoter);
+    }
+  }, {
+    key: "findUser",
+    value: function findUser(meetupId, user, questionId) {
+      var question = this.findQuestion(meetupId, questionId);
+      var existingUser = question.voteLog.voters.find(function (singleUser) {
+        return singleUser.user === user;
+      });
+      return existingUser;
+    }
+  }, {
+    key: "findVoteStatus",
+    value: function findVoteStatus(meetup, user, question) {
+      var caseUser = this.findUser(meetup, user, question);
+      var existingUser = caseUser.voteLog.voters.find(function (singleUser) {
+        return singleUser.user === user;
+      });
+      return existingUser.vote;
+    } // upvote(meetupId, user, questionId) {
+    //   const vote = this.findQuestion(meetupId, user, questionId);
+    //   vote.downVote - 1;
+    //   vote.upVote + 1;
+    // }
+
   }]);
 
   return Storage;

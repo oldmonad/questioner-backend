@@ -19,6 +19,8 @@ var _routes = _interopRequireDefault(require("./usingJsDataStructures/routes/rou
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* eslint-disable eol-last */
+
 /* eslint-disable no-undef */
 _dotenv.default.config(); // Set up express app
 
@@ -43,6 +45,19 @@ server.use('/api/v1', router); // Set up all default catch-all route that sends 
 server.get('*', function (req, res) {
   return res.status(404).send({
     message: 'That route does not exist'
+  });
+});
+server.use(function (req, res, next) {
+  var error = new Error('Not Found');
+  error.status = 400;
+  next(error);
+});
+server.use(function (error, req, res) {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message
+    }
   });
 }); // Create server
 

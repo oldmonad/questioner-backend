@@ -34,6 +34,21 @@ server.get('*', (req, res) => res.status(404).send({
   message: 'That route does not exist',
 }));
 
+server.use((req, res, next) => {
+  const error = new Error('Not Found');
+  error.status = 400;
+  next(error);
+});
+
+server.use((error, req, res) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message,
+    },
+  });
+});
+
 // Create server
 const app = http.createServer(server);
 
