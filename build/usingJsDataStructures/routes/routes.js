@@ -11,6 +11,8 @@ var _questions = _interopRequireDefault(require("../controller/questions"));
 
 var _vote = _interopRequireDefault(require("../controller/vote"));
 
+var _rsvp = _interopRequireDefault(require("../controller/rsvp"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* eslint-disable eol-last */
@@ -41,6 +43,12 @@ var routes = function routes(router) {
   router.route('/questions/:questionId/downvote')
   /** PATCH api/v1/question - post a question */
   .patch(_vote.default.downvote);
+  router.route('/questions/:questionId/downvote')
+  /** PATCH api/v1/question - post a question */
+  .post(_vote.default.downvote);
+  router.route('/meetups/:meetupId/rsvps')
+  /** PATCH api/v1/question - post a question */
+  .post(_rsvp.default.respond);
 };
 
 var _default = routes;

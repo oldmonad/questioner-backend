@@ -15,36 +15,39 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var voteController = {
   upvote: function upvote(req, res) {
     var question = parseInt(req.params.questionId);
-    var userId = req.body.user;
     var meetup = req.body.meetupId;
 
-    var existingQuestion = _storage.default.findQuestion(req.body.meetupId, parseInt(req.params.questionId));
+    _storage.default.makeUpvote(meetup, question);
 
-    var existingUser = _storage.default.findUser(meetup, userId, question);
+    var votes = _storage.default.getVotes(meetup, question);
 
-    if (!existingUser) {
-      var userData = {
-        user: userId,
-        vote: 1
-      };
-
-      var voter = _storage.default.updateVoter(meetup, question, userData);
-
-      res.status(201).json({
-        status: 201,
-        data: voter
-      });
-    }
-
-    var voteStatus = _storage.default.findVoteStatus(meetup, userId, question);
-
-    console.log(voteStatus);
+    var response = {
+      meetup: meetup,
+      votes: votes
+    };
     res.status(200).json({
       status: 200,
-      data: existingUser
+      data: [response]
     });
   },
-  downvote: function downvote(req, res) {}
+  downvote: function downvote(req, res) {
+    var question = parseInt(req.params.questionId);
+    var meetup = req.body.meetupId;
+
+    _storage.default.makeDownVote(meetup, question); // const title =
+
+
+    var votes = _storage.default.getVotes(meetup, question);
+
+    var response = {
+      meetup: meetup,
+      votes: votes
+    };
+    res.status(200).json({
+      status: 200,
+      data: [response]
+    });
+  }
 };
 var _default = voteController;
 exports.default = _default;
