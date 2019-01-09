@@ -13,6 +13,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* eslint-disable eol-last */
 var meetupController = {
+  /**
+   *
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} meetup object,
+   */
   create: function create(req, res) {
     var content = req.body;
 
