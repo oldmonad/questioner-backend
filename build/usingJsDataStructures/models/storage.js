@@ -11,6 +11,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+/* eslint-disable class-methods-use-this */
+
 /* eslint-disable no-unused-expressions */
 
 /* eslint-disable eol-last */
@@ -78,55 +80,53 @@ function () {
         body: data.body,
         voteLog: {
           upVote: 0,
-          downVote: 0,
-          voters: []
+          downVote: 0
         }
       };
       this.meetups[index].questions.push(newQuestion);
       return newQuestion;
     }
   }, {
-    key: "findQuestion",
-    value: function findQuestion(meetup, question) {
-      var singleMeetup = this.findOne(meetup);
-      var index = this.meetups.indexOf(singleMeetup);
-      return this.meetups[index].questions.find(function (singleQuestion) {
-        return singleQuestion.questionId === question;
+    key: "makeUpvote",
+    value: function makeUpvote(meetupId, questionId) {
+      var meetup = this.findOne(meetupId);
+      var index = this.meetups.indexOf(meetup);
+      var singleQuestion = this.meetups[index].questions.find(function (question) {
+        return question.questionId === questionId;
       });
+      return singleQuestion.voteLog.upVote += 1;
     }
   }, {
-    key: "updateVoter",
-    value: function updateVoter(meetup, question, data) {
-      var newVoter = {
-        user: data.user,
-        vote: data.vote
-      };
-      var existingQuestion = this.findQuestion(meetup, question);
-      return existingQuestion.voteLog.voters.push(newVoter);
+    key: "makeDownVote",
+    value: function makeDownVote(meetupId, questionId) {
+      var meetup = this.findOne(meetupId);
+      var index = this.meetups.indexOf(meetup);
+      var singleQuestion = this.meetups[index].questions.find(function (question) {
+        return question.questionId === questionId;
+      });
+      return singleQuestion.voteLog.upVote -= 1;
     }
   }, {
-    key: "findUser",
-    value: function findUser(meetupId, user, questionId) {
-      var question = this.findQuestion(meetupId, questionId);
-      var existingUser = question.voteLog.voters.find(function (singleUser) {
-        return singleUser.user === user;
+    key: "getVotes",
+    value: function getVotes(meetupId, questionId) {
+      var meetup = this.findOne(meetupId);
+      var index = this.meetups.indexOf(meetup);
+      var question = this.meetups[index].questions.find(function (singleQuestion) {
+        return singleQuestion.questionId === questionId;
       });
-      return existingUser;
+      var _question$voteLog = question.voteLog,
+          upVote = _question$voteLog.upVote,
+          downVote = _question$voteLog.downVote;
+      var voteCount = upVote - downVote;
+      return voteCount;
     }
   }, {
-    key: "findVoteStatus",
-    value: function findVoteStatus(meetup, user, question) {
-      var caseUser = this.findUser(meetup, user, question);
-      var existingUser = caseUser.voteLog.voters.find(function (singleUser) {
-        return singleUser.user === user;
-      });
-      return existingUser.vote;
-    } // upvote(meetupId, user, questionId) {
-    //   const vote = this.findQuestion(meetupId, user, questionId);
-    //   vote.downVote - 1;
-    //   vote.upVote + 1;
-    // }
-
+    key: "svp",
+    value: function svp(meetupId, status) {
+      var meetup = this.findOne(meetupId);
+      var index = this.meetups.indexOf(meetup);
+      return this.meetups[index].questions.status = status;
+    }
   }]);
 
   return Storage;
