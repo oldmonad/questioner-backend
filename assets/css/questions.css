@@ -1,0 +1,154 @@
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 0.3rem;
+}
+
+.meetup {
+  padding: 0.5rem;
+}
+
+.meetup--header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.meetup--details {
+  display: flex;
+  flex-direction: column;
+}
+
+.meetup--detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.meetup--detail__title {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.meetup--picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.meetup--image {
+  width: 500px;
+  height: 300px;
+  border-radius: 0.3rem;
+}
+
+.questions--container {
+  height: 500px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.questions--header {
+  color: #444444;
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+.question {
+  display: block;
+  margin: 1rem 1.5rem;
+  background-color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  border: 1px solid #444444;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.question--body {
+  display: flex;
+  flex-direction: column-reverse;
+  /* align-items: center; */
+}
+
+.time--stamp {
+  font-size: 0.8rem;
+}
+
+.vote {
+  display: flex;
+  margin-top: 0.3rem;
+}
+
+.vote--component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+.vote--component span {
+  font-size: 1.1rem;
+}
+
+.upvote {
+  margin-right: 0.3rem;
+  font-size: 1.4rem;
+  color: #cccccc;
+  transition: 0.1s ease all;
+}
+
+.upvote:hover {
+  color: #3f45ff;
+}
+
+.downvote {
+  margin-right: 0.3rem;
+  font-size: 1.4rem;
+  color: #cccccc;
+  transition: 0.1s ease all;
+}
+
+.downvote:hover {
+  color: #ff1654;
+}
+
+.time--trash {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeBtn i {
+  font-size: 1.3rem;
+  display: inline-block;
+}
+
+.time--stamp {
+  color: #111111;
+}
+
+@media screen and (min-width: 500px) {
+  main {
+    display: flex;
+    flex-direction: row;
+    margin: 1.5rem auto;
+  }
+
+  .meetup {
+    width: 50%;
+  }
+
+  .questions {
+    width: 50%;
+  }
+}
