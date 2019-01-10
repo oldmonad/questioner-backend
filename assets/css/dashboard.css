@@ -9,6 +9,12 @@ main {
   margin: .6rem auto;
 }
 
+.top--questions__container {
+  height: 500px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
 .questions,
 .comments {
   display: flex;
