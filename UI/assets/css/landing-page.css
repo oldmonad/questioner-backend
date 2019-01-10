@@ -66,13 +66,10 @@ main {
 .signup--section {
   padding: .5rem 1rem 0;
   background-color: #ffffff;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
 }
 
 .signup--section__header {
-  margin: 4rem 0 0;
+  margin: 2rem 0 0;
   text-align: center;
   color: #3F45FF;
   font-weight: 600;
@@ -83,7 +80,7 @@ main {
   font-weight: 400;
   font-size: 1rem;
   max-width: 100%;
-  margin-top: 2rem;
+  margin-top: .4rem;
 }
 
 .custom--form .form--group {
