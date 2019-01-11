@@ -153,31 +153,3 @@ describe('GET upcoming', () => {
       });
   });
 });
-
-describe('POST questions', () => {
-  before(() => {
-    const data = {
-      topic: 'helping hands from datastructure test',
-      location: 'ikorodu',
-      date: '1465599344356',
-      tags: 'goal yeah',
-    };
-    Store.create(data);
-    const meetup = {
-      user: 1,
-      meetup: 1,
-      title: 'yolo',
-      body: 'qestions ghghdn???',
-    };
-    Store.question(1, meetup);
-  });
-  it('Should post questions', (done) => {
-    request(server)
-      .get('/api/v1/meetups/upcoming/')
-      .expect(201)
-      .end((err, res) => {
-        if (err) return done(err);
-        done();
-      });
-  });
-});
