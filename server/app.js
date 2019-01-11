@@ -37,16 +37,16 @@ app.use((error, req, res, next) => {
     res.status(500)
       .json({
         status: error.status,
-        message: error.map(err => err.messages),
+        message: error.messages,
       });
   }
 });
 
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   res.status(error.status || 500);
   res.json({
     status: error.status,
-    error: error[0].messages,
+    error: error.messages,
   });
 });
 

@@ -5,15 +5,19 @@ import Storage from '../models/storage';
 const rsvpController = {
   respond(req, res) {
     const meetup = parseInt(req.params.meetupId);
-    const currentStatus = req.body.status;
-    const rsvps = Storage.rsvp(meetup, currentStatus);
-    const question = Storage.getQuestion(meetup, )
+    const {
+      status,
+    } = req.body;
+    const rsvp = Storage.rsvp(meetup, status);
+    const specificMeetup = Storage.findOne(meetup);
     const response = {
-
+      meetup: specificMeetup.meetupId,
+      topic: specificMeetup.topic,
+      rsvp,
     };
     res.status(200).json({
-      message: 'Hitting rsvp route',
-      data: [rsvps],
+      status: 200,
+      data: [response],
     });
   },
 };
