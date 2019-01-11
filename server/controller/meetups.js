@@ -3,14 +3,9 @@
 import Storage from '../models/storage';
 
 const meetupController = {
-  
+
   create(req, res) {
     const content = req.body;
-    if (!content.topic || !content.location || !content.date || !content.tags) {
-      res.status(400).json({
-        message: 'Al fields are required',
-      });
-    }
     const meetup = Storage.create(content);
     const response = {
       meetupId: meetup.meetupId,
@@ -50,19 +45,26 @@ const meetupController = {
   getAll(req, res) {
     const meetups = Storage.findAll();
     if (meetups.length === 0) {
-      return res.status(404).json({
+      return res.status(204).json({
+        status: 204,
         message: 'You have not created any meetup',
       });
     }
-    return res.status(201).json({
-      status: 201,
+    return res.status(200).json({
+      status: 200,
       data: meetups,
     });
   },
 
   getUpcoming(req, res) {
     const upcoming = Storage.findUpcoming();
-    res.status(200).json({
+    if (upcoming.length === 0) {
+      return res.status(204).json({
+        status: 204,
+        message: 'You have not created any meetup',
+      });
+    }
+    return res.status(200).json({
       status: 200,
       data: upcoming,
     });

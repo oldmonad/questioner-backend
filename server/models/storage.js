@@ -56,6 +56,13 @@ class Storage {
     return newQuestion;
   }
 
+  getQuestion(meetupId, questionId) {
+    const meetup = this.findOne(meetupId);
+    const index = this.meetups.indexOf(meetup);
+    return this.meetups[index].questions
+      .find(question => question.questionId === questionId);
+  }
+
   makeUpvote(meetupId, questionId) {
     const meetup = this.findOne(meetupId);
     const index = this.meetups.indexOf(meetup);
@@ -87,7 +94,7 @@ class Storage {
     return voteCount;
   }
 
-  svp(meetupId, status) {
+  rsvp(meetupId, status) {
     const meetup = this.findOne(meetupId);
     const index = this.meetups.indexOf(meetup);
     return this.meetups[index].questions.status = status;

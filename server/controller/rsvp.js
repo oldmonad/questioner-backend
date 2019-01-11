@@ -7,6 +7,7 @@ const rsvpController = {
     const meetup = parseInt(req.params.meetupId);
     const currentStatus = req.body.status;
     const rsvps = Storage.rsvp(meetup, currentStatus);
+    const question = Storage.getQuestion(meetup, )
     const response = {
 
     };

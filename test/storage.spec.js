@@ -3,10 +3,10 @@
 /* eslint-disable no-unused-expressions */
 import {
   expect,
-  should
+  should,
 } from 'chai';
 
-import Store from '../../server/usingJsDataStructures/models/storage';
+import Store from '../server/models/storage';
 
 should();
 
@@ -15,7 +15,7 @@ describe('Meetups Create function', () => {
     const data = {
       topic: 'helping hands from datastructure test',
       location: 'ikorodu',
-      date: '18 june 1996',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     Store.create(data);
@@ -34,7 +34,7 @@ describe('Meetups Create function', () => {
     expect(createdMeetup.location).to.be.a('string');
     expect(createdMeetup.location).to.equal('ikorodu');
     createdMeetup.date.should.be.a('string');
-    expect(createdMeetup.date).to.equal('18 june 1996');
+    expect(createdMeetup.date).to.equal('1465599344356');
     createdMeetup.tags.should.be.an('array');
     createdMeetup.upcoming.should.be.be.true;
     // expect(createdMeetup.tags).to.equal(['goal', 'yeah']);
@@ -66,13 +66,13 @@ describe('Retrive single meetup from meetups', () => {
     const data1 = {
       topic: 'helping hands from datastructure test 1',
       location: 'ikorodu',
-      date: '18 june 1996',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     const data2 = {
       topic: 'helping hands from datastructure test 2',
       location: 'ikorodu',
-      date: '18 june 1996',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     Store.create(data1);
@@ -101,19 +101,19 @@ describe('Retrive upcoming meetup from meetups', () => {
     const data1 = {
       topic: 'helping hands from datastructure test 1',
       location: 'ikorodu',
-      date: '18 june 1996',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     const data2 = {
       topic: 'helping hands from datastructure test 2',
       location: 'ikorodu',
-      date: '18 june 1996',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     const data3 = {
       topic: 'helping hands from datastructure test 2',
       location: 'ikorodu',
-      date: '18 june 1996',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     Store.create(data1);
@@ -140,7 +140,7 @@ describe('Questions Create function', () => {
     const data = {
       topic: 'helping hands from datastructure test',
       location: 'ikorodu',
-      date: '18 june 1996',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     Store.create(data);
@@ -168,35 +168,35 @@ describe('Questions Create function', () => {
   });
 });
 
-// describe('Create upvote function', () => {
-//   before(() => {
-//     const data = {
-//       topic: 'helping hands from datastructure test',
-//       location: 'ikorodu',
-//       date: '18 june 1996',
-//       tags: 'goal yeah',
-//     };
-//     Store.create(data);
+describe('Create upvote function', () => {
+  before(() => {
+    const data = {
+      topic: 'helping hands from datastructure test',
+      location: 'ikorodu',
+      date: '1465599344356',
+      tags: 'goal yeah',
+    };
+    Store.create(data);
 
-//     const question = {
-//       user: 1,
-//       meetup: 1,
-//       title: 'yolo',
-//       body: 'qestions ghghdn???',
-//     };
-//     const id = Store.findAll()[0].meetupId;
-//     Store.question(id, question);
-//   });
+    const question = {
+      user: 1,
+      meetup: 1,
+      title: 'yolo',
+      body: 'qestions ghghdn???',
+    };
+    const id = Store.findAll()[0].meetupId;
+    Store.question(id, question);
+  });
 
-//   after(() => {
-//     Store.clearAll();
-//   });
+  after(() => {
+    Store.clearAll();
+  });
 
-//   it('It should create a question', () => {
-//     const createdQuestions = Store.findAll()[0].questions;
-//     const createdQuestion = Store.findAll()[0].questions[0];
-//     createdQuestions.should.be.an('array');
-//     createdQuestion.should.be.an('object');
-//     createdQuestion.body.should.equal('qestions ghghdn???');
-//   });
-// });
+  it('It should create a question', () => {
+    const createdQuestions = Store.findAll()[0].questions;
+    const createdQuestion = Store.findAll()[0].questions[0];
+    createdQuestions.should.be.an('array');
+    createdQuestion.should.be.an('object');
+    createdQuestion.body.should.equal('qestions ghghdn???');
+  });
+});

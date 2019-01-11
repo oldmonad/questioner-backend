@@ -1,71 +1,65 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
 var _http = _interopRequireDefault(require("http"));
-
-var _express = _interopRequireDefault(require("express"));
 
 var _dotenv = _interopRequireDefault(require("dotenv"));
 
-var _morgan = _interopRequireDefault(require("morgan"));
-
-var _bodyParser = _interopRequireDefault(require("body-parser"));
-
-var _routes = _interopRequireDefault(require("./usingJsDataStructures/routes/routes"));
+var _app = _interopRequireDefault(require("./app"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable eol-last */
+_dotenv.default.config();
 
-/* eslint-disable no-undef */
-_dotenv.default.config(); // Set up express app
+var port = process.env.PORT || 3000;
 
+var server = _http.default.createServer(_app.default);
 
-var server = (0, _express.default)();
-
-var router = _express.default.Router(); // Port configuration
-
-
-var port = process.env.PORT || 8000;
-(0, _routes.default)(router); // Log requests to the console
-
-server.use((0, _morgan.default)('dev')); // Parse incoming request data
-
-server.use(_bodyParser.default.json());
-server.use(_bodyParser.default.urlencoded({
-  extended: false
-})); // API Routes
-
-server.use('/api/v1', router); // Set up all default catch-all route that sends a message in JSON format
-
-server.get('*', function (req, res) {
-  return res.status(404).send({
-    message: 'That route does not exist'
-  });
-});
-server.use(function (req, res, next) {
-  var error = new Error('Not Found');
-  error.status = 400;
-  next(error);
-});
-server.use(function (error, req, res) {
-  res.status(error.status || 500);
-  res.json({
-    error: {
-      message: error.message
-    }
-  });
-}); // Create server
-
-var app = _http.default.createServer(server);
-
-app.listen(port, function () {
+server.listen(port, function () {
+  // eslint-disable-next-line no-console
   console.log("Server running on port ".concat(port));
-});
-var _default = server;
-exports.default = _default;
+}); // /* eslint-disable eol-last */
+// /* eslint-disable no-undef */
+// import http from 'http';
+// import express from 'express';
+// import dotenv from 'dotenv';
+// import logger from 'morgan';
+// import bodyParser from 'body-parser';
+// // import expressValidator from 'express-validator';
+// import routes from './routes/routes';
+// dotenv.config();
+// // Set up express app
+// const server = express();
+// const router = express.Router();
+// // Port configuration
+// const port = process.env.PORT || 8000;
+// routes(router);
+// // Log requests to the console
+// server.use(logger('dev'));
+// // Parse incoming request data
+// server.use(bodyParser.json());
+// server.use(bodyParser.urlencoded({
+//   extended: false,
+// }));
+// // server.use(expressValidator());
+// // API Routes
+// server.use('/api/v1', router);
+// app.use((req, res, next) => {
+//   const error = new Error('Not Found');
+//   error.status = 400;
+//   next(error);
+// });
+// app.use((error, req, res) => {
+//   res.status(error.status || 500);
+//   res.json({
+//     error: {
+//       message: error.message,
+//     },
+//   });
+// });
+// // Create server
+// const app = http.createServer(server);
+// app.listen(port, () => {
+//   console.log(`Server running on port ${port}`);
+// });
+// export default server;
 //# sourceMappingURL=server.js.map

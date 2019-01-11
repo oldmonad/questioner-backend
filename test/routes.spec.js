@@ -14,9 +14,9 @@ import {
   assert,
 } from 'chai';
 
-import server from '../../server/server';
+import server from '../server/app';
 
-import Store from '../../server/usingJsDataStructures/models/storage';
+import Store from '../server/models/storage';
 
 should();
 
@@ -24,7 +24,7 @@ describe('Create Meetup API', () => {
   const data = {
     topic: 'helping hands',
     location: 'ikorodu',
-    date: '18 june 1996',
+    date: '1465599344356',
     tags: 'goal yeah',
   };
 
@@ -47,9 +47,8 @@ describe('Create Meetup API', () => {
         expect(res.body.data[0]).to.have.property('location');
         expect(res.body.data[0].location).to.equal('ikorodu');
         expect(res.body.data[0]).to.have.property('date');
-        expect(res.body.data[0].date).to.equal('18 june 1996');
+        expect(res.body.data[0].date).to.equal('2016-06-10T22:55:44.356Z');
         expect(res.body.data[0]).to.have.property('tags');
-        // expect(res.body.data[0].tags).to.equal(['goal', 'yeah']);
         expect(res.body.data[0].tags).to.be.an('array');
         expect(res.body.status).to.be.a('number');
         expect(res.body.status).to.equal(201);
@@ -72,13 +71,12 @@ describe('It disaplays an error if a meetup does not exist', () => {
 });
 
 describe('It displays error if meetup is empty', () => {
-  it('Should return a 404 response if meetup is empty', (done) => {
+  it('Should return a 204 response if meetup is empty', (done) => {
     request(server)
       .get('/api/v1/meetups')
-      .expect(404)
+      .expect(204)
       .end((err, res) => {
         if (err) return done(err);
-        expect(res.body.message).to.equal('You have not created any meetup');
         done();
       });
   });
@@ -89,13 +87,13 @@ describe('GET Meetups API', () => {
     const data = {
       topic: 'helping hands from datastructure test',
       location: 'ikorodu',
-      date: '18 june 1996',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     const data1 = {
       topic: 'helping hands from datastructure test1',
       location: '1 ikorodu',
-      date: '18 june 1997',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     Store.create(data);
@@ -110,7 +108,7 @@ describe('GET Meetups API', () => {
     const meetups = Store.findAll();
     request(server)
       .get('/api/v1/meetups')
-      .expect(201)
+      .expect(200)
       .end((err, res) => {
         if (err) return done(err);
         meetups.should.be.an('array');
@@ -118,7 +116,7 @@ describe('GET Meetups API', () => {
         (meetups[1]).should.be.an('object');
         (meetups[0].meetupId).should.equal(1);
         (meetups[1].meetupId).should.equal(2);
-        (res.body.status).should.equal(201);
+        (res.body.status).should.equal(200);
         (res.body.data).should.be.an('array');
         done();
       });
@@ -130,27 +128,56 @@ describe('GET upcoming', () => {
     const data = {
       topic: 'helping hands from datastructure test',
       location: 'ikorodu',
-      date: '18 june 1996',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     const data1 = {
       topic: 'helping hands from datastructure test1',
       location: '1 ikorodu',
-      date: '18 june 1997',
+      date: '1465599344356',
       tags: 'goal yeah',
     };
     Store.create(data);
     Store.create(data1);
   });
-  it('Should get only meetups that have not happened', () => {
+  it('Should get only meetups that have not happened', (done) => {
     const meetups = Store.findUpcoming();
     request(server)
-      .get('/api/v1/upcoming')
+      .get('/api/v1/meetups/upcoming/')
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
         (meetups[0].upcoming).should.be.true;
         (meetups[1].upcoming).should.be.true;
+        done();
+      });
+  });
+});
+
+describe('POST questions', () => {
+  before(() => {
+    const data = {
+      topic: 'helping hands from datastructure test',
+      location: 'ikorodu',
+      date: '1465599344356',
+      tags: 'goal yeah',
+    };
+    Store.create(data);
+    const meetup = {
+      user: 1,
+      meetup: 1,
+      title: 'yolo',
+      body: 'qestions ghghdn???',
+    };
+    Store.question(1, meetup);
+  });
+  it('Should post questions', (done) => {
+    request(server)
+      .get('/api/v1/meetups/upcoming/')
+      .expect(201)
+      .end((err, res) => {
+        if (err) return done(err);
+        done();
       });
   });
 });
