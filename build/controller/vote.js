@@ -21,9 +21,13 @@ var voteController = {
 
     var votes = _storage.default.getVotes(meetup, question);
 
+    var singleQuestion = _storage.default.getQuestion(meetup, question);
+
     var response = {
       meetup: meetup,
-      votes: votes
+      votes: votes,
+      title: singleQuestion.title,
+      body: singleQuestion.body
     };
     res.status(200).json({
       status: 200,
@@ -34,14 +38,17 @@ var voteController = {
     var question = parseInt(req.params.questionId);
     var meetup = req.body.meetupId;
 
-    _storage.default.makeDownVote(meetup, question); // const title =
-
+    _storage.default.makeDownVote(meetup, question);
 
     var votes = _storage.default.getVotes(meetup, question);
 
+    var singleQuestion = _storage.default.getQuestion(meetup, question);
+
     var response = {
       meetup: meetup,
-      votes: votes
+      votes: votes,
+      title: singleQuestion.title,
+      body: singleQuestion.body
     };
     res.status(200).json({
       status: 200,

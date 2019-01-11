@@ -87,6 +87,15 @@ function () {
       return newQuestion;
     }
   }, {
+    key: "getQuestion",
+    value: function getQuestion(meetupId, questionId) {
+      var meetup = this.findOne(meetupId);
+      var index = this.meetups.indexOf(meetup);
+      return this.meetups[index].questions.find(function (question) {
+        return question.questionId === questionId;
+      });
+    }
+  }, {
     key: "makeUpvote",
     value: function makeUpvote(meetupId, questionId) {
       var meetup = this.findOne(meetupId);
@@ -121,8 +130,8 @@ function () {
       return voteCount;
     }
   }, {
-    key: "svp",
-    value: function svp(meetupId, status) {
+    key: "rsvp",
+    value: function rsvp(meetupId, status) {
       var meetup = this.findOne(meetupId);
       var index = this.meetups.indexOf(meetup);
       return this.meetups[index].questions.status = status;

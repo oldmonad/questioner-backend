@@ -11,6 +11,8 @@ var _morgan = _interopRequireDefault(require("morgan"));
 
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 
+var _expressValidation = _interopRequireDefault(require("express-validation"));
+
 var _meetups = _interopRequireDefault(require("./routes/meetups"));
 
 var _questions = _interopRequireDefault(require("./routes/questions"));
@@ -30,23 +32,29 @@ app.use(_bodyParser.default.urlencoded({
   extended: false
 }));
 app.use('/api/v1/meetups', _meetups.default);
-app.use('/api/v1/questions', _questions.default); // API Routes
-// app.use('/api/v1', router);
-// app.use((req, res, next) => {
-//   const error = new Error('Not Found');
-//   error.status = 400;
-//   next(error);
-// });
-// app.use((error, req, res) => {
-//   res.status(error.status || 500);
-//   res.json({
-//     error: {
-//       message: error.message,
-//     },
-//   });
-// });
-// routes(router);
-
+app.use('/api/v1/questions', _questions.default);
+app.use(function (req, res, next) {
+  var error = new Error('Invalid route');
+  error.status = 404;
+  next(error);
+});
+app.use(function (error, req, res, next) {
+  if (error instanceof _expressValidation.default.ValidationError) {
+    res.status(error.status).json(error);
+  } else {
+    res.status(500).json({
+      status: error.status,
+      message: error.messages
+    });
+  }
+});
+app.use(function (error, req, res) {
+  res.status(error.status || 500);
+  res.json({
+    status: error.status,
+    error: error.messages
+  });
+});
 var _default = app;
 exports.default = _default;
 //# sourceMappingURL=app.js.map

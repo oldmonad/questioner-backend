@@ -15,14 +15,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var rsvpController = {
   respond: function respond(req, res) {
     var meetup = parseInt(req.params.meetupId);
-    var currentStatus = req.body.status;
+    var status = req.body.status;
 
-    var rsvps = _storage.default.rsvp(meetup, currentStatus);
+    var rsvp = _storage.default.rsvp(meetup, status);
 
-    var response = {};
+    var specificMeetup = _storage.default.findOne(meetup);
+
+    var response = {
+      meetup: specificMeetup.meetupId,
+      topic: specificMeetup.topic,
+      rsvp: rsvp
+    };
     res.status(200).json({
-      message: 'Hitting rsvp route',
-      data: [rsvps]
+      status: 200,
+      data: [response]
     });
   }
 };

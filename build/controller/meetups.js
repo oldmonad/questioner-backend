@@ -16,12 +16,6 @@ var meetupController = {
   create: function create(req, res) {
     var content = req.body;
 
-    if (!content.topic || !content.location || !content.date || !content.tags) {
-      res.status(400).json({
-        message: 'Al fields are required'
-      });
-    }
-
     var meetup = _storage.default.create(content);
 
     var response = {
@@ -64,20 +58,28 @@ var meetupController = {
     var meetups = _storage.default.findAll();
 
     if (meetups.length === 0) {
-      return res.status(404).json({
+      return res.status(204).json({
+        status: 204,
         message: 'You have not created any meetup'
       });
     }
 
-    return res.status(201).json({
-      status: 201,
+    return res.status(200).json({
+      status: 200,
       data: meetups
     });
   },
   getUpcoming: function getUpcoming(req, res) {
     var upcoming = _storage.default.findUpcoming();
 
-    res.status(200).json({
+    if (upcoming.length === 0) {
+      return res.status(204).json({
+        status: 204,
+        message: 'You have not created any meetup'
+      });
+    }
+
+    return res.status(200).json({
       status: 200,
       data: upcoming
     });
