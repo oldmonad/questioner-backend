@@ -3,18 +3,18 @@ const createUser = {
   firstname: 'legolas',
   lastname: 'Aragorn',
   username: 'legoagon',
-  email: 'legoagon.com',
+  email: 'legoagon@gmail.com',
   password: 'Odin',
   confirmPassword: 'Odin',
   phonenumber: '08135266484',
 };
 
 const correctLogin = {
-  email: 'oparahdc@gmail.com',
+  email: 'legoagon@gmail.com',
   password: 'Odin',
 };
 
-const userLogin = {
+const incorrectLogin = {
   email: 'gonalons@gmail.com',
   password: 'Bor',
 };
@@ -23,5 +23,5 @@ const userLogin = {
 export {
   createUser,
   correctLogin,
-  userLogin,
+  incorrectLogin,
 };

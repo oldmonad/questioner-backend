@@ -1,7 +1,7 @@
 /* eslint-disable eol-last */
-// import db from '../db/index';
+import jwt from '../utilities/jwt';
 import bcrypt from '../utilities/bcrypt';
-import UserModel from '../models/models';
+import UserModel from '../models/user';
 
 
 const UserController = {
@@ -38,12 +38,6 @@ const UserController = {
       data: createdUser,
     });
   },
-
-
-  async loginUser(req, res) {
-
-  },
-
 };
 
 export default UserController;
