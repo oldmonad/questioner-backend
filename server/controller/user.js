@@ -33,20 +33,15 @@ const UserController = {
 
     const createdUser = await newUser.newUserSignUp();
 
-    const response = {
-      id: createdUser.id,
-      firstname: createdUser.firstname,
-      lastname: createdUser.lastname,
-      username: createdUser.username,
-      email: createdUser.email,
-      phonenumber: createdUser.phonenumber,
-      createdon: createdUser.createdon,
-    };
-
     return res.status(201).json({
       status: 201,
-      data: [response],
+      data: createdUser,
     });
+  },
+
+
+  async loginUser(req, res) {
+
   },
 
 };

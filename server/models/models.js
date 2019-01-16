@@ -14,7 +14,7 @@ class UserModel {
   async newUserSignUp() {
     const text = `INSERT INTO users (firstname, lastname,
       username, email, password,  phonenumber)
-      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING firstname, lastname, username, email, phonenumber`;
     const values = [this.firstname, this.lastname, this.username,
       this.email, this.password, this.phonenumber,
     ];
