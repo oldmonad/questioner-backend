@@ -4,8 +4,8 @@ import bcrypt from '../utilities/bcrypt';
 import UserModel from '../models/models';
 
 
-const User = {
-  async create(req, res) {
+const UserController = {
+  async createNewUser(req, res) {
     if (req.body.password !== req.body.confirmPassword) {
       res.status(400).json({
         status: 400,
@@ -13,34 +13,34 @@ const User = {
       });
     }
 
-    const user = new UserModel(req.body);
-    const existingUserMail = await UserModel.findUserByEmail(user.email);
-    if (existingUserMail) {
+    const newUser = new UserModel(req.body);
+    const isExistingUserMail = await UserModel.findUserByEmail(newUser.email);
+    if (isExistingUserMail) {
       return res.status(409).json({
         status: 409,
         error: 'This email address is already taken',
       });
     }
 
-    const existingUsername = await UserModel.findUserByUsername(user.username);
-    if (existingUsername) {
+    const isExistingUsername = await UserModel.findUserByUsername(newUser.username);
+    if (isExistingUsername) {
       return res.status(409).json({
         status: 409,
         error: 'This username is already taken',
       });
     }
-    user.password = bcrypt.hashPassword(user.password);
+    newUser.password = bcrypt.hashPassword(newUser.password);
 
-    const latestUser = await user.signUp();
+    const createdUser = await newUser.newUserSignUp();
 
     const response = {
-      id: latestUser.id,
-      firstname: latestUser.firstname,
-      lastname: latestUser.lastname,
-      username: latestUser.username,
-      email: latestUser.email,
-      phonenumber: latestUser.phonenumber,
-      createdon: latestUser.createdon,
+      id: createdUser.id,
+      firstname: createdUser.firstname,
+      lastname: createdUser.lastname,
+      username: createdUser.username,
+      email: createdUser.email,
+      phonenumber: createdUser.phonenumber,
+      createdon: createdUser.createdon,
     };
 
     return res.status(201).json({
@@ -51,4 +51,4 @@ const User = {
 
 };
 
-export default User;
+export default UserController;

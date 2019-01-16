@@ -6,7 +6,7 @@ const router = express.Router();
 
 import User from '../controller/user';
 
-router.post('/auth/signup', User.create);
-router.post('/auth/login', User.create);
+router.post('/auth/signup', User.createNewUser);
+// router.post('/auth/login', User.create);
 
 export default router;

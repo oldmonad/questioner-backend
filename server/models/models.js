@@ -11,7 +11,7 @@ class UserModel {
     this.phonenumber = user.phonenumber;
   }
 
-  async signUp() {
+  async newUserSignUp() {
     const text = `INSERT INTO users (firstname, lastname,
       username, email, password,  phonenumber)
       VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
