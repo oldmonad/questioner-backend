@@ -28,4 +28,10 @@ export default {
       body: Joi.string().required(),
     },
   },
+
+  rsvps: {
+    body: {
+      meetupId: Joi.number().required(),
+    },
+  },
 };

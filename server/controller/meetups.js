@@ -1,10 +1,10 @@
 /* eslint-disable radix */
 /* eslint-disable eol-last */
-import Storage from '../models/storage';
+
 
 const meetupController = {
 
-  create(req, res) {
+  async create(req, res) {
     const content = req.body;
     const meetup = Storage.create(content);
     const response = {
@@ -21,7 +21,7 @@ const meetupController = {
     });
   },
 
-  getOne(req, res) {
+  async getOne(req, res) {
     const id = parseInt(req.params.meetupId);
     const meetup = Storage.findOne(id);
     if (!meetup) {
@@ -42,7 +42,7 @@ const meetupController = {
     });
   },
 
-  getAll(req, res) {
+  async getAll(req, res) {
     const meetups = Storage.findAll();
     if (meetups.length === 0) {
       return res.status(204).json({
@@ -56,7 +56,7 @@ const meetupController = {
     });
   },
 
-  getUpcoming(req, res) {
+  async getUpcoming(req, res) {
     const upcoming = Storage.findUpcoming();
     if (upcoming.length === 0) {
       return res.status(204).json({
