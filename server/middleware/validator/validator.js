@@ -7,11 +7,10 @@ export default {
     body: {
       topic: Joi.string().required(),
       location: Joi.string().required(),
-      date: Joi.date().timestamp().required(),
+      date: Joi.date().required(),
       tags: Joi.string(),
     },
   },
-
 
   getMeetup: {
     params: {
@@ -22,8 +21,7 @@ export default {
 
   postQuestion: {
     body: {
-      user: Joi.number().required(),
-      meetup: Joi.number().required(),
+      meetupid: Joi.number().required(),
       title: Joi.string().required(),
       body: Joi.string().required(),
     },
@@ -32,6 +30,11 @@ export default {
   rsvps: {
     body: {
       meetupId: Joi.number().required(),
+      rsvps: Joi.string().valid(
+        'yes',
+        'no',
+        'maybe',
+      ).required(),
     },
   },
 };

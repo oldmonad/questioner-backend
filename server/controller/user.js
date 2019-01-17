@@ -1,13 +1,13 @@
 /* eslint-disable eol-last */
-// import db from '../db/index';
+import jwt from '../utilities/jwt';
 import bcrypt from '../utilities/bcrypt';
-import UserModel from '../models/models';
+import UserModel from '../models/user';
 
 
 const UserController = {
   async createNewUser(req, res) {
     if (req.body.password !== req.body.confirmPassword) {
-      res.status(400).json({
+      return res.status(400).json({
         status: 400,
         error: 'Passwords do not match',
       });
@@ -33,22 +33,47 @@ const UserController = {
 
     const createdUser = await newUser.newUserSignUp();
 
-    const response = {
-      id: createdUser.id,
-      firstname: createdUser.firstname,
-      lastname: createdUser.lastname,
-      username: createdUser.username,
-      email: createdUser.email,
-      phonenumber: createdUser.phonenumber,
-      createdon: createdUser.createdon,
-    };
-
     return res.status(201).json({
       status: 201,
-      data: [response],
+      message: 'User created',
+      data: createdUser,
     });
   },
 
+  async loginUser(req, res) {
+    const {
+      email,
+      password,
+    } = req.body;
+
+    const isExistingUserMail = await UserModel.findUserByEmail(email);
+    if (!isExistingUserMail) {
+      return res.status(404).json({
+        status: 404,
+        error: 'The credentials you provided is incorrect',
+      });
+    }
+
+    if (!bcrypt.comparePassword(isExistingUserMail.password, password)) {
+      return res.status(404).json({
+        status: 404,
+        error: 'The credentials you provided is incorrect',
+      });
+    }
+
+    const tokenData = {
+      id: isExistingUserMail.id,
+      username: isExistingUserMail.username,
+      admin: isExistingUserMail.admin,
+    };
+
+    const token = await jwt.generateToken(tokenData);
+    return res.status(200).send({
+      status: 200,
+      message: 'You are logged in',
+      token,
+    });
+  },
 };
 
 export default UserController;
