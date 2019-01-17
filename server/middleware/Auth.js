@@ -1,7 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable eol-last */
 import jwt from 'jsonwebtoken';
-import db from '../db/index';
 
 const Auth = {
 
@@ -23,26 +22,25 @@ const Auth = {
     }
     try {
       const decoded = await jwt.verify(token, process.env.SECRET);
-      const queryText = 'SELECT id, username, admin FROM users WHERE id = $1';
-      const {
-        rows,
-      } = await db.query(queryText, [decoded.id, decoded.username, decoded.admin]);
-      if (!rows[0]) {
-        return res.status(403).send({
-          status: 403,
-          error: 'The token you provided is invalid',
-        });
-      }
-      req.user = {
-        id: decoded.id,
-        username: decoded.username,
-        admin: decoded.admin,
-      };
-
+      req.user = decoded;
       next();
     } catch (error) {
       return res.status(400).send(error);
     }
+  },
+
+  async adminAuth(req, res, next) {
+    const {
+      admin,
+    } = req.user;
+
+    if (!admin) {
+      return res.status(403).json({
+        status: 403,
+        error: 'Unauthorized request',
+      });
+    }
+    next();
   },
 };
 

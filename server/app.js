@@ -10,7 +10,7 @@ import pg from 'pg';
 const app = express();
 import expressValidation from 'express-validation';
 import userRoutes from './routes/user';
-// import AdminRoutes from './routes/admin';
+import AdminRoutes from './routes/admin';
 import meetupRoutes from './routes/meetups';
 import questionsRoute from './routes/questions';
 // import commentRoutes from './routes/comments';
@@ -25,11 +25,11 @@ app.use(bodyParser.urlencoded({
   extended: false,
 }));
 
-// app.use('api/v1', AdminRoutes);
+// app.use('/api/v1/admin', AdminRoutes);
 // app.use('/api/v1', userRoutes);
 app.use('/api/v1', userRoutes);
-app.use('/api/v1/meetups', meetupRoutes);
-app.use('/api/v1/questions', questionsRoute);
+// app.use('/api/v1/meetups', meetupRoutes);
+// app.use('/api/v1/questions', questionsRoute);
 // app.use('api/v1/comments', commentRoutes);
 
 app.use((req, res, next) => {

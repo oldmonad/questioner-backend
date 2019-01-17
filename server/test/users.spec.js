@@ -1,28 +1,43 @@
 /* eslint-disable eol-last */
 /* eslint-disable no-undef */
-/* eslint-disable no-unused-expressions */
-// import {
-//   expect,
-//   should,
-// } from 'chai';
+import request from 'supertest';
+import {
+  should,
+  expect,
+  chai,
+  assert,
+} from 'chai';
 
-// import testFunction from '../'
-// import migrate from './testMigrate.spec';
-// import testData from './testData';
+import server from '../app';
 
+import {
+  createUser,
+  userLogin,
+  invalidUser,
+} from './testData';
 
-// should();
+should();
 
-// describe('It should create a user', () => {
-//   before(async () => {
-//     migrate.createUser();
+let userToken;
 
-//   });
-
-//   after(async () => {
-//     migrate.dropUserTable();
-//   });
-
-
-//   it('Should create a user', ())
-// });
+describe('Create a user', async () => {
+  it('Should create a user', (done) => {
+    request(server)
+      .post('/api/v1/auth/signup')
+      .send(createUser)
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .end((err, res) => {
+        if (err) return done(err);
+        const userid = res.body.data.id;
+        const userFirstname = res.body.data.firstname;
+        const arrayProp = res.body.data;
+        expect(res.body.status).to.equal(201);
+        expect(userid).to.equal(1);
+        expect(userFirstname).to.equal('legolas');
+        (arrayProp).should.be.an('object');
+        return done();
+      });
+  });
+});

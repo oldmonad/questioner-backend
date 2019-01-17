@@ -5,6 +5,7 @@ console.log('Dropping tables...');
 (async () => {
   try {
     await pool.query('DROP TABLE IF EXISTS users CASCADE');
+    await pool.query('DROP TABLE IF EXISTS admin CASCADE');
     await pool.query('DROP TABLE IF EXISTS meetups CASCADE');
     await pool.query('DROP TABLE IF EXISTS questions CASCADE');
     await pool.query('DROP TABLE IF EXISTS comments CASCADE');
