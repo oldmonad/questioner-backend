@@ -11,7 +11,7 @@
     "start": "npm run build && node ./build/server.js",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./server -s",
-    "build": "npm run clean && npm run build-babel",
+    "build": "npm run migrate && npm run clean && npm run build-babel",
     "heroku-postbuild": "npm run build",
     "lint": "eslint",
     "drop-tables": "babel-node ./server/db/migrationsDropTables.js",
