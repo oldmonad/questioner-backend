@@ -32,6 +32,22 @@ const MeetupController = {
     });
   },
 
+  async getAllMeetups(req, res) {
+    const allMeetups = await MeetupModels.retrieveAllMeetups();
+
+    if (allMeetups.length === 0) {
+      res.status(204).json({
+        status: 204,
+        error: 'Empty resource',
+      });
+    }
+
+    return res.status(200).json({
+      status: 200,
+      data: allMeetups,
+    });
+  },
+
 };
 
 
