@@ -19,5 +19,15 @@ install:
 script:
   - npm test
 
-after_script:
+after_success:
   - npm run coverage
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+deploy:
+  provider: heroku
+  app: enigmatic-refuge-95413
+  on:
+    repo: dbytecoderc/Questioner
+    branch: develop
+  api_key:
+    secure: "b6559822-0a13-4943-b7a3-0a57cd00b2c7"
