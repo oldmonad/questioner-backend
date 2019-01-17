@@ -48,6 +48,25 @@ const MeetupController = {
     });
   },
 
+  async getSingleMeetup(req, res) {
+    const {
+      id,
+    } = req.params;
+    const retrievedMeetup = await MeetupModels.retrieveSingleMeetup(id);
+
+    if (!retrievedMeetup) {
+      res.status(404).json({
+        status: 404,
+        error: 'Meetup not found',
+      });
+    }
+
+    return res.status(200).json({
+      status: 200,
+      message: 'Meetup Found!',
+      data: retrievedMeetup,
+    });
+  },
 };
 
 
