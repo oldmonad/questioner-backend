@@ -23,7 +23,6 @@ class Meetup {
     return rows[0];
   }
 
-
   static async retrieveAllMeetups() {
     const queryPlaceholder = 'SELECT * FROM meetups';
     const {
