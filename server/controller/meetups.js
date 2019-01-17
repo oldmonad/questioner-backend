@@ -67,6 +67,25 @@ const MeetupController = {
       data: retrievedMeetup,
     });
   },
+
+  async getUpcomingMeetups(req, res) {
+    const currentDate = new Date(Date.now() / 1000) + 39;
+
+    const upcomingMeetups = await MeetupModels.retrieveUpcomingMeetups(currentDate);
+
+    if (upcomingMeetups.length === 0) {
+      return res.status(404).json({
+        status: 404,
+        err0r: 'No upcoming meetups found',
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      message: 'These are pending meetups',
+      data: upcomingMeetups,
+    });
+  },
+
 };
 
 
