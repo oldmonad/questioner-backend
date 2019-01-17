@@ -26,7 +26,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/api/v1/admin', AdminRoutes);
-// app.use('/api/v1', userRoutes);
 app.use('/api/v1', userRoutes);
 app.use('/api/v1/meetups', meetupRoutes);
 // app.use('/api/v1/questions', questionsRoute);
