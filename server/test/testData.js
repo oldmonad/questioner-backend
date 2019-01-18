@@ -42,6 +42,12 @@ const createMeetup = {
   tags: 'goal yeaah nope',
 };
 
+const askQuestion = {
+  meetupid: '1',
+  title: 'title of question',
+  body: 'body of question',
+};
+
 export {
   createAdmin,
   loginAdmin,
@@ -49,4 +55,5 @@ export {
   userLogin,
   invalidUser,
   createMeetup,
+  askQuestion,
 };
