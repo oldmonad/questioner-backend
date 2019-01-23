@@ -42,25 +42,4 @@ export default class UserValidation {
       return errorResponse(res, 400, errors);
     });
   }
-
-  // static validEdit(req, res, next) {
-  //   const user = req.body;
-
-  //   const userProperties = {
-  //     firstname: 'alpha|min:2|max:50',
-  //     lastname: 'alpha|min:2|max:50',
-  //     username: 'alpha_num|min:5|max:50',
-  //     email: 'email|max:100',
-  //     password: 'alpha_num|min:6|max:18|confirmed',
-  //     password_confirmation: 'required_with:password',
-  //     phonenumber: 'digits:11',
-  //   };
-
-  //   const validator = new Validator(user, userProperties, customErrorMessages);
-  //   validator.passes(() => next());
-  //   validator.fails(() => {
-  //     const errors = validator.errors.all();
-  //     return errorResponse(res, 400, errors);
-  //   });
-  // }
 }

@@ -6,16 +6,15 @@ class Meetup {
   constructor(meetup) {
     this.topic = meetup.topic;
     this.location = meetup.location;
-    this.date = meetup.date;
+    this.happeningon = meetup.happeningon;
     this.image = meetup.image;
-    this.tags = meetup.tags;
   }
 
   async createMeetup() {
-    const queryPlaceholder = `INSERT INTO meetups (topic, location, date,
-      image, tags) VALUES ($1, $2, $3, $4, $5) RETURNING *`;
-    const entryValues = [this.topic, this.location, this.date,
-      this.image, this.tags,
+    const queryPlaceholder = `INSERT INTO meetups (topic, location, happeningon,
+      image) VALUES ($1, $2, $3, $4) RETURNING *`;
+    const entryValues = [this.topic, this.location, this.happeningon,
+      this.image,
     ];
     const {
       rows,
@@ -41,7 +40,7 @@ class Meetup {
   }
 
   static async retrieveUpcomingMeetups(currentDate) {
-    const queryPlaceholder = 'SELECT * FROM meetups WHERE date > $1 ORDER BY date';
+    const queryPlaceholder = 'SELECT * FROM meetups WHERE happeningon > $1 ORDER BY happeningon';
     const queryValues = [currentDate];
     const {
       rows,

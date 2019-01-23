@@ -14,6 +14,7 @@ import {
   createUser,
   userLogin,
   invalidUser,
+  askQuestion,
 } from './testData';
 
 should();
@@ -21,7 +22,7 @@ should();
 let userToken;
 
 describe('Create a user', async () => {
-  it('Should create a user', (done) => {
+  it('A prospective user should be able to create an account', (done) => {
     request(server)
       .post('/api/v1/auth/signup')
       .send(createUser)
@@ -34,7 +35,7 @@ describe('Create a user', async () => {
         const userFirstname = res.body.data.firstname;
         const arrayProp = res.body.data;
         expect(res.body.status).to.equal(201);
-        expect(userid).to.equal(1);
+        expect(userid).to.equal(2);
         expect(userFirstname).to.equal('legolas');
         (arrayProp).should.be.an('object');
         return done();
@@ -44,7 +45,7 @@ describe('Create a user', async () => {
 
 
 describe('Login an existing User', async () => {
-  it('Should Login an existing user', (done) => {
+  it('A user should be able to login', (done) => {
     request(server)
       .post('/api/v1/auth/login')
       .send(userLogin)
@@ -56,7 +57,6 @@ describe('Login an existing User', async () => {
         expect(res.body.status).to.equal(200);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('token');
-        // console.log(res.body.token);
         userToken = res.body.token;
         return done();
       });
@@ -68,12 +68,32 @@ describe('Login an existing User', async () => {
       .send(invalidUser)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(404)
+      .expect(401)
       .end((err, res) => {
         if (err) return done(err);
-        expect(res.body.status).to.equal(404);
+        expect(res.body.status).to.equal(401);
         expect(res.body).to.have.property('error');
         expect(res.body.error).to.equal('The credentials you provided is incorrect');
+        return done();
+      });
+  });
+});
+
+
+describe('Create ask questions', async () => {
+  it('A user should be able to ask a question', (done) => {
+    request(server)
+      .post('/api/v1/questions')
+      .send(askQuestion)
+      .set('Accept', 'application/json')
+      .set({
+        Authorization: `Bearer ${userToken}`,
+      })
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body.status).to.equal(201);
         return done();
       });
   });

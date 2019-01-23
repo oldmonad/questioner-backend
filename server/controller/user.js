@@ -39,7 +39,9 @@ const UserController = {
     } = req.body;
 
     const isExistingUserMail = await UserModel.findUserByEmail(email);
-    const admin = isExistingUserMail.admin;
+    const {
+      admin,
+    } = isExistingUserMail;
     if (!isExistingUserMail) {
       return errorResponse(res, 404, 'The credentials you provided is incorrect');
     }

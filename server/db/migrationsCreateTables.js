@@ -35,10 +35,11 @@ console.log('Creating tables...');
         const queryPlaceholder = `INSERT INTO users (firstname, lastname, username, email, password,  phonenumber)
        VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname, lastname, username, email, phonenumber`;
         const values = [Admin.firstname, Admin.lastname, Admin.username,
-            Admin.email, Admin.password, Admin.phonenumber
+            Admin.email, Admin.password, Admin.phonenumber,
         ];
         await pool.query(queryPlaceholder, values);
-        const makeAdmin = `UPDATE users SET admin = true WHERE email = $1 `;
+        // eslint-disable-next-line quotes
+        const makeAdmin = `UPDATE users SET admin = true WHERE email = $1`;
 
         const adminValue = [Admin.email];
         await pool.query(makeAdmin, adminValue);
@@ -49,9 +50,8 @@ console.log('Creating tables...');
         id SERIAL PRIMARY KEY,
         topic VARCHAR(255) NOT NULL,
         location TEXT NOT NULL,
-        date VARCHAR(50) NOT NULL,
+        happeningon VARCHAR(50) NOT NULL,
         image VARCHAR(50),
-        tags VARCHAR(500),
         createdon TIMESTAMPTZ DEFAULT NOW())`);
 
         console.log('Creating questions table...');
