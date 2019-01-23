@@ -39,6 +39,7 @@ const UserController = {
     } = req.body;
 
     const isExistingUserMail = await UserModel.findUserByEmail(email);
+    const admin = isExistingUserMail.admin;
     if (!isExistingUserMail) {
       return errorResponse(res, 404, 'The credentials you provided is incorrect');
     }
@@ -55,7 +56,7 @@ const UserController = {
 
     const token = await jwt.generateToken(tokenData);
     const loginData = await UserModel.logIn(email);
-    return successfullLogin(res, 200, 'You are logged in', token, loginData);
+    return successfullLogin(res, 200, admin ? 'You are logged in as an admin' : 'You are logged in as a normal user', token, loginData);
   },
 };
 
