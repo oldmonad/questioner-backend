@@ -8,6 +8,16 @@ const successResponse = (res, statusCode, message, data) => {
   return res.status(statusCode).json(response);
 };
 
+const successfullLogin = (res, statusCode, message, token, data) => {
+  const response = {
+    status: statusCode,
+    message,
+    token,
+    data,
+  };
+  return res.status(statusCode).json(response);
+};
+
 
 const errorResponse = (res, statusCode, message) => {
   const response = {
@@ -20,4 +30,5 @@ const errorResponse = (res, statusCode, message) => {
 export {
   successResponse,
   errorResponse,
+  successfullLogin,
 };

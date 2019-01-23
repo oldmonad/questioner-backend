@@ -5,6 +5,7 @@ import UserModel from '../models/user';
 import {
   successResponse,
   errorResponse,
+  successfullLogin,
 } from '../utilities/responseformat';
 
 
@@ -22,7 +23,7 @@ const UserController = {
 
     const isExistingUsername = await UserModel.findUserByUsername(newUser.username);
     if (isExistingUsername) {
-      return errorResponse(res, 409, 'This username is not available')
+      return errorResponse(res, 409, 'This username is not available');
     }
     newUser.password = bcrypt.hashPassword(newUser.password);
 
@@ -39,17 +40,11 @@ const UserController = {
 
     const isExistingUserMail = await UserModel.findUserByEmail(email);
     if (!isExistingUserMail) {
-      return res.status(404).json({
-        status: 404,
-        error: 'The credentials you provided is incorrect',
-      });
+      return errorResponse(res, 404, 'The credentials you provided is incorrect');
     }
 
     if (!bcrypt.comparePassword(isExistingUserMail.password, password)) {
-      return res.status(401).json({
-        status: 401,
-        error: 'The credentials you provided is incorrect',
-      });
+      return errorResponse(res, 401, 'The credentials you provided is incorrect');
     }
 
     const tokenData = {
@@ -59,11 +54,8 @@ const UserController = {
     };
 
     const token = await jwt.generateToken(tokenData);
-    return res.status(200).send({
-      status: 200,
-      message: 'You are logged in',
-      token,
-    });
+    const loginData = await UserModel.logIn(email);
+    return successfullLogin(res, 200, 'You are logged in', token, loginData);
   },
 };
 

@@ -43,7 +43,7 @@ class UserModel {
   }
 
   static async logIn(email) {
-    const queryPlaceholder = 'SELECT id, password FROM users WHERE email = $1';
+    const queryPlaceholder = 'SELECT id, firstname, lastname, username, email, phonenumber FROM users WHERE email = $1';
     const values = [email];
     const {
       rows,
