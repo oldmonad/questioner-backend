@@ -11,27 +11,11 @@ import {
 import server from '../app';
 
 import {
-  createAdmin,
   loginAdmin,
   createMeetup,
 } from './testData';
 
 let adminToken;
-
-describe('Create an admin', async () => {
-  await it('Should create an admin', (done) => {
-    request(server)
-      .post('/api/v1/admin/auth/signup')
-      .send(createAdmin)
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(201)
-      .end((err, res) => {
-        if (err) return done(err);
-        return done();
-      });
-  });
-});
 
 describe('Login an admin', async () => {
   await it('Should login an admin', (done) => {

@@ -40,7 +40,6 @@ const askQuestion = {
 };
 
 export {
-  createAdmin,
   loginAdmin,
   createUser,
   userLogin,
