@@ -26,20 +26,4 @@ export default class UserValidation {
       return errorResponse(res, 400, errors);
     });
   }
-
-  static validateLogin(req, res, next) {
-    const user = req.body;
-
-    const userProperties = {
-      email: 'required|email|max:100',
-      password: 'required|alpha_num|min:6|max:18',
-    };
-
-    const validator = new Validator(user, userProperties, customErrorMessages);
-    validator.passes(() => next());
-    validator.fails(() => {
-      const errors = validator.errors.all();
-      return errorResponse(res, 400, errors);
-    });
-  }
 }
