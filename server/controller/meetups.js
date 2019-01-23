@@ -69,7 +69,7 @@ const MeetupController = {
   },
 
   async getUpcomingMeetups(req, res) {
-    const currentDate = new Date(Date.now() / 1000) + 39;
+    const currentDate = new Date().timestanp();
 
     const upcomingMeetups = await MeetupModels.retrieveUpcomingMeetups(currentDate);
 

@@ -6,6 +6,7 @@ console.log('Creating tables...');
 
 (async () => {
     try {
+        console.log('Creating users table...');
         await pool.query(`CREATE TABLE IF NOT EXISTS users(
         id SERIAL PRIMARY KEY,
         firstname VARCHAR(50) NOT NULL,
@@ -17,6 +18,7 @@ console.log('Creating tables...');
         admin BOOLEAN DEFAULT FALSE,
         createdon TIMESTAMPTZ DEFAULT NOW())`);
 
+        console.log('Creating tables...');
         await pool.query(`CREATE TABLE IF NOT EXISTS admin(
         id SERIAL PRIMARY KEY,
         firstname VARCHAR(50) NOT NULL,

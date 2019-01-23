@@ -1,40 +1,29 @@
 /* eslint-disable eol-last */
 import Joi from 'joi';
 
+// Schema validation function
 export default {
+  validateBody(schema) {
+    return (req, res, next) => {
+      const result = Joi.validate(req.body, schema, {
+        abortEarly: false,
+      });
 
-  createMeetup: {
-    body: {
-      topic: Joi.string().required(),
-      location: Joi.string().required(),
-      date: Joi.date().required(),
-      tags: Joi.string(),
-    },
-  },
+      if (result.error) {
+        const errors = result.error.details.map(current => ({
+          key: current.context.key,
+          Rule: current.message.replace(/['"]/g, ''),
+        }));
 
-  getMeetup: {
-    params: {
-      meetupId: Joi.number().required(),
-    },
-  },
+        return res.status(400).json({
+          status: 400,
+          error: errors,
+        });
+      }
+      req.value = {};
+      req.value.body = result.value;
 
-
-  postQuestion: {
-    body: {
-      meetupid: Joi.number().required(),
-      title: Joi.string().required(),
-      body: Joi.string().required(),
-    },
-  },
-
-  rsvps: {
-    body: {
-      meetupId: Joi.number().required(),
-      rsvps: Joi.string().valid(
-        'yes',
-        'no',
-        'maybe',
-      ).required(),
-    },
+      return next();
+    };
   },
 };
