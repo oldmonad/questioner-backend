@@ -55,8 +55,8 @@ const UserController = {
     }
 
     if (!bcrypt.comparePassword(isExistingUserMail.password, password)) {
-      return res.status(404).json({
-        status: 404,
+      return res.status(401).json({
+        status: 401,
         error: 'The credentials you provided is incorrect',
       });
     }
