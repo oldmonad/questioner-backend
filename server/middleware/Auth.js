@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken';
 import {
   errorResponse,
 } from '../utilities/responseformat';
-import customErrorMessages from '../utilities/errorresponses';
 
 
 const Auth = {
@@ -20,7 +19,7 @@ const Auth = {
       return errorResponse(res, 401, 'You are not authorized to make this action please login');
     }
     try {
-      const decoded = await jwt.verify(token, process.env.SECRET);
+      const decoded = await jwt.verify(token, process.env.SECRET_KEY);
       req.user = decoded;
       next();
     } catch (error) {
