@@ -1,13 +1,4 @@
 /* eslint-disable eol-last */
-const createAdmin = {
-  firstname: 'Thor',
-  lastname: 'Ragnar',
-  username: 'earlRagnar',
-  email: 'ragnarok@gmail.com',
-  password: 'Odin777',
-  confirmPassword: 'Odin777',
-  phonenumber: '08135266484',
-};
 
 const loginAdmin = {
   email: 'ragnarok@gmail.com',
