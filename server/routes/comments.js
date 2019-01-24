@@ -5,8 +5,8 @@ import express from 'express';
 const router = express.Router();
 
 import Comments from '../controller/comments';
+import tryCatch from '../utilities/trycatch';
 
-router.post('/auth/signup', Comments.createComment);
-// router.post('/auth/login', Admin.loginAdmin);
+// router.post('/auth/signup', tryCatch(Comments.createComment));
 
 export default router;

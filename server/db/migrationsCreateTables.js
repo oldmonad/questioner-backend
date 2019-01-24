@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 /* eslint-disable eol-last */
-import pool from './index';
 import dotenv from 'dotenv';
+import pool from './index';
 import bcrypt from '../utilities/bcrypt';
 
 dotenv.config();

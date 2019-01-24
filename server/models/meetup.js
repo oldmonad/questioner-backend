@@ -47,6 +47,13 @@ class Meetup {
     } = await pool.query(queryPlaceholder, queryValues);
     return rows;
   }
+
+  static async deleteMeetup(id) {
+    const queryPlaceholder = 'DELETE FROM meetups WHERE id = $1';
+    const queryValues = [id];
+    const result = await pool.query(queryPlaceholder, queryValues);
+    return result;
+  }
 }
 
 export default Meetup;
