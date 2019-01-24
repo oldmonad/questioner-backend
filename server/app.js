@@ -23,7 +23,7 @@ app.use('/api/v1', routes);
 app.all('/api/v1', (req, res) => {
   res.status(200).json({
     status: 200,
-    message: 'Welcome to the Questioner API.'
+    message: 'Welcome to the Questioner API.',
   });
 });
 
