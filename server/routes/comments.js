@@ -5,8 +5,10 @@ import express from 'express';
 const router = express.Router();
 
 import Comments from '../controller/comments';
+import Auth from '../middleware/Auth';
 import tryCatch from '../utilities/trycatch';
+import validate from '../middleware/validatecomment';
 
-// router.post('/auth/signup', tryCatch(Comments.createComment));
+router.post('/', Auth.verifyToken, validate.validComment, tryCatch(Comments.createComment));
 
 export default router;

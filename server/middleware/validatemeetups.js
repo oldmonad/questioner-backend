@@ -12,7 +12,7 @@ export default class MeetupValidation {
     const meetupProperties = {
       topic: 'required|string|min:1|max:255',
       location: 'required|string|min:1',
-      happeningon: ['required', 'date', 'regex:/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}/'],
+      happeningOn: ['required', 'date', 'regex:/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}/'],
       images: 'url',
     };
 
@@ -26,10 +26,10 @@ export default class MeetupValidation {
 
   static checkDate(req, res, next) {
     const {
-      happeningon,
+      happeningOn,
     } = req.body;
     const currentDate = new Date(Date.now());
-    const meetupDate = new Date(happeningon);
+    const meetupDate = new Date(happeningOn);
 
     if (currentDate > meetupDate) {
       return errorResponse(res, 400, `Your Date should be greater than ${currentDate}.`);

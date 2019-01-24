@@ -1,3 +1,4 @@
+/* eslint-disable eol-last */
 import pool from './index';
 
 console.log('Dropping tables...');

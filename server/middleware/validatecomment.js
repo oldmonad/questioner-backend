@@ -5,17 +5,17 @@ import {
 } from '../utilities/responseformat';
 import customErrorMessages from '../utilities/errorresponses';
 
-export default class QuestionValidation {
-  static validateQuestion(req, res, next) {
-    const question = req.body;
 
-    const questionProperties = {
-      meetupId: 'required|numeric',
-      title: 'required|string|max:200',
-      body: 'required|string|max:500',
+export default class CommentValidation {
+  static validComment(req, res, next) {
+    const comments = req.body;
+
+    const commentProperties = {
+      questionId: 'required|numeric',
+      comment: 'required|string|max:500',
     };
 
-    const validator = new Validator(question, questionProperties, customErrorMessages);
+    const validator = new Validator(comments, commentProperties, customErrorMessages);
     validator.passes(() => next());
     validator.fails(() => {
       const errors = validator.errors.all();

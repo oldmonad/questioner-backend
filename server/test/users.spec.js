@@ -32,7 +32,7 @@ describe('Create a user', async () => {
       .end((err, res) => {
         if (err) return done(err);
         const userid = res.body.data.id;
-        const userFirstname = res.body.data.firstname;
+        const userFirstname = res.body.data.first_name;
         const arrayProp = res.body.data;
         expect(res.body.status).to.equal(201);
         expect(userid).to.equal(2);

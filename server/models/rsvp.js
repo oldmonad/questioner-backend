@@ -6,7 +6,7 @@ export default class Rsvp {
   }
 
   async responseToMeetup(meetupId, userId) {
-    const queryPlaceholder = 'INSERT INTO rsvps (meetupid, userid, response) queryValues ($1, $2, $3) RETURNING *';
+    const queryPlaceholder = 'INSERT INTO rsvps (meetup_id, user_id, response) queryValues ($1, $2, $3) RETURNING *';
     const queryValues = [meetupId, userId, this.response];
     const {
       rows,
@@ -15,7 +15,7 @@ export default class Rsvp {
   }
 
   static async allUserResponse(userId, response) {
-    const queryPlaceholder = 'SELECT * FROM rsvps WHERE userid =$1 AND response = $2';
+    const queryPlaceholder = 'SELECT * FROM rsvps WHERE user_id =$1 AND response = $2';
     const queryValues = [userId, response];
     const {
       rows,
@@ -24,7 +24,7 @@ export default class Rsvp {
   }
 
   static async getRsvpResponse(meetupId, userId) {
-    const queryPlaceholder = 'SELECT * FROM rsvps WHERE meetupid = $1 AND userid = $2';
+    const queryPlaceholder = 'SELECT * FROM rsvps WHERE meetup_id = $1 AND user_id = $2';
     const queryValues = [meetupId, userId];
     const {
       rows,
