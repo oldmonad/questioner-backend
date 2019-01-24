@@ -23,8 +23,6 @@ const commentsController = {
     newComment.body = checkquestion.body;
     newComment.userId = req.user.id;
     newComment.comment = newComment.comment.replace(/[^A-Z0-9]/ig, '');
-    console.log(newComment.userId);
-
 
     const latestComment = new CommentsModel(newComment);
     const createdComment = await latestComment.createComment();

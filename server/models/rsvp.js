@@ -6,7 +6,7 @@ export default class Rsvp {
   }
 
   async responseToMeetup(meetupId, userId) {
-    const queryPlaceholder = 'INSERT INTO rsvps (meetup_id, user_id, response) queryValues ($1, $2, $3) RETURNING *';
+    const queryPlaceholder = 'INSERT INTO rsvps (meetup_id, user_id, response) VALUES ($1, $2, $3) RETURNING *';
     const queryValues = [meetupId, userId, this.response];
     const {
       rows,
