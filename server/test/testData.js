@@ -43,6 +43,11 @@ const askQuestion = {
   body: 'body of question',
 };
 
+const postComment = {
+  questionId: '1',
+  comment: 'comment',
+};
+
 export {
   loginAdmin,
   createUser,
@@ -50,4 +55,5 @@ export {
   invalidUser,
   createMeetup,
   askQuestion,
+  postComment,
 };

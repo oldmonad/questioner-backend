@@ -15,6 +15,7 @@ import {
   userLogin,
   invalidUser,
   askQuestion,
+  postComment,
 } from './testData';
 
 should();
@@ -85,6 +86,25 @@ describe('Create ask questions', async () => {
     request(server)
       .post('/api/v1/questions')
       .send(askQuestion)
+      .set('Accept', 'application/json')
+      .set({
+        Authorization: `Bearer ${userToken}`,
+      })
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body.status).to.equal(201);
+        return done();
+      });
+  });
+});
+
+describe('Create post comments', async () => {
+  it('A user should be able to comment on a question', (done) => {
+    request(server)
+      .post('/api/v1/comments')
+      .send(postComment)
       .set('Accept', 'application/json')
       .set({
         Authorization: `Bearer ${userToken}`,
