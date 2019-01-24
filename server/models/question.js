@@ -3,16 +3,16 @@ import pool from '../db/index';
 
 class Question {
   constructor(question) {
-    this.meetupid = question.meetupid;
+    this.meetupId = question.meetupId;
     this.title = question.title;
     this.body = question.body;
-    this.userid = question.userid;
+    this.userId = question.userId;
   }
 
   async postQuestion() {
-    const queryString = `INSERT INTO questions (meetupid, title, body, userid)
+    const queryString = `INSERT INTO questions (meetup_id, title, body, user_id)
     VALUES ($1, $2, $3, $4) RETURNING *`;
-    const values = [this.meetupid, this.title, this.body, this.userid];
+    const values = [this.meetupId, this.title, this.body, this.userId];
     const {
       rows,
     } = await pool.query(queryString, values);
@@ -20,6 +20,7 @@ class Question {
   }
 
   static async getQuestionById(id) {
+    console.log('Hitting here');
     const queryPlaceholder = 'SELECT * FROM questions WHERE id = $1';
     const queryValues = [id];
     const {
@@ -46,17 +47,17 @@ class Question {
     return rows[0];
   }
 
-  static async updateVotesTable(userid, questionid, vote) {
-    const queryPlaceholder = `INSERT INTO votes (userid, questionid, vote) queryValues
+  static async updateVotesTable(userId, questionId, vote) {
+    const queryPlaceholder = `INSERT INTO votes (user_id, question_id, vote) VALUES
     ($1, $2, $3)`;
-    const queryValues = [userid, questionid, vote];
+    const queryValues = [userId, questionId, vote];
     const result = await pool.query(queryPlaceholder, queryValues);
     return result;
   }
 
-  static async ifVoted(userid, questionid) {
-    const queryPlaceholder = 'SELECT * FROM votes WHERE userid = $1 AND questionid = $2';
-    const queryValues = [userid, questionid];
+  static async ifVoted(userId, questionId) {
+    const queryPlaceholder = 'SELECT * FROM votes WHERE user_id = $1 AND question_id = $2';
+    const queryValues = [userId, questionId];
     const {
       rows,
     } = await pool.query(queryPlaceholder, queryValues);

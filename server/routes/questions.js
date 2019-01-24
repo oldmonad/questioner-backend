@@ -6,12 +6,11 @@ const router = express.Router();
 
 import questionsController from '../controller/questions';
 // import voteController from '../controller/vote';
-import Auth from '../middleware/Auth';
 import validate from '../middleware/validatequestion';
 import tryCatch from '../utilities/trycatch';
 
 
-router.post('/', Auth.verifyToken, validate.validateQuestion, tryCatch(questionsController.createQuestion));
+router.post('/', validate.validateQuestion, tryCatch(questionsController.createQuestion));
 // router.patch('/:questionId/upvote', Auth.verifyToken, voteController.upvote);
 // router.patch('/:questionId/downvote', Auth.verifyToken, voteController.downvote);
 

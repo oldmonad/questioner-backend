@@ -32,15 +32,20 @@ const invalidUser = {
 const createMeetup = {
   topic: 'Montypoint tech meetup',
   location: 'Yaba, Lagos state',
-  happeningon: '2025-01-23T22:00',
+  happeningOn: '2025-01-23T22:00',
   image: 'heroku.com',
 };
 
 
 const askQuestion = {
-  meetupid: '1',
+  meetupId: '1',
   title: 'title of question',
   body: 'body of question',
+};
+
+const postComment = {
+  questionId: '1',
+  comment: 'comment',
 };
 
 export {
@@ -50,4 +55,5 @@ export {
   invalidUser,
   createMeetup,
   askQuestion,
+  postComment,
 };

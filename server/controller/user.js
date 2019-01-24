@@ -29,7 +29,7 @@ const UserController = {
 
     const createdUser = await newUser.newUserSignUp();
 
-    return successResponse(res, 201, 'User Created', createdUser);
+    return successResponse(res, 201, 'You have created an account', createdUser);
   },
 
   async loginUser(req, res) {

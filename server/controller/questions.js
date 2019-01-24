@@ -11,11 +11,11 @@ export default {
     const {
       id,
     } = req.user;
-    req.body.userid = id;
+    req.body.userId = id;
 
     const question = new Question(req.body);
 
-    const meetupExists = await Meetup.retrieveSingleMeetup(question.meetupid);
+    const meetupExists = await Meetup.retrieveSingleMeetup(question.meetupId);
     if (!meetupExists) {
       return errorResponse(res, 404, 'Meetup not found');
     }

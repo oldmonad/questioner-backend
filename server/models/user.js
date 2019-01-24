@@ -12,9 +12,9 @@ class UserModel {
   }
 
   async newUserSignUp() {
-    const queryPlaceholder = `INSERT INTO users (firstname, lastname,
-      username, email, password,  phonenumber)
-      VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname, lastname, username, email, phonenumber`;
+    const queryPlaceholder = `INSERT INTO users (first_name, last_name,
+      user_name, email, password,  phone_number)
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, first_name, last_name, user_name, email, phone_number`;
     const values = [this.firstname, this.lastname, this.username,
       this.email, this.password, this.phonenumber,
     ];
@@ -34,7 +34,7 @@ class UserModel {
   }
 
   static async findUserByUsername(username) {
-    const queryPlaceholder = 'SELECT * FROM users WHERE username = $1';
+    const queryPlaceholder = 'SELECT * FROM users WHERE user_name = $1';
     const values = [username];
     const {
       rows,
@@ -43,7 +43,7 @@ class UserModel {
   }
 
   static async logIn(email) {
-    const queryPlaceholder = 'SELECT id, firstname, lastname, username, email, phonenumber FROM users WHERE email = $1';
+    const queryPlaceholder = 'SELECT id, first_name, last_name, user_name, email, phone_number FROM users WHERE email = $1';
     const values = [email];
     const {
       rows,
