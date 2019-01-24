@@ -19,12 +19,8 @@ const commentsController = {
       return errorResponse(res, 404, 'Question does not exist');
     }
 
-    newComment.title = checkquestion.title;
-    newComment.body = checkquestion.body;
     newComment.userId = req.user.id;
     newComment.comment = newComment.comment.replace(/[^A-Z0-9]/ig, '');
-    console.log(newComment.userId);
-
 
     const latestComment = new CommentsModel(newComment);
     const createdComment = await latestComment.createComment();
