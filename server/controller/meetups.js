@@ -50,12 +50,16 @@ const MeetupController = {
   },
 
 
-  // async deleteMeetup(req, res) {
-  //   const {
-  //     id,
-  //   } = req.params;
-  //   const meetup = await MeetupModels.retrieveSingleMeetup(id);
-  // },
+  async deleteMeetup(req, res) {
+    const {
+      id,
+    } = req.params;
+    const meetup = await MeetupModels.retrieveSingleMeetup(id);
+
+    if (!meetup) return errorResponse(res, 404, 'Meetup not found.');
+    await MeetupModels.deleteMeetup(id);
+    return successResponse(res, 200, 'Meetup deleted successfully.', null);
+  },
 };
 
 
