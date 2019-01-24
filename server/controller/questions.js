@@ -1,6 +1,10 @@
 /* eslint-disable eol-last */
 import Question from '../models/question';
 import Meetup from '../models/meetup';
+import {
+  errorResponse,
+  successResponse,
+} from '../utilities/responseformat';
 
 export default {
   async createQuestion(req, res) {
@@ -13,17 +17,10 @@ export default {
 
     const meetupExists = await Meetup.retrieveSingleMeetup(question.meetupid);
     if (!meetupExists) {
-      return res.status(404).json({
-        status: 404,
-        error: 'Meetup not found',
-      });
+      return errorResponse(res, 404, 'Meetup not found');
     }
 
     const newQuestion = await question.postQuestion();
-    return res.status(201).json({
-      status: 201,
-      message: 'Question created',
-      data: [newQuestion],
-    });
+    return successResponse(res, 201, 'Question created', newQuestion);
   },
 };

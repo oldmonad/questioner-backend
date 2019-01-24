@@ -1,46 +1,41 @@
 /* eslint-disable eol-last */
-const createAdmin = {
-  firstname: 'Thor',
-  lastname: 'Ragnar',
-  username: 'earlRagnar',
-  email: 'ragnarok@gmail.com',
-  password: 'Odin777',
-  confirmPassword: 'Odin777',
-  phonenumber: '08135266484',
-};
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 const loginAdmin = {
-  email: 'ragnarok@gmail.com',
-  password: 'Odin777',
+  email: 'legolaslegit@gmail.com',
+  password: process.env.ADMIN_PASSWORD,
 };
 
 const createUser = {
   firstname: 'legolas',
   lastname: 'Aragorn',
-  username: 'legoagon',
-  email: 'legoagon@gmail.com',
-  password: 'Odin',
-  confirmPassword: 'Odin',
+  username: 'legogonn',
+  email: 'legolasfake@gmail.com',
+  password: 'Odinsleep',
+  confirmPassword: 'Odinsleep',
   phonenumber: '08135266484',
 };
 
 const userLogin = {
-  email: 'legoagon@gmail.com',
-  password: 'Odin',
+  email: 'legolasfake@gmail.com',
+  password: 'Odinsleep',
 };
 
 const invalidUser = {
-  email: 'gonalons@gmail.com',
-  password: 'Bor',
+  email: 'legolasfake@gmail.com',
+  password: 'Odinslee',
 };
 
 const createMeetup = {
   topic: 'Montypoint tech meetup',
   location: 'Yaba, Lagos state',
-  date: '1465599344356',
+  happeningon: '2025-01-23T22:00',
   image: 'heroku.com',
-  tags: 'goal yeaah nope',
 };
+
 
 const askQuestion = {
   meetupid: '1',
@@ -49,7 +44,6 @@ const askQuestion = {
 };
 
 export {
-  createAdmin,
   loginAdmin,
   createUser,
   userLogin,

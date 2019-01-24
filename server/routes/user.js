@@ -5,10 +5,11 @@ import express from 'express';
 const router = express.Router();
 
 import User from '../controller/user';
+import tryCatch from '../utilities/trycatch';
+import userValidation from '../middleware/validateuser';
 
-router.post('/auth/signup', User.createNewUser);
-
-router.post('/auth/login', User.loginUser);
+router.post('/signup', userValidation.validateSignUp, tryCatch(User.createNewUser));
+router.post('/login', userValidation.validateLogin, tryCatch(User.loginUser));
 
 
 export default router;

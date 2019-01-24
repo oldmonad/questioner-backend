@@ -1,51 +1,27 @@
 /* eslint-disable eol-last */
 import MeetupModels from '../models/meetup';
+import {
+  errorResponse,
+  successResponse,
+} from '../utilities/responseformat';
 
 
 const MeetupController = {
 
   async createMeetup(req, res) {
-    const {
-      topic,
-      location,
-      date,
-      image,
-      tags,
-    } = req.body;
-
-    const formatedTags = tags.trim().split('');
-
-    const newMeetUp = {
-      topic,
-      location,
-      date,
-      image,
-      formatedTags,
-    };
-
-    const meetupData = new MeetupModels(newMeetUp);
+    const meetupData = new MeetupModels(req.body);
     const createdMeetup = await meetupData.createMeetup();
-    res.status(201).json({
-      status: 201,
-      message: 'Meetup created',
-      data: createdMeetup,
-    });
+    return successResponse(res, 201, 'Meetup created', createdMeetup);
   },
 
   async getAllMeetups(req, res) {
     const allMeetups = await MeetupModels.retrieveAllMeetups();
 
     if (allMeetups.length === 0) {
-      res.status(204).json({
-        status: 204,
-        error: 'Empty resource',
-      });
+      return errorResponse(res, 204, 'Empty Resource');
     }
 
-    return res.status(200).json({
-      status: 200,
-      data: allMeetups,
-    });
+    return successResponse(res, 200, 'All available meetups', allMeetups);
   },
 
   async getSingleMeetup(req, res) {
@@ -55,37 +31,31 @@ const MeetupController = {
     const retrievedMeetup = await MeetupModels.retrieveSingleMeetup(id);
 
     if (!retrievedMeetup) {
-      res.status(404).json({
-        status: 404,
-        error: 'Meetup not found',
-      });
+      return errorResponse(res, 404, 'Meetup not found');
     }
 
-    return res.status(200).json({
-      status: 200,
-      message: 'Meetup Found!',
-      data: retrievedMeetup,
-    });
+    return successResponse(res, 200, 'Meetup Found', retrievedMeetup);
   },
 
   async getUpcomingMeetups(req, res) {
-    const currentDate = new Date(Date.now() / 1000) + 39;
+    const currentDate = new Date(Date.now());
 
     const upcomingMeetups = await MeetupModels.retrieveUpcomingMeetups(currentDate);
 
     if (upcomingMeetups.length === 0) {
-      return res.status(404).json({
-        status: 404,
-        err0r: 'No upcoming meetups found',
-      });
+      return errorResponse(res, 404, 'No upcoming meetups');
     }
-    return res.status(200).json({
-      status: 200,
-      message: 'These are pending meetups',
-      data: upcomingMeetups,
-    });
+
+    return successResponse(res, 200, 'These are the upcoming meetups', upcomingMeetups);
   },
 
+
+  // async deleteMeetup(req, res) {
+  //   const {
+  //     id,
+  //   } = req.params;
+  //   const meetup = await MeetupModels.retrieveSingleMeetup(id);
+  // },
 };
 
 
