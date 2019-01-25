@@ -16,7 +16,7 @@ const rsvpController = {
     } = req.body;
 
     const checkForMeetup = await MeetupModels.retrieveSingleMeetup(meetupId);
-    console.log(checkForMeetup);
+
     if (!checkForMeetup) {
       return errorResponse(res, 404, 'Meetup not found');
     }
@@ -27,6 +27,16 @@ const rsvpController = {
       return successResponse(res, 200, 'You ', newResponseData);
     }
     return successResponse(res, 200, 'Your response as been recorded', null);
+  },
+
+  async getJoinedMeetups(req, res) {
+    const {
+      id,
+    } = req.user;
+    const response = 'yes';
+    const result = await RsvpModels.userResponses(id, response);
+    if (result.length === 0) return successResponse(res, 200, 'You have not joined any meetups yet.', result);
+    return successResponse(res, 200, 'Joined meetups found.', result);
   },
 };
 

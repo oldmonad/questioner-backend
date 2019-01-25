@@ -1,3 +1,4 @@
+/* eslint-disable eol-last */
 import pool from '../db/index';
 
 export default class Rsvp {
@@ -14,7 +15,7 @@ export default class Rsvp {
     return rows[0];
   }
 
-  static async allUserResponse(userId, response) {
+  static async userResponses(userId, response) {
     const queryPlaceholder = 'SELECT * FROM rsvps WHERE user_id =$1 AND response = $2';
     const queryValues = [userId, response];
     const {
@@ -23,7 +24,7 @@ export default class Rsvp {
     return rows;
   }
 
-  static async getRsvpResponse(meetupId, userId) {
+  static async getUserByResponse(meetupId, userId) {
     const queryPlaceholder = 'SELECT * FROM rsvps WHERE meetup_id = $1 AND user_id = $2';
     const queryValues = [meetupId, userId];
     const {
