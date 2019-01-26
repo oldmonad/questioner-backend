@@ -24,9 +24,9 @@ const rsvpController = {
     const responseInstance = new RsvpModels(req.body);
     const newResponseData = await responseInstance.responseToMeetup(meetupId, userId);
     if (response === 'yes') {
-      return successResponse(res, 200, 'You ', newResponseData);
+      return successResponse(res, 200, 'You are scheduled to attend this meetup', newResponseData);
     }
-    return successResponse(res, 200, 'Your response as been recorded', null);
+    return successResponse(res, 200, 'Your response has been recorded', null);
   },
 
   async getJoinedMeetups(req, res) {

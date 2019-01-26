@@ -4,7 +4,6 @@ import Validator from 'validatorjs';
 import {
   errorResponse,
 } from '../utilities/responseformat';
-import customErrorMessages from '../utilities/errorresponses';
 
 export default class RsvpValidation {
   static validRsvp(req, res, next) {
