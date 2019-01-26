@@ -81,8 +81,6 @@ console.log('Creating tables...');
         await pool.query(`CREATE TABLE IF NOT EXISTS comments(
         id SERIAL PRIMARY KEY,
         question_id INT NOT NULL,
-        title VARCHAR(255) NOT NULL,
-        body TEXT NOT NULL,
         comment TEXT NOT NULL,
         user_id INT NOT NULL,
         created_on TIMESTAMPTZ DEFAULT NOW(),
