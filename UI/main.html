@@ -17,6 +17,31 @@
 
 <body>
 	<div class="page--content">
+
+		<header>
+			<div class="navbar">
+				<span class="navbar--toggle" id="js-navbar-toggle">
+					<i class="fas fa-bars"></i>
+				</span>
+				<a href="./index.html" class="logo">Questioner</a>
+				<!-- <span>Header name</span> -->
+				<ul class="main--nav" id="js--menu">
+					<!-- <li><a href="./main.html" class="nav--links menu--item">Login</a></li>
+					<li><a href="#sign-up" class="nav--links menu--item">Sign Up</a></li> -->
+					<li class="create-meetup menu--item">
+						<a id="modalBtn" class="nav--links">Create meetup</a>
+					</li>
+					<li class="view-dashboard menu--item">
+						<a href="#" class="nav--links">Dashboard</a>
+					</li>
+					<li class="change-password menu--item">
+						<a href="#" class="nav--links">Change password</a>
+					</li>
+					<img class="avatar" src="./assets/img/profile-user_318-80283.jpg" alt="" title="John doe" />
+				</ul>
+			</div>
+		</header>
+		<!-- 
 		<header class="navbar">
 			<span class="navbar--toggle" id="js-navbar-toggle">
 				<i class="fas fa-bars"></i>
@@ -34,97 +59,10 @@
 				</li>
 				<img class="avatar" src="./assets/img/profile-user_318-80283.jpg" alt="" title="John doe" />
 			</ul>
-		</header>
+		</header> -->
 
 		<main class="meetup">
-			<h1 class="meetup--title">
-				Neque porro quisquam est qui dolorem Neque porro quisquam est qui
-				dolorem
-			</h1>
-			<div class="meetup--details">
-				<div class="meetup--detail">
-					<p class="meetup--detail__label">Location:</p>
-					<p class="meetup--detail__information">
-						Neque porro quisquam est qui dolorem Neque porro quisquam est qui
-						dolorem
-					</p>
-				</div>
 
-				<div class="meetup--detail">
-					<p class="meetup--detail__label">Date:</p>
-					<p class="meetup--detail__information">7th january 2019</p>
-				</div>
-
-				<div class="meetup--detail">
-					<p class="meetup--detail__label">Location URL:</p>
-					<p class="meetup--detail__information">www.google.com</p>
-				</div>
-
-				<div class="meetup--detail">
-					<p class="meetup--detail__label">Created on:</p>
-					<p class="meetup--detail__information">7th january 2019</p>
-				</div>
-			</div>
-			<div class="tags">
-				<div class="tag">technology</div>
-				<div class="tag">technology</div>
-			</div>
-			<div class="meetup--form">
-				<form action="#" class="meetup--custom__form">
-					<div class="form-group">
-						<input type="text" class="form-control" name="ask-question" id="ask-question" />
-						<label for="ask-question" class="animated-label">Ask Question</label>
-					</div>
-
-					<div class="submit--button">
-						<input type="submit" value="Ask Question" />
-					</div>
-				</form>
-			</div>
-			<div class="rsvp">
-				<p class="rsvp--question">Are you attending this meetup?</p>
-				<div class="rsvp--responses">
-					<a href="" class="rsvp--responses__yes rsvp--item">Yes</a>
-					<a href="" class="rsvp--responses__maybe rsvp--item">Maybe</a>
-					<a href="" class="rsvp--responses__no rsvp--item">No</a>
-				</div>
-			</div>
-			<div class="accordion">
-				<div class="accordion">
-					<button class="accordion--button" data-toggle="collapse" data-target=".collapse.first" data-text="Collapse">
-						View Questions
-					</button>
-				</div>
-			</div>
-
-			<div class="block collapse first">
-				<div class="questions">
-					<h1 class="question--poster">John doe</h1>
-					<span class="timestamp">3h ago</span>
-					<p class="question--body">
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad
-						maiores provident fugit dignissimos iure aut incidunt dicta? Omnis
-						vero aut.
-					</p>
-					<div class="reply--vote">
-						<div class="reply reply--vote__item">Reply</div>
-						<div class="upvote reply--vote__item">
-							Downvote <span class="downvote--number"> 2</span>
-						</div>
-						<div class="downvote reply--vote__item">
-							Upvote <span class="upvote--number"> 10</span>
-						</div>
-					</div>
-					<div class="reply--question">
-						<h1 class="reply--name">Jane Doe</h1>
-						<p class="reply--body">
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum
-							amet dolores ratione ducimus nihil necessitatibus a animi
-							eligendi!
-						</p>
-					</div>
-				</div>
-			</div>
 		</main>
 
 		<div id="simpleModal" class="modal">
