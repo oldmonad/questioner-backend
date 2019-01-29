@@ -15,7 +15,7 @@
   padding: .8rem;
   margin: 20% auto;
   border-radius: .2rem;
-  min-width: 300px;
+  width: 300px;
   animation-name: modalOpen;
   animation-duration: .8s;
 }
@@ -40,13 +40,13 @@
   display: inline-block;
 }
 
-.custom-form .form-group {
+.form-group {
   position: relative;
   padding-top: 16px;
   margin-bottom: 16px;
 }
 
-.custom-form .form-group .form-control {
+.form-control {
   position: relative;
   z-index: 1;
   border-radius: 0;
@@ -59,13 +59,7 @@
 }
 
 
-.custom-form .form-group {
-  position: relative;
-  padding-top: 16px;
-  margin-bottom: 16px;
-}
-
-.custom-form .form-group .animated-label {
+.animated-label {
   position: absolute;
   top: 20px;
   left: 0;
@@ -82,7 +76,7 @@
   user-select: none;
 }
 
-.custom-form .form-group .animated-label:after {
+.animated-label:after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -94,12 +88,12 @@
   transition: 0.2s ease all;
 }
 
-.custom-form .form-group.not-empty .animated-label {
+.form-group.not-empty .animated-label {
   top: 0;
   font-size: 12px;
 }
 
-.custom-form .form-group .form-control {
+.form-control {
   position: relative;
   z-index: 1;
   border-radius: 0;
@@ -110,20 +104,20 @@
   width: 100%;
 }
 
-.custom-form .form-group .form-control:focus {
+.form-control:focus {
   box-shadow: none;
   outline: none;
   border-bottom-color: rgba(0, 0, 0, 0.12);
 }
 
-.custom-form .form-group .form-control:focus~.animated-label {
+.form-control:focus~.animated-label {
   top: 0;
   opacity: 1;
   color: #3F45FF;
   font-size: .9rem;
 }
 
-.custom-form .form-group .form-control:focus~.animated-label:after {
+.form-control:focus~.animated-label:after {
   visibility: visible;
   width: 100%;
   left: 0;
@@ -159,20 +153,81 @@
 
 @media screen and (min-width: 500px) {
   .modal--content {
-    margin: 7% auto;
+    margin: 2% auto;
     padding: 2rem;
-    max-width: 400px;
+    width: 400px;
   }
 
   .event--information__header {
     margin-bottom: .6rem;
   }
 
-  .custom-form .form-group .form-control:focus~.animated-label {
+  .form-control:focus~.animated-label {
     font-size: 1rem;
   }
 
   .contact--date {
     display: flex;
   }
+}
+
+
+@media screen and (min-width: 1441px) {
+  .modal--content {
+    background: #ffffff;
+    padding: 2rem;
+    margin: 5% auto;
+    width: 1000px;
+  }
+
+  .closeBtn {
+    font-size: 4rem;
+  }
+
+
+  .event--information__header {
+    font-weight: 900;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-control {
+    padding: 7px 0 9px;
+  }
+
+
+  .animated-label {
+    font-weight: 500;
+    font-size: 2rem;
+  }
+
+  .form-group.not-empty .animated-label {
+    font-size: 2rem;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+    outline: none;
+    border-bottom-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .form-control:focus~.animated-label {
+    top: 0;
+    opacity: 1;
+    color: #3F45FF;
+    font-size: 2rem;
+  }
+
+  .submit--button input[type=submit] {
+    padding: 1rem;
+    margin-bottom: .5rem;
+    border-radius: .2rem;
+    font-size: 2.5rem;
+  }
+
 }

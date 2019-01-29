@@ -3,10 +3,7 @@ body {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  /* max-width: 100%; */
-  height: calc(100vh - 95px);
+  height: calc(100vh - 100px);
 }
 
 .landing--page {
@@ -14,7 +11,7 @@ main {
     url(../img/rawpixel-1080855-unsplash.jpg) no-repeat center center fixed;
   background-size: 100% 100vh;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,18 +26,18 @@ main {
 
 .banner h2 {
   color: #ffffff;
-  font-size: 40px;
-  line-height: 45px;
+  font-size: 2rem;
+  line-height: 2rem;
   text-align: center;
   font-weight: 900;
 }
 
 .banner h1 {
   color: #ffffff;
-  font-size: 24px;
+  font-size: 1.2rem;
   text-align: center;
   font-weight: 100;
-  line-height: 30px;
+  line-height: 1.5rem;
 }
 
 .button--section {
@@ -49,9 +46,9 @@ main {
 
 .landing--button {
   color: #ffffff;
-  padding: .5rem 1.5rem;
+  padding: .5rem 1rem;
   background: #3F45FF;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
   border-radius: 50px;
   transition: .1s ease all;
@@ -61,130 +58,21 @@ main {
   background-color: #232994;
 }
 
-
-
-
-
-/* .signup--section {
-  padding: .5rem 1rem 0;
-  background-color: #ffffff;
+.dropdown {
+  margin-top: .2rem;
 }
 
-.signup--section__header {
-  margin: 2rem 0 0;
-  text-align: center;
-  color: #3F45FF;
-  font-weight: 600;
-  font-size: 2rem;
-}
 
-.custom--form {
-  font-weight: 400;
-  font-size: 1rem;
-  max-width: 100%;
-  margin-top: .4rem;
-}
 
-.custom--form .form--group {
-  position: relative;
-  padding-top: 16px;
-  margin-bottom: 16px;
-}
-
-.custom--form .form--group .animated--label {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  bottom: 0;
-  z-index: 2;
-  width: 100%;
-  font-weight: 300;
-  opacity: 0.5;
-  cursor: text;
-  transition: 0.2s ease all;
-  margin: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-.custom--form .form--group .animated--label:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 45%;
-  height: 2px;
-  width: 10px;
-  visibility: hidden;
-  background-color: #3F45FF;
-  transition: 0.2s ease all;
-}
-
-.custom--form .form--group.not-empty .animated--label {
-  top: 0;
-  font-size: 12px;
-}
-
-.custom--form .form--group .form--control {
-  position: relative;
-  z-index: 1;
-  border-radius: 0;
-  border-width: 0 0 .1rem;
-  border-bottom-color: rgba(0, 0, 0, 0.25);
-  height: auto;
-  padding: .3rem 0 .3rem;
-  width: 100%;
-}
-
-.custom--form .form--group .form--control:focus {
-  box-shadow: none;
-  outline: none;
-  border-bottom-color: rgba(0, 0, 0, 0.12);
-}
-
-.custom--form .form--group .form--control:focus~.animated--label {
-  top: 0;
-  opacity: 1;
-  color: #3F45FF;
-  font-size: .9rem;
-}
-
-.custom--form .form--group .form--control:focus~.animated--label:after {
-  visibility: visible;
-  width: 100%;
-  left: 0;
-}
-
-.submit--button input[type=submit] {
+.topnav a {
+  margin-bottom: 0 !important;
+  color: #3F45FF !important;
   cursor: pointer;
-  width: 100%;
-  padding: .5rem;
-  margin-bottom: .3rem;
-  border-radius: .2rem;
-  background-color: #3F45FF;
-  color: #ffffff;
-  border: #3F45FF;
-  font-size: 1.2rem;
-  transition: 1s ease all;
 }
 
-.submit--button input[type=submit]:hover {
-  background-color: #232994;
+.dummy-login {
+  display: none !important;
 }
-
-.instruction {
-  display: flex;
-  margin-top: .8rem;
-}
-
-.instruction__acount {
-  color: #444444;
-  margin-right: .5rem;
-}
-
-.instruction__login a {
-  color: #3F45FF;
-} */
 
 @media screen and (min-width: 500px) {
 
@@ -219,6 +107,16 @@ main {
     overflow: hidden;
   }
 
+  .banner h2 {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+
+  .banner h1 {
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+  }
+
   /* main {
     display: flex;
     flex-direction: row;
@@ -234,4 +132,27 @@ main {
     width: 35%;
   } */
 
+}
+
+
+@media screen and (min-width: 1441px) {
+  main {
+    height: calc(100vh - 145px);
+  }
+
+  .banner h2 {
+    font-size: 5rem;
+    line-height: 60px;
+  }
+
+  .banner h1 {
+    font-size: 3rem;
+    line-height: 60px;
+  }
+
+  .landing--button {
+    padding: 1rem 2rem;
+    font-size: 3rem;
+    margin-top: .8rem;
+  }
 }
