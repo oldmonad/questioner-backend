@@ -17,36 +17,36 @@
 <body>
 
   <div class="page--content">
-    <header class="navbar">
-
-      <span class="navbar--toggle" id="js-navbar-toggle">
-        <i class="fas fa-bars"></i>
-      </span>
-      <a href="#" class="logo">Questioner</a>
-      <ul class="main--nav" id="js--menu">
-        <li id="js-create-meetup" class="create-meetup menu--item">
-          <a href="#" class="nav--links">Create meetup</a>
-        </li>
-        <li class="change-password menu--item">
-          <a href="#" class="nav--links">Change password</a>
-        </li>
-        <img class="avatar" src="./assets/img/profile-user_318-80283.jpg" alt="" title="John doe">
-      </ul>
-
-
+    <header>
+      <div class="topnav" id="myTopnav">
+        <a href="#home" class="logo active">Questioner</a>
+        <div class="dropdown">
+          <button class="dropbtn">Menu
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Change password</a>
+            <a href="./adminMeetups.html">Meetups</a>
+            <a href="./index.html">Logout</a>
+          </div>
+        </div>
+        <a href="javascript:void(0);" style="font-size:30px;" class="icon" onclick="myFunction()">&#9776;</a>
+      </div>
     </header>
 
     <main>
-      <div class="questions">
-        <div class="questions--label">Questions posted</div>
-        <div class="questions--number">
-          12
+      <div class="statistics">
+        <div class="questions">
+          <div class="questions--label">Number of questions posted</div>
+          <div class="questions--number">
+            12
+          </div>
         </div>
-      </div>
-      <div class="comments">
-        <div class="comments--label">Comments</div>
-        <div class="comments--number">
-          9
+        <div class="comments">
+          <div class="comments--label">Number of comments made</div>
+          <div class="comments--number">
+            9
+          </div>
         </div>
       </div>
 
@@ -165,6 +165,174 @@
             </div>
           </div>
 
+          <div class="top--question">
+            <div class="top--question__poster">
+              John doe
+            </div>
+            <span class="top--question__time">
+              10h ago
+            </span>
+            <div class="top--question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+              explicabo
+              voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+              quo
+              molestias officiis nisi necessitatibus!
+            </div>
+            <div class="reply--vote">
+              <div class="reply reply--vote__item">
+                Reply
+              </div>
+              <div class="upvote reply--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+              <div class="downvote reply--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+            </div>
+          </div>
+          <div class="top--question">
+            <div class="top--question__poster">
+              John doe
+            </div>
+            <span class="top--question__time">
+              10h ago
+            </span>
+            <div class="top--question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+              explicabo
+              voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+              quo
+              molestias officiis nisi necessitatibus!
+            </div>
+            <div class="reply--vote">
+              <div class="reply reply--vote__item">
+                Reply
+              </div>
+              <div class="upvote reply--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+              <div class="downvote reply--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+            </div>
+          </div>
+          <div class="top--question">
+            <div class="top--question__poster">
+              John doe
+            </div>
+            <span class="top--question__time">
+              10h ago
+            </span>
+            <div class="top--question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+              explicabo
+              voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+              quo
+              molestias officiis nisi necessitatibus!
+            </div>
+            <div class="reply--vote">
+              <div class="reply reply--vote__item">
+                Reply
+              </div>
+              <div class="upvote reply--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+              <div class="downvote reply--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+            </div>
+          </div>
+          <div class="top--question">
+            <div class="top--question__poster">
+              John doe
+            </div>
+            <span class="top--question__time">
+              10h ago
+            </span>
+            <div class="top--question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+              explicabo
+              voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+              quo
+              molestias officiis nisi necessitatibus!
+            </div>
+            <div class="reply--vote">
+              <div class="reply reply--vote__item">
+                Reply
+              </div>
+              <div class="upvote reply--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+              <div class="downvote reply--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+            </div>
+          </div>
+          <div class="top--question">
+            <div class="top--question__poster">
+              John doe
+            </div>
+            <span class="top--question__time">
+              10h ago
+            </span>
+            <div class="top--question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+              explicabo
+              voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+              quo
+              molestias officiis nisi necessitatibus!
+            </div>
+            <div class="reply--vote">
+              <div class="reply reply--vote__item">
+                Reply
+              </div>
+              <div class="upvote reply--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+              <div class="downvote reply--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+            </div>
+          </div>
+          <div class="top--question">
+            <div class="top--question__poster">
+              John doe
+            </div>
+            <span class="top--question__time">
+              10h ago
+            </span>
+            <div class="top--question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+              explicabo
+              voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+              quo
+              molestias officiis nisi necessitatibus!
+            </div>
+            <div class="reply--vote">
+              <div class="reply reply--vote__item">
+                Reply
+              </div>
+              <div class="upvote reply--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+              <div class="downvote reply--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+            </div>
+          </div>
+          <div class="top--question">
+            <div class="top--question__poster">
+              John doe
+            </div>
+            <span class="top--question__time">
+              10h ago
+            </span>
+            <div class="top--question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+              explicabo
+              voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+              quo
+              molestias officiis nisi necessitatibus!
+            </div>
+            <div class="reply--vote">
+              <div class="reply reply--vote__item">
+                Reply
+              </div>
+              <div class="upvote reply--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+              <div class="downvote reply--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+            </div>
+          </div>
+          <div class="top--question">
+            <div class="top--question__poster">
+              John doe
+            </div>
+            <span class="top--question__time">
+              10h ago
+            </span>
+            <div class="top--question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+              explicabo
+              voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+              quo
+              molestias officiis nisi necessitatibus!
+            </div>
+            <div class="reply--vote">
+              <div class="reply reply--vote__item">
+                Reply
+              </div>
+              <div class="upvote reply--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+              <div class="downvote reply--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+            </div>
+          </div>
           <div class="top--question">
             <div class="top--question__poster">
               John doe
