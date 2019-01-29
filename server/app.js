@@ -29,7 +29,7 @@ app.all('/api/v1', (req, res) => {
 
 app.all('/*', (req, res) => res.status(404).json({
   status: 404,
-  message: 'This route does not exist you might want to check your route specification on postman or check your route configurations.',
+  message: 'Not Found',
 }));
 
 app.use((req, res, next) => {
