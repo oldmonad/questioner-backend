@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./assets/css/header.css">
+  <link rel="stylesheet" href="./assets/css/landing-page.css">
   <link rel="stylesheet" href="./assets/css/login.css">
   <link rel="stylesheet" href="./assets/css/footer.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
@@ -17,20 +18,25 @@
 <body>
 
   <div class="page--content">
-    <header class="navbar">
+    <header>
+      <div class="topnav" id="myTopnav">
+        <a href="#home" class="logo active">Questioner</a>
+        <div class="dropdown">
+          <a class="dummy-login">Login</a>
 
-      <span class="navbar--toggle" id="js-navbar-toggle">
-        <i class="fas fa-bars"></i>
-      </span>
-      <a href="./index.html" class="logo">Questioner</a>
-      <ul class="main--nav" id="js--menu">
-        <li>
-          <a href="./index.html" class="nav--links">Sign Up</a>
-        </li>
-      </ul>
+          <a class="login">Login</a>
+
+          <a class="">Sign up</a>
+        </div>
+        <a href="javascript:void(0);" style="font-size:30px;" class="icon" onclick="myFunction()">&#9776;</a>
+      </div>
     </header>
+
+
     <main>
-      <div class="login--section">
+
+      <div id='login-form' class="login--section">
+
         <h1 class="login--section__header">Login</h1>
         <form action="#" class="custom--form">
           <div class="form--group">
@@ -49,7 +55,8 @@
         </form>
         <div class="instruction">
           <p class="instruction__acount">Don't have an account?</p>
-          <p class="instruction__signup"><a href="./index.html">Sign up</a></p>
+          <p class="instruction__signup"> <a href="./signup.html"> Sign up</a></p>
+
         </div>
       </div>
     </main>

@@ -20,326 +20,172 @@
   <body>
 
     <div class="page--content">
-
-      <header class="navbar">
-        <span class="navbar--toggle" id="js-navbar-toggle">
-          <i class="fas fa-bars"></i>
-        </span>
-        <a href="#" class="logo">Questioner</a>
-        <ul class="main--nav" id="js--menu">
-          <!-- <li class="create-meetup menu--item">
-            <a id="modalBtn" class="nav--links">Create meetup</a>
-          </li> -->
-          <li class="view-dashboard menu--item">
-            <a href="#" class="nav--links">Dashboard</a>
-          </li>
-          <li class="change-password menu--item">
-            <a href="#" class="nav--links">Change password</a>
-          </li>
-          <img class="avatar" src="./assets/img/profile-user_318-80283.jpg" alt="" title="John doe" />
-        </ul>
+      <header>
+        <div class="topnav" id="myTopnav">
+          <a href="#home" class="logo active">Questioner</a>
+          <div class="dropdown">
+            <button class="dropbtn">Menu
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="./dashboard.html">Dashboard</a>
+              <a href="./index.html">Logout</a>
+            </div>
+          </div>
+          <a href="javascript:void(0);" style="font-size:30px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
       </header>
 
       <main>
-        <div class="meetup">
-          <div class="meetup--header">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio consequatur nostrum fugiat voluptatibus
-            sed, nisi laborum deserunt ea voluptate fuga?
-          </div>
-          <div class="meetup--details">
-            <div class="meetup--detail">
-              <div class="meetup--detail__title">
-                Location:
-              </div>
-              <div class="meetup--detail__body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero voluptates architecto explicabo aliquam
-                sit expedita.
-              </div>
-            </div>
-            <div class="meetup--detail">
-              <div class="meetup--detail__title">
-                Date:
-              </div>
-              <div class="meetup--detail__body">
-                18th june 1995
-              </div>
-            </div>
-            <div class="rsvp">
-              <div class="rsvp--header">Are you going to attand this meetup</div>
-              <div class="rsvp--answer">
-                <div class="rsvp--answer__detail rsvp--yes">
-                  <i class="fas fa-check-circle"></i>
-                </div>
-                <div class="rsvp--answer__detail rsvp--no">
-                  <i class="fas fa-times-circle"></i>
-                </div>
-                <div class="rsvp--answer__detail rsvp--maybe">
-                  <i class="fas fa-circle-notch"></i>
-                </div>
-              </div>
-            </div>
-            <div class="meetup--picture">
+        <div class="meetup-details">
+          <div class="meetup">
+            <div class="meetup--header">
               <img class="meetup--image" src="./assets/img/woman.png" />
+              <h1 class="meetup--title">
+                Neque porro quisquam est qui dolorem Neque
+              </h1>
+            </div>
+
+            <div class="meetup--details">
+              <div class="meetup--detail">
+                <p class="meetup--detail__label">Location:</p>
+                <p class="meetup--detail__information">
+                  Neque porro quisquam est qui dolorem Neque porro quisquam est qui
+                  dolorem
+                </p>
+              </div>
+
+              <div class="meetup--detail">
+                <p class="meetup--detail__label">Date:</p>
+                <p class="meetup--detail__information">7th january 2019</p>
+              </div>
+
+              <div class="meetup--detail">
+                <p class="meetup--detail__label">Location URL:</p>
+                <p class="meetup--detail__information">www.google.com</p>
+              </div>
+
+              <div class="meetup--detail">
+                <p class="meetup--detail__label">Created on:</p>
+                <p class="meetup--detail__information">7th january 2019</p>
+              </div>
+            </div>
+            <div class="tags">
+              <div class="tag">technology</div>
+              <div class="tag">technology</div>
+            </div>
+            <div>
+              <span class="closeBtn"><i class="fas fa-trash"></i></span>
             </div>
           </div>
         </div>
 
-
         <div class="questions">
-          <div class="questions--header">Questions</div>
-          <div class="questions--container">
+          <div class="questions--header">
+            <div class="question__title">
+              Questions
+            </div>
+            <a id="modalBtn" class="post--question" href="#">Post question</a>
+          </div>
 
-            <div href="./comments" class="question">
-              <div class="question--body">
-                <div class="vote">
-                  <div class="vote--component">
-                    <div class="upvote">
-                      <i id="up" class="fas fa-thumbs-up"></i>
-                    </div>
-                    <span>21</span>
-                  </div>
-
-                  <div class="vote--component">
-                    <div class=" downvote">
-                      <i id="down" class="fas fa-thumbs-down"></i>
-                    </div>
-                    <span>34</span>
-                  </div>
-                </div>
-                <div class="question--title">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum error quos neque corrupti illo
-                  voluptatibus nulla sapiente tenetur fugit. Iusto accusantium quos sequi sunt adipisci. Quidem
-                  odio
-                  eos
-                  beatae excepturi?
-                </div>
+          <div class="questions__container">
+            <div class="question">
+              <div class="question__poster">
+                John doe
               </div>
-              <div class="time--trash">
-                <div class="time--stamp">
-                  <p>Posted 3hrs ago</p>
+              <span class="question__time">
+                10h ago
+              </span>
+              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+                explicabo
+                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+                quo
+                molestias officiis nisi necessitatibus!
+              </div>
+              <div class="comments--vote">
+                <div class="comments comments--vote__item">
+                  comments
                 </div>
-                <div class="trash--can">
-                  <span class="closeBtn"><i class="fas fa-trash"></i></span>
-                </div>
+                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
               </div>
             </div>
-
-
-            <div href="./comments" class="question">
-              <div class="question--body">
-                <div class="vote">
-                  <div class="vote--component">
-                    <div class="upvote">
-                      <i id="up" class="fas fa-thumbs-up"></i>
-                    </div>
-                    <span>21</span>
-                  </div>
-
-                  <div class="vote--component">
-                    <div class=" downvote">
-                      <i id="down" class="fas fa-thumbs-down"></i>
-                    </div>
-                    <span>34</span>
-                  </div>
-                </div>
-                <div class="question--title">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum error quos neque corrupti illo
-                  voluptatibus nulla sapiente tenetur fugit. Iusto accusantium quos sequi sunt adipisci. Quidem
-                  odio
-                  eos
-                  beatae excepturi?
-                </div>
+            <div class="question">
+              <div class="question__poster">
+                John doe
               </div>
-              <div class="time--trash">
-                <div class="time--stamp">
-                  <p>Posted 3hrs ago</p>
+              <span class="question__time">
+                10h ago
+              </span>
+              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+                explicabo
+                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+                quo
+                molestias officiis nisi necessitatibus!
+              </div>
+              <div class="comments--vote">
+                <div class="comments comments--vote__item">
+                  comments
                 </div>
-                <div class="trash--can">
-                  <span class="closeBtn"><i class="fas fa-trash"></i></span>
-                </div>
+                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
               </div>
             </div>
-
-
-            <div href="./comments" class="question">
-              <div class="question--body">
-                <div class="vote">
-                  <div class="vote--component">
-                    <div class="upvote">
-                      <i id="up" class="fas fa-thumbs-up"></i>
-                    </div>
-                    <span>21</span>
-                  </div>
-
-                  <div class="vote--component">
-                    <div class=" downvote">
-                      <i id="down" class="fas fa-thumbs-down"></i>
-                    </div>
-                    <span>34</span>
-                  </div>
-                </div>
-                <div class="question--title">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum error quos neque corrupti illo
-                  voluptatibus nulla sapiente tenetur fugit. Iusto accusantium quos sequi sunt adipisci. Quidem
-                  odio
-                  eos
-                  beatae excepturi?
-                </div>
+            <div class="question">
+              <div class="question__poster">
+                John doe
               </div>
-              <div class="time--trash">
-                <div class="time--stamp">
-                  <p>Posted 3hrs ago</p>
+              <span class="question__time">
+                10h ago
+              </span>
+              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+                explicabo
+                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+                quo
+                molestias officiis nisi necessitatibus!
+              </div>
+              <div class="comments--vote">
+                <div class="comments comments--vote__item">
+                  comments
                 </div>
-                <div class="trash--can">
-                  <span class="closeBtn"><i class="fas fa-trash"></i></span>
-                </div>
+                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
               </div>
             </div>
-
-
-            <div href="./comments" class="question">
-              <div class="question--body">
-                <div class="vote">
-                  <div class="vote--component">
-                    <div class="upvote">
-                      <i id="up" class="fas fa-thumbs-up"></i>
-                    </div>
-                    <span>21</span>
-                  </div>
-
-                  <div class="vote--component">
-                    <div class=" downvote">
-                      <i id="down" class="fas fa-thumbs-down"></i>
-                    </div>
-                    <span>34</span>
-                  </div>
-                </div>
-                <div class="question--title">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum error quos neque corrupti illo
-                  voluptatibus nulla sapiente tenetur fugit. Iusto accusantium quos sequi sunt adipisci. Quidem
-                  odio
-                  eos
-                  beatae excepturi?
-                </div>
+            <div class="question">
+              <div class="question__poster">
+                John doe
               </div>
-              <div class="time--trash">
-                <div class="time--stamp">
-                  <p>Posted 3hrs ago</p>
+              <span class="question__time">
+                10h ago
+              </span>
+              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+                explicabo
+                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+                quo
+                molestias officiis nisi necessitatibus!
+              </div>
+              <div class="comments--vote">
+                <div class="comments comments--vote__item">
+                  comments
                 </div>
-                <div class="trash--can">
-                  <span class="closeBtn"><i class="fas fa-trash"></i></span>
-                </div>
+                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
               </div>
             </div>
+          </div>
+        </div>
 
-
-            <div href="./comments" class="question">
-              <div class="question--body">
-                <div class="vote">
-                  <div class="vote--component">
-                    <div class="upvote">
-                      <i id="up" class="fas fa-thumbs-up"></i>
-                    </div>
-                    <span>21</span>
-                  </div>
-
-                  <div class="vote--component">
-                    <div class=" downvote">
-                      <i id="down" class="fas fa-thumbs-down"></i>
-                    </div>
-                    <span>34</span>
-                  </div>
-                </div>
-                <div class="question--title">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum error quos neque corrupti illo
-                  voluptatibus nulla sapiente tenetur fugit. Iusto accusantium quos sequi sunt adipisci. Quidem
-                  odio
-                  eos
-                  beatae excepturi?
-                </div>
-              </div>
-              <div class="time--trash">
-                <div class="time--stamp">
-                  <p>Posted 3hrs ago</p>
-                </div>
-                <div class="trash--can">
-                  <span class="closeBtn"><i class="fas fa-trash"></i></span>
-                </div>
+        <div id="simpleModal" class="modal">
+          <div class="modal--content">
+            <h1 class="post--question__header">Post Question</h1>
+            <span id="closeBtn" class="closeBtn">&times;</span>
+            <div class="question--input">
+              <textarea name="feedback" id="question" rows="10" placeholder="Enter your question"></textarea>
+              <div class="submit--button">
+                <input type="submit" value="Submit question" />
               </div>
             </div>
-
-
-            <div href="./comments" class="question">
-              <div class="question--body">
-                <div class="vote">
-                  <div class="vote--component">
-                    <div class="upvote">
-                      <i id="up" class="fas fa-thumbs-up"></i>
-                    </div>
-                    <span>21</span>
-                  </div>
-
-                  <div class="vote--component">
-                    <div class=" downvote">
-                      <i id="down" class="fas fa-thumbs-down"></i>
-                    </div>
-                    <span>34</span>
-                  </div>
-                </div>
-                <div class="question--title">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum error quos neque corrupti illo
-                  voluptatibus nulla sapiente tenetur fugit. Iusto accusantium quos sequi sunt adipisci. Quidem
-                  odio
-                  eos
-                  beatae excepturi?
-                </div>
-              </div>
-              <div class="time--trash">
-                <div class="time--stamp">
-                  <p>Posted 3hrs ago</p>
-                </div>
-                <div class="trash--can">
-                  <span class="closeBtn"><i class="fas fa-trash"></i></span>
-                </div>
-              </div>
-            </div>
-
-
-            <div href="./comments" class="question">
-              <div class="question--body">
-                <div class="vote">
-                  <div class="vote--component">
-                    <div class="upvote">
-                      <i id="up" class="fas fa-thumbs-up"></i>
-                    </div>
-                    <span>21</span>
-                  </div>
-
-                  <div class="vote--component">
-                    <div class=" downvote">
-                      <i id="down" class="fas fa-thumbs-down"></i>
-                    </div>
-                    <span>34</span>
-                  </div>
-                </div>
-                <div class="question--title">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum error quos neque corrupti illo
-                  voluptatibus nulla sapiente tenetur fugit. Iusto accusantium quos sequi sunt adipisci. Quidem
-                  odio
-                  eos
-                  beatae excepturi?
-                </div>
-              </div>
-              <div class="time--trash">
-                <div class="time--stamp">
-                  <p>Posted 3hrs ago</p>
-                </div>
-                <div class="trash--can">
-                  <span class="closeBtn"><i class="fas fa-trash"></i></span>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </main>
@@ -354,6 +200,11 @@
         <li><a href="">Assecibility</a></li>
       </ul>
     </footer>
+
+    <script src="./assets/js/accordion.js"></script>
+    <script src="./assets/js/modal.js"></script>
+    <script src="./assets/js/toggle-navbar.js"></script>
+
   </body>
 
 </html>
