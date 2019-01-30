@@ -56,6 +56,7 @@ main {
 
 .landing--button:hover {
   background-color: #232994;
+
 }
 
 .dropdown {
@@ -71,7 +72,7 @@ main {
 }
 
 .dummy-login {
-  display: none !important;
+  display: none !importa
 }
 
 @media screen and (min-width: 500px) {

@@ -49,6 +49,7 @@ main {
   cursor: pointer;
 }
 
+
 /* .questions--number:hover,
 .comments--number:hover {
   background-color: #3F45FF;
@@ -74,6 +75,7 @@ main {
   color: #444444;
   border-radius: .2rem;
 }
+
 
 .top--questions__container {
   background-color: #f5f5f5;

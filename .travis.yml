@@ -1,0 +1,33 @@
+language: node_js
+
+node_js:
+  - stable
+
+cache:
+  directories:
+    - 'node-modules'
+
+services:
+ - postgresql
+
+before_script:
+  - psql -c 'create database questionerdbtest;' -U postgres
+
+install:
+  - npm install
+
+script:
+  - npm test
+
+after_success:
+  - npm run coverage
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+deploy:
+  provider: heroku
+  app: enigmatic-refuge-95413
+  on:
+    repo: dbytecoderc/Questioner
+    branch: develop
+  api_key:
+    secure: "f012fd74-12f3-499f-adf6-8058db90d0fd"

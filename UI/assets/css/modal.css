@@ -40,6 +40,7 @@
   display: inline-block;
 }
 
+
 .form-group {
   position: relative;
   padding-top: 16px;
@@ -88,10 +89,12 @@
   transition: 0.2s ease all;
 }
 
+
 .form-group.not-empty .animated-label {
   top: 0;
   font-size: 12px;
 }
+
 
 .form-control {
   position: relative;
@@ -110,12 +113,14 @@
   border-bottom-color: rgba(0, 0, 0, 0.12);
 }
 
+
 .form-control:focus~.animated-label {
   top: 0;
   opacity: 1;
   color: #3F45FF;
   font-size: .9rem;
 }
+
 
 .form-control:focus~.animated-label:after {
   visibility: visible;
