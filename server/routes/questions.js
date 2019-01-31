@@ -11,7 +11,8 @@ import tryCatch from '../utilities/trycatch';
 
 
 router.post('/', validate.validateQuestion, tryCatch(questionsController.createQuestion));
-// router.patch('/:questionId/upvote', Auth.verifyToken, voteController.upvote);
-// router.patch('/:questionId/downvote', Auth.verifyToken, voteController.downvote);
+
+// router.patch('/:id/upvote',  voteController.upvote);
+// router.patch('/:id/downvote',  voteController.downvote);
 
 export default router;
