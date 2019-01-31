@@ -20,6 +20,7 @@ router.get('/upcoming/', tryCatch(meetupController.getUpcomingMeetups));
 router.get('/:id', validateId, tryCatch(meetupController.getSingleMeetup));
 router.get('/', tryCatch(meetupController.getAllMeetups));
 router.patch('/:id/rsvps', validateId, validateRsvp.validRsvp, tryCatch(rsvpController.respondToRsvp));
+
 router.delete('/:id', Auth.adminAuth, validateId, tryCatch(meetupController.deleteMeetup));
 
 export default router;
