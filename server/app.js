@@ -22,17 +22,12 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api/v1', routes);
 
-app.all('/api/v1', (req, res) => {
+app.all('/', (req, res) => {
   res.status(200).json({
     status: 200,
     message: 'Welcome to the Questioner API.',
   });
 });
-
-app.all('/', (req, res) => res.status(404).json({
-  status: 404,
-  message: 'Welcome to my questioner app',
-}));
 
 app.all('/*', (req, res) => res.status(404).json({
   status: 404,
