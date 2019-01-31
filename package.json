@@ -8,6 +8,7 @@
     "npm": "6.x"
   },
   "scripts": {
+    "serve:ui": "live-server src --verbose",
     "start": "npm run build && node ./build/server.js",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./server -s",
@@ -17,7 +18,8 @@
     "drop-tables": "babel-node ./server/db/migrationsDropTables.js",
     "create-tables": "babel-node  ./server/db/migrationsCreateTables.js",
     "migrate": "npm run drop-tables && npm run create-tables",
-    "start:dev": "nodemon --exec babel-node ./server/server.js",
+    "serve:backend": "nodemon --exec babel-node ./server/server.js",
+    "start:dev": "npm run serve:backend && npm run serve:ui",
     "test": "npm run migrate && nyc --reporter=html --reporter=text mocha --compilers js:@babel/register --recursive ./server/test/**/*.spec.js --reporter spec --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
@@ -36,7 +38,9 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
+    "browser-sync": "^2.26.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "coveralls": "^3.0.2",
@@ -47,10 +51,12 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.18.9",
     "nyc": "^13.1.0",
+    "rollup": "^1.1.2",
     "supertest": "^3.3.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
+    "@babel/runtime": "^7.3.1",
     "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
@@ -60,10 +66,12 @@
     "http": "0.0.0",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.4.0",
+    "live-server": "^1.2.1",
     "make-runnable": "^1.3.6",
     "moment": "^2.23.0",
     "morgan": "^1.9.1",
     "pg": "^7.8.0",
+    "services": "0.0.3",
     "uuid": "^3.3.2",
     "validatorjs": "^3.15.1"
   }
