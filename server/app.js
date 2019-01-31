@@ -34,7 +34,7 @@ app.all('/', (req, res) => res.status(404).json({
 
 app.all('/*', (req, res) => res.status(404).json({
   status: 404,
-  message: 'Not Found',
+  message: 'This page does not exist you might want to cross-check the address link to be sure you are trying to visit the right address',
 }));
 
 app.use((req, res, next) => {
