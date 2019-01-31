@@ -3,12 +3,14 @@
 import express from 'express';
 import '@babel/polyfill';
 import logger from 'morgan';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 
 // Set up express app
 const app = express();
 import routes from './routes';
 
+app.use(cors());
 // Log requests to the console
 app.use(logger('dev'));
 
