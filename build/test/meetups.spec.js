@@ -15,7 +15,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var adminToken;
-describe('Create an admin',
+describe('Login an admin',
 /*#__PURE__*/
 _asyncToGenerator(
 /*#__PURE__*/
@@ -24,22 +24,22 @@ regeneratorRuntime.mark(function _callee() {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          _context.next = 2;
-          return it('Should create an admin', function (done) {
-            (0, _supertest.default)(_app.default).post('/api/v1/admin/auth/signup').send(_testData.createAdmin).set('Accept', 'application/json').expect('Content-Type', /json/).expect(201).end(function (err, res) {
+          it('Admin should be able to login', function (done) {
+            (0, _supertest.default)(_app.default).post('/api/v1/auth/login').send(_testData.loginAdmin).set('Accept', 'application/json').expect('Content-Type', /json/).end(function (err, res) {
               if (err) return done(err);
+              adminToken = res.body.token;
               return done();
             });
           });
 
-        case 2:
+        case 1:
         case "end":
           return _context.stop();
       }
     }
   }, _callee, this);
 })));
-describe('Login an admin',
+describe('Create Meetups',
 /*#__PURE__*/
 _asyncToGenerator(
 /*#__PURE__*/
@@ -48,16 +48,17 @@ regeneratorRuntime.mark(function _callee2() {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          _context2.next = 2;
-          return it('Should login an admin', function (done) {
-            (0, _supertest.default)(_app.default).post('/api/v1/admin/auth/login').send(_testData.loginAdmin).set('Accept', 'application/json').expect('Content-Type', /json/).end(function (err, res) {
+          it('Admin should be able to create a meetup', function (done) {
+            (0, _supertest.default)(_app.default).post('/api/v1/meetups').send(_testData.createMeetup).set('Accept', 'application/json').set({
+              Authorization: "Bearer ".concat(adminToken)
+            }).expect('Content-Type', /json/).expect(201).end(function (err, res) {
               if (err) return done(err);
-              adminToken = res.body.token;
+              (0, _chai.expect)(res.body.status).to.equal(201);
               return done();
             });
           });
 
-        case 2:
+        case 1:
         case "end":
           return _context2.stop();
       }
@@ -73,18 +74,17 @@ regeneratorRuntime.mark(function _callee3() {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          _context3.next = 2;
-          return it('Should Create a meetup', function (done) {
-            (0, _supertest.default)(_app.default).post('/api/v1/meetups').send(_testData.createMeetup).set({
+          it('Should throw an error if meetup does not exist', function (done) {
+            (0, _supertest.default)(_app.default).get('/api/v1/meetups/15').set('Accept', 'application/json').set({
               Authorization: "Bearer ".concat(adminToken)
-            }).expect('Content-Type', /json/).expect(201).end(function (err, res) {
+            }).expect('Content-Type', /json/).expect(404).end(function (err, res) {
               if (err) return done(err);
-              (0, _chai.expect)(res.body.status).to.equal(201);
+              (0, _chai.expect)(res.body.status).to.equal(404);
               return done();
             });
           });
 
-        case 2:
+        case 1:
         case "end":
           return _context3.stop();
       }

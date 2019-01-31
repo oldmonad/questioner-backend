@@ -8,7 +8,6 @@
     "npm": "6.x"
   },
   "scripts": {
-    "serve:ui": "live-server src --verbose",
     "start": "npm run build && node ./build/server.js",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./server -s",
@@ -18,8 +17,7 @@
     "drop-tables": "babel-node ./server/db/migrationsDropTables.js",
     "create-tables": "babel-node  ./server/db/migrationsCreateTables.js",
     "migrate": "npm run drop-tables && npm run create-tables",
-    "serve:backend": "nodemon --exec babel-node ./server/server.js",
-    "start:dev": "npm run serve:backend && npm run serve:ui",
+    "start:dev": "nodemon --exec babel-node ./server/server.js",
     "test": "npm run migrate && nyc --reporter=html --reporter=text mocha --compilers js:@babel/register --recursive ./server/test/**/*.spec.js --reporter spec --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },

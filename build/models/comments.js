@@ -1,29 +1,111 @@
-// import pool from '../db/index';
-// export default class Comment {
-//   constructor(usercomment) {
-//     this.questionid = usercomment.questionid;
-//     this.title = usercomment.title;
-//     this.body = usercomment.body;
-//     this.comment = usercomment.comment;
-//     this.userid = usercomment.userid;
-//   }
-//   async createComment() {
-//     const queryPlaceholder = `INSERT INTO comments (questionid, title, body, comment, userid)
-//     queryValues ($1, $2, $3, $4, $5) RETURNING *`;
-//     const queryValues = [this.questionid, this.title, this.body, this.comment, this.userid];
-//     const {
-//       rows,
-//     } = await pool.query(queryPlaceholder, queryValues);
-//     return rows[0];
-//   }
-//   static async getCommentsByQuestion(id) {
-//     const queryPlaceholder = 'SELECT * FROM comments WHERE questionid = $1';
-//     const queryValues = [id];
-//     const {
-//       rows,
-//     } = await pool.query(queryPlaceholder, queryValues);
-//     return rows;
-//   }
-// }
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _index = _interopRequireDefault(require("../db/index"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Comment =
+/*#__PURE__*/
+function () {
+  function Comment(userComment) {
+    _classCallCheck(this, Comment);
+
+    this.questionId = userComment.questionId;
+    this.comment = userComment.comment;
+    this.userId = userComment.userId;
+  }
+
+  _createClass(Comment, [{
+    key: "createComment",
+    value: function () {
+      var _createComment = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee() {
+        var queryPlaceholder, queryValues, _ref, rows;
+
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                queryPlaceholder = "INSERT INTO comments (question_id, comment, user_id)\n    VALUES ($1, $2, $3) RETURNING *";
+                queryValues = [this.questionId, this.comment, this.userId];
+                _context.next = 4;
+                return _index.default.query(queryPlaceholder, queryValues);
+
+              case 4:
+                _ref = _context.sent;
+                rows = _ref.rows;
+                return _context.abrupt("return", rows[0]);
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function createComment() {
+        return _createComment.apply(this, arguments);
+      }
+
+      return createComment;
+    }()
+  }], [{
+    key: "getCommentsByQuestion",
+    value: function () {
+      var _getCommentsByQuestion = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2(id) {
+        var queryPlaceholder, queryValues, _ref2, rows;
+
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                queryPlaceholder = 'SELECT * FROM comments WHERE questionid = $1';
+                queryValues = [id];
+                _context2.next = 4;
+                return _index.default.query(queryPlaceholder, queryValues);
+
+              case 4:
+                _ref2 = _context2.sent;
+                rows = _ref2.rows;
+                return _context2.abrupt("return", rows);
+
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function getCommentsByQuestion(_x) {
+        return _getCommentsByQuestion.apply(this, arguments);
+      }
+
+      return getCommentsByQuestion;
+    }()
+  }]);
+
+  return Comment;
+}();
+
+exports.default = Comment;
 //# sourceMappingURL=comments.js.map

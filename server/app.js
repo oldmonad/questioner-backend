@@ -27,6 +27,11 @@ app.all('/api/v1', (req, res) => {
   });
 });
 
+app.all('/', (req, res) => res.status(404).json({
+  status: 404,
+  message: 'Welcome to my questioner app',
+}));
+
 app.all('/*', (req, res) => res.status(404).json({
   status: 404,
   message: 'Not Found',

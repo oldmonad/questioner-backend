@@ -45,7 +45,7 @@ function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                queryPlaceholder = "INSERT INTO users (firstname, lastname,\n      username, email, password,  phonenumber)\n      VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname, lastname, username, email, phonenumber";
+                queryPlaceholder = "INSERT INTO users (first_name, last_name,\n      user_name, email, password,  phone_number)\n      VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, first_name, last_name, user_name, email, phone_number";
                 values = [this.firstname, this.lastname, this.username, this.email, this.password, this.phonenumber];
                 _context.next = 4;
                 return _index.default.query(queryPlaceholder, values);
@@ -117,7 +117,7 @@ function () {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                queryPlaceholder = 'SELECT * FROM users WHERE username = $1';
+                queryPlaceholder = 'SELECT * FROM users WHERE user_name = $1';
                 values = [username];
                 _context3.next = 4;
                 return _index.default.query(queryPlaceholder, values);
@@ -153,7 +153,7 @@ function () {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                queryPlaceholder = 'SELECT id, password FROM users WHERE email = $1';
+                queryPlaceholder = 'SELECT id, first_name, last_name, user_name, email, phone_number FROM users WHERE email = $1';
                 values = [email];
                 _context4.next = 4;
                 return _index.default.query(queryPlaceholder, values);

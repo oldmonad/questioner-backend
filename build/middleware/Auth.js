@@ -7,11 +7,17 @@ exports.default = void 0;
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
+var _dotenv = _interopRequireDefault(require("dotenv"));
+
+var _responseformat = require("../utilities/responseformat");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+_dotenv.default.config();
 
 var Auth = {
   verifyToken: function () {
@@ -30,10 +36,7 @@ var Auth = {
                 break;
               }
 
-              return _context.abrupt("return", res.status(401).json({
-                status: 401,
-                error: 'Unauthorized header'
-              }));
+              return _context.abrupt("return", (0, _responseformat.errorResponse)(res, 401, 'You are not authorized to make this action'));
 
             case 3:
               token = header.split(' ')[1];
@@ -43,10 +46,7 @@ var Auth = {
                 break;
               }
 
-              return _context.abrupt("return", res.status(403).send({
-                status: 403,
-                error: 'Token is not provided'
-              }));
+              return _context.abrupt("return", (0, _responseformat.errorResponse)(res, 401, 'You are not authorized to make this action please login'));
 
             case 6:
               _context.prev = 6;
@@ -95,10 +95,7 @@ var Auth = {
                 break;
               }
 
-              return _context2.abrupt("return", res.status(403).json({
-                status: 403,
-                error: 'Unauthorized request'
-              }));
+              return _context2.abrupt("return", (0, _responseformat.errorResponse)(res, 401, 'You are not authorized to make this action'));
 
             case 3:
               next();

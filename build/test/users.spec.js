@@ -25,14 +25,14 @@ regeneratorRuntime.mark(function _callee() {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          it('Should create a user', function (done) {
+          it('A prospective user should be able to create an account', function (done) {
             (0, _supertest.default)(_app.default).post('/api/v1/auth/signup').send(_testData.createUser).set('Accept', 'application/json').expect('Content-Type', /json/).expect(201).end(function (err, res) {
               if (err) return done(err);
               var userid = res.body.data.id;
-              var userFirstname = res.body.data.firstname;
+              var userFirstname = res.body.data.first_name;
               var arrayProp = res.body.data;
               (0, _chai.expect)(res.body.status).to.equal(201);
-              (0, _chai.expect)(userid).to.equal(1);
+              (0, _chai.expect)(userid).to.equal(2);
               (0, _chai.expect)(userFirstname).to.equal('legolas');
               arrayProp.should.be.an('object');
               return done();
@@ -55,21 +55,20 @@ regeneratorRuntime.mark(function _callee2() {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          it('Should Login an existing user', function (done) {
+          it('A user should be able to login', function (done) {
             (0, _supertest.default)(_app.default).post('/api/v1/auth/login').send(_testData.userLogin).set('Accept', 'application/json').expect('Content-Type', /json/).expect(200).end(function (err, res) {
               if (err) return done(err);
               (0, _chai.expect)(res.body.status).to.equal(200);
               (0, _chai.expect)(res.body).to.be.an('object');
-              (0, _chai.expect)(res.body).to.have.property('token'); // console.log(res.body.token);
-
+              (0, _chai.expect)(res.body).to.have.property('token');
               userToken = res.body.token;
               return done();
             });
           });
           it('Should throw an error if login is invalid', function (done) {
-            (0, _supertest.default)(_app.default).post('/api/v1/auth/login').send(_testData.invalidUser).set('Accept', 'application/json').expect('Content-Type', /json/).expect(404).end(function (err, res) {
+            (0, _supertest.default)(_app.default).post('/api/v1/auth/login').send(_testData.invalidUser).set('Accept', 'application/json').expect('Content-Type', /json/).expect(401).end(function (err, res) {
               if (err) return done(err);
-              (0, _chai.expect)(res.body.status).to.equal(404);
+              (0, _chai.expect)(res.body.status).to.equal(401);
               (0, _chai.expect)(res.body).to.have.property('error');
               (0, _chai.expect)(res.body.error).to.equal('The credentials you provided is incorrect');
               return done();
@@ -82,5 +81,57 @@ regeneratorRuntime.mark(function _callee2() {
       }
     }
   }, _callee2, this);
+})));
+describe('Create ask questions',
+/*#__PURE__*/
+_asyncToGenerator(
+/*#__PURE__*/
+regeneratorRuntime.mark(function _callee3() {
+  return regeneratorRuntime.wrap(function _callee3$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          it('A user should be able to ask a question', function (done) {
+            (0, _supertest.default)(_app.default).post('/api/v1/questions').send(_testData.askQuestion).set('Accept', 'application/json').set({
+              Authorization: "Bearer ".concat(userToken)
+            }).expect('Content-Type', /json/).expect(201).end(function (err, res) {
+              if (err) return done(err);
+              (0, _chai.expect)(res.body.status).to.equal(201);
+              return done();
+            });
+          });
+
+        case 1:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  }, _callee3, this);
+})));
+describe('Create post comments',
+/*#__PURE__*/
+_asyncToGenerator(
+/*#__PURE__*/
+regeneratorRuntime.mark(function _callee4() {
+  return regeneratorRuntime.wrap(function _callee4$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          it('A user should be able to comment on a question', function (done) {
+            (0, _supertest.default)(_app.default).post('/api/v1/comments').send(_testData.postComment).set('Accept', 'application/json').set({
+              Authorization: "Bearer ".concat(userToken)
+            }).expect('Content-Type', /json/).expect(201).end(function (err, res) {
+              if (err) return done(err);
+              (0, _chai.expect)(res.body.status).to.equal(201);
+              return done();
+            });
+          });
+
+        case 1:
+        case "end":
+          return _context4.stop();
+      }
+    }
+  }, _callee4, this);
 })));
 //# sourceMappingURL=users.spec.js.map

@@ -11,6 +11,8 @@ var _bcrypt = _interopRequireDefault(require("../utilities/bcrypt"));
 
 var _user = _interopRequireDefault(require("../models/user"));
 
+var _responseformat = require("../utilities/responseformat");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -32,10 +34,7 @@ var UserController = {
                 break;
               }
 
-              return _context.abrupt("return", res.status(400).json({
-                status: 400,
-                error: 'Passwords do not match'
-              }));
+              return _context.abrupt("return", (0, _responseformat.errorResponse)(res, 400, 'Passwords do not match'));
 
             case 2:
               newUser = new _user.default(req.body);
@@ -50,10 +49,7 @@ var UserController = {
                 break;
               }
 
-              return _context.abrupt("return", res.status(409).json({
-                status: 409,
-                error: 'This email address is already taken'
-              }));
+              return _context.abrupt("return", (0, _responseformat.errorResponse)(res, 409, 'This email address is not available'));
 
             case 8:
               _context.next = 10;
@@ -67,10 +63,7 @@ var UserController = {
                 break;
               }
 
-              return _context.abrupt("return", res.status(409).json({
-                status: 409,
-                error: 'This username is already taken'
-              }));
+              return _context.abrupt("return", (0, _responseformat.errorResponse)(res, 409, 'This username is not available'));
 
             case 13:
               newUser.password = _bcrypt.default.hashPassword(newUser.password);
@@ -79,11 +72,7 @@ var UserController = {
 
             case 16:
               createdUser = _context.sent;
-              return _context.abrupt("return", res.status(201).json({
-                status: 201,
-                message: 'User created',
-                data: createdUser
-              }));
+              return _context.abrupt("return", (0, _responseformat.successResponse)(res, 201, 'You have created an account', createdUser));
 
             case 18:
             case "end":
@@ -103,7 +92,7 @@ var UserController = {
     var _loginUser = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee2(req, res) {
-      var _req$body, email, password, isExistingUserMail, tokenData, token;
+      var _req$body, email, password, isExistingUserMail, admin, tokenData, token, loginData;
 
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
@@ -115,46 +104,42 @@ var UserController = {
 
             case 3:
               isExistingUserMail = _context2.sent;
+              admin = isExistingUserMail.admin;
 
               if (isExistingUserMail) {
-                _context2.next = 6;
+                _context2.next = 7;
                 break;
               }
 
-              return _context2.abrupt("return", res.status(404).json({
-                status: 404,
-                error: 'The credentials you provided is incorrect'
-              }));
+              return _context2.abrupt("return", (0, _responseformat.errorResponse)(res, 404, 'The credentials you provided is incorrect'));
 
-            case 6:
+            case 7:
               if (_bcrypt.default.comparePassword(isExistingUserMail.password, password)) {
-                _context2.next = 8;
+                _context2.next = 9;
                 break;
               }
 
-              return _context2.abrupt("return", res.status(404).json({
-                status: 404,
-                error: 'The credentials you provided is incorrect'
-              }));
+              return _context2.abrupt("return", (0, _responseformat.errorResponse)(res, 401, 'The credentials you provided is incorrect'));
 
-            case 8:
+            case 9:
               tokenData = {
                 id: isExistingUserMail.id,
                 username: isExistingUserMail.username,
                 admin: isExistingUserMail.admin
               };
-              _context2.next = 11;
+              _context2.next = 12;
               return _jwt.default.generateToken(tokenData);
 
-            case 11:
+            case 12:
               token = _context2.sent;
-              return _context2.abrupt("return", res.status(200).send({
-                status: 200,
-                message: 'You are logged in',
-                token: token
-              }));
+              _context2.next = 15;
+              return _user.default.logIn(email);
 
-            case 13:
+            case 15:
+              loginData = _context2.sent;
+              return _context2.abrupt("return", (0, _responseformat.successfullLogin)(res, 200, admin ? 'You are logged in as an admin' : 'You are logged in as a normal user', token, loginData));
+
+            case 17:
             case "end":
               return _context2.stop();
           }

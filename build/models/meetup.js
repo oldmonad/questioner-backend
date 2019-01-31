@@ -27,9 +27,8 @@ function () {
 
     this.topic = meetup.topic;
     this.location = meetup.location;
-    this.date = meetup.date;
+    this.happeningOn = meetup.happeningOn;
     this.image = meetup.image;
-    this.tags = meetup.tags;
   }
 
   _createClass(Meetup, [{
@@ -44,8 +43,8 @@ function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                queryPlaceholder = "INSERT INTO meetups (topic, location, date,\n      image, tags) VALUES ($1, $2, $3, $4, $5) RETURNING *";
-                entryValues = [this.topic, this.location, this.date, this.image, this.tags];
+                queryPlaceholder = "INSERT INTO meetups (topic, location, happening_on,\n      image) VALUES ($1, $2, $3, $4) RETURNING *";
+                entryValues = [this.topic, this.location, this.happeningOn, this.image];
                 _context.next = 4;
                 return _index.default.query(queryPlaceholder, entryValues);
 
@@ -151,7 +150,7 @@ function () {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                queryPlaceholder = 'SELECT * FROM meetups WHERE date > $1 ORDER BY date';
+                queryPlaceholder = 'SELECT * FROM meetups WHERE happening_on > $1 ORDER BY happening_on';
                 queryValues = [currentDate];
                 _context4.next = 4;
                 return _index.default.query(queryPlaceholder, queryValues);
@@ -174,6 +173,40 @@ function () {
       }
 
       return retrieveUpcomingMeetups;
+    }()
+  }, {
+    key: "deleteMeetup",
+    value: function () {
+      var _deleteMeetup = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee5(id) {
+        var queryPlaceholder, queryValues, result;
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                queryPlaceholder = 'DELETE FROM meetups WHERE id = $1';
+                queryValues = [id];
+                _context5.next = 4;
+                return _index.default.query(queryPlaceholder, queryValues);
+
+              case 4:
+                result = _context5.sent;
+                return _context5.abrupt("return", result);
+
+              case 6:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function deleteMeetup(_x3) {
+        return _deleteMeetup.apply(this, arguments);
+      }
+
+      return deleteMeetup;
     }()
   }]);
 

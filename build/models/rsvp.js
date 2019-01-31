@@ -40,7 +40,7 @@ function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                queryPlaceholder = 'INSERT INTO rsvps (meetupid, userid, response) queryValues ($1, $2, $3) RETURNING *';
+                queryPlaceholder = 'INSERT INTO rsvps (meetup_id, user_id, response) VALUES ($1, $2, $3) RETURNING *';
                 queryValues = [meetupId, userId, this.response];
                 _context.next = 4;
                 return _index.default.query(queryPlaceholder, queryValues);
@@ -65,9 +65,9 @@ function () {
       return responseToMeetup;
     }()
   }], [{
-    key: "allUserResponse",
+    key: "userResponses",
     value: function () {
-      var _allUserResponse = _asyncToGenerator(
+      var _userResponses = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee2(userId, response) {
         var queryPlaceholder, queryValues, _ref2, rows;
@@ -76,7 +76,7 @@ function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                queryPlaceholder = 'SELECT * FROM rsvps WHERE userid =$1 AND response = $2';
+                queryPlaceholder = 'SELECT * FROM rsvps WHERE user_id =$1 AND response = $2';
                 queryValues = [userId, response];
                 _context2.next = 4;
                 return _index.default.query(queryPlaceholder, queryValues);
@@ -94,16 +94,16 @@ function () {
         }, _callee2, this);
       }));
 
-      function allUserResponse(_x3, _x4) {
-        return _allUserResponse.apply(this, arguments);
+      function userResponses(_x3, _x4) {
+        return _userResponses.apply(this, arguments);
       }
 
-      return allUserResponse;
+      return userResponses;
     }()
   }, {
-    key: "getRsvpResponse",
+    key: "getUserByResponse",
     value: function () {
-      var _getRsvpResponse = _asyncToGenerator(
+      var _getUserByResponse = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee3(meetupId, userId) {
         var queryPlaceholder, queryValues, _ref3, rows;
@@ -112,7 +112,7 @@ function () {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                queryPlaceholder = 'SELECT * FROM rsvps WHERE meetupid = $1 AND userid = $2';
+                queryPlaceholder = 'SELECT * FROM rsvps WHERE meetup_id = $1 AND user_id = $2';
                 queryValues = [meetupId, userId];
                 _context3.next = 4;
                 return _index.default.query(queryPlaceholder, queryValues);
@@ -130,11 +130,11 @@ function () {
         }, _callee3, this);
       }));
 
-      function getRsvpResponse(_x5, _x6) {
-        return _getRsvpResponse.apply(this, arguments);
+      function getUserByResponse(_x5, _x6) {
+        return _getUserByResponse.apply(this, arguments);
       }
 
-      return getRsvpResponse;
+      return getUserByResponse;
     }()
   }]);
 

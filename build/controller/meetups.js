@@ -7,6 +7,8 @@ exports.default = void 0;
 
 var _meetup = _interopRequireDefault(require("../models/meetup"));
 
+var _responseformat = require("../utilities/responseformat");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -18,34 +20,20 @@ var MeetupController = {
     var _createMeetup = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee(req, res) {
-      var _req$body, topic, location, date, image, tags, formatedTags, newMeetUp, meetupData, createdMeetup;
-
+      var meetupData, createdMeetup;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _req$body = req.body, topic = _req$body.topic, location = _req$body.location, date = _req$body.date, image = _req$body.image, tags = _req$body.tags;
-              formatedTags = tags.trim().split('');
-              newMeetUp = {
-                topic: topic,
-                location: location,
-                date: date,
-                image: image,
-                formatedTags: formatedTags
-              };
-              meetupData = new _meetup.default(newMeetUp);
-              _context.next = 6;
+              meetupData = new _meetup.default(req.body);
+              _context.next = 3;
               return meetupData.createMeetup();
 
-            case 6:
+            case 3:
               createdMeetup = _context.sent;
-              res.status(201).json({
-                status: 201,
-                message: 'Meetup created',
-                data: createdMeetup
-              });
+              return _context.abrupt("return", (0, _responseformat.successResponse)(res, 201, 'Meetup created', createdMeetup));
 
-            case 8:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -74,19 +62,17 @@ var MeetupController = {
             case 2:
               allMeetups = _context2.sent;
 
-              if (allMeetups.length === 0) {
-                res.status(204).json({
-                  status: 204,
-                  error: 'Empty resource'
-                });
+              if (!(allMeetups.length === 0)) {
+                _context2.next = 5;
+                break;
               }
 
-              return _context2.abrupt("return", res.status(200).json({
-                status: 200,
-                data: allMeetups
-              }));
+              return _context2.abrupt("return", (0, _responseformat.errorResponse)(res, 204, 'Empty Resource'));
 
             case 5:
+              return _context2.abrupt("return", (0, _responseformat.successResponse)(res, 200, 'All available meetups', allMeetups));
+
+            case 6:
             case "end":
               return _context2.stop();
           }
@@ -116,20 +102,17 @@ var MeetupController = {
             case 3:
               retrievedMeetup = _context3.sent;
 
-              if (!retrievedMeetup) {
-                res.status(404).json({
-                  status: 404,
-                  error: 'Meetup not found'
-                });
+              if (retrievedMeetup) {
+                _context3.next = 6;
+                break;
               }
 
-              return _context3.abrupt("return", res.status(200).json({
-                status: 200,
-                message: 'Meetup Found!',
-                data: retrievedMeetup
-              }));
+              return _context3.abrupt("return", (0, _responseformat.errorResponse)(res, 404, 'Meetup not found'));
 
             case 6:
+              return _context3.abrupt("return", (0, _responseformat.successResponse)(res, 200, 'Meetup Found', retrievedMeetup));
+
+            case 7:
             case "end":
               return _context3.stop();
           }
@@ -152,7 +135,7 @@ var MeetupController = {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              currentDate = new Date(Date.now() / 1000) + 39;
+              currentDate = new Date(Date.now());
               _context4.next = 3;
               return _meetup.default.retrieveUpcomingMeetups(currentDate);
 
@@ -164,17 +147,10 @@ var MeetupController = {
                 break;
               }
 
-              return _context4.abrupt("return", res.status(404).json({
-                status: 404,
-                err0r: 'No upcoming meetups found'
-              }));
+              return _context4.abrupt("return", (0, _responseformat.errorResponse)(res, 404, 'No upcoming meetups'));
 
             case 6:
-              return _context4.abrupt("return", res.status(200).json({
-                status: 200,
-                message: 'These are pending meetups',
-                data: upcomingMeetups
-              }));
+              return _context4.abrupt("return", (0, _responseformat.successResponse)(res, 200, 'These are the upcoming meetups', upcomingMeetups));
 
             case 7:
             case "end":
@@ -189,6 +165,50 @@ var MeetupController = {
     }
 
     return getUpcomingMeetups;
+  }(),
+  deleteMeetup: function () {
+    var _deleteMeetup = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee5(req, res) {
+      var id, meetup;
+      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              id = req.params.id;
+              _context5.next = 3;
+              return _meetup.default.retrieveSingleMeetup(id);
+
+            case 3:
+              meetup = _context5.sent;
+
+              if (meetup) {
+                _context5.next = 6;
+                break;
+              }
+
+              return _context5.abrupt("return", (0, _responseformat.errorResponse)(res, 404, 'Meetup not found.'));
+
+            case 6:
+              _context5.next = 8;
+              return _meetup.default.deleteMeetup(id);
+
+            case 8:
+              return _context5.abrupt("return", (0, _responseformat.successResponse)(res, 200, 'Meetup deleted successfully.', null));
+
+            case 9:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, this);
+    }));
+
+    function deleteMeetup(_x9, _x10) {
+      return _deleteMeetup.apply(this, arguments);
+    }
+
+    return deleteMeetup;
   }()
 };
 var _default = MeetupController;
