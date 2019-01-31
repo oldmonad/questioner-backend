@@ -25,12 +25,17 @@
         <div class="topnav" id="myTopnav">
           <a href="#home" class="logo active">Questioner</a>
           <div class="dropdown">
-            <button class="dropbtn">Menu
+            <!-- <button class="dropbtn">Menu
               <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
+            </button> -->
+            <!-- <div class="dropdown-content">
               <a href="./dashboard.html">Dashboard</a>
               <a href="./index.html">Logout</a>
+            </div> -->
+
+            <div class="dropdown">
+              <a class="dummy-login">Login</a>
+              <a href="./signup.html" class="">Logout</a>
             </div>
           </div>
           <a href="javascript:void(0);" style="font-size:30px;" class="icon" onclick="myFunction()">&#9776;</a>
@@ -40,6 +45,7 @@
       <main>
 
         <div class="question--section">
+
           <div class="question">
             <div class="question__poster">
               John doe
@@ -54,12 +60,15 @@
               molestias officiis nisi necessitatibus!
             </div>
             <div class="comments--vote">
-              <div class="comments comments--vote__item">
-                comments
-              </div>
               <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
               <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
             </div>
+          </div>
+
+          <div class="comment--links">
+            <a class="comment--link" href="./dashboard.html">Dashboard</a>
+            <a class="comment--link" href="./adminMeetups.html">Meetups</a>
+            <a class="comment--link" href="./questions.html">Questions</a>
           </div>
         </div>
 

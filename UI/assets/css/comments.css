@@ -6,15 +6,17 @@ main {
 
 
 .question--section {
-  background-color: #ffffff;
-  border-radius: .2rem;
-  border: 1px solid #888888;
   margin-top: .6rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .question {
   padding: 1rem;
-  overflow: hidden;
+  height: 400px;
+  border-radius: .2rem;
+  border: 1px solid #888888;
+  background-color: #ffffff;
 }
 
 .question__poster {
@@ -149,7 +151,41 @@ main {
   padding: 1rem;
 }
 
+.dropdown {
+  margin-top: .2rem;
+}
 
+
+
+.topnav a {
+  margin-bottom: 0 !important;
+  color: #3F45FF !important;
+  cursor: pointer;
+}
+
+.dummy-login {
+  display: none !important;
+}
+
+.comment--links {
+  margin-top: .6rem;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.comment--link {
+  text-align: center;
+  background-color: #3F45FF;
+
+  width: 100%;
+  color: #ffffff;
+  padding: 1rem 0;
+}
+
+.comment--link:hover {
+  background-color: royalblue;
+}
 
 @media screen and (min-width: 900px) {
   main {
@@ -160,14 +196,14 @@ main {
   }
 
   .question--section {
-    width: 35%;
+    width: 30%;
     margin-right: .3rem;
     height: 200px;
   }
 
 
   .comment--section {
-    width: 65%;
+    width: 70%;
   }
 }
 

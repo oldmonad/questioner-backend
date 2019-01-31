@@ -218,6 +218,39 @@ main {
   margin-right: 0 !important;
 }
 
+.topnav a {
+  margin-bottom: 0 !important;
+  color: #3F45FF !important;
+  cursor: pointer;
+}
+
+.dummy-login {
+  display: none !important;
+}
+
+
+.question--links {
+  margin-top: .6rem;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.question--link {
+  text-align: center;
+  background-color: #3F45FF;
+
+  width: 100%;
+  color: #ffffff;
+  padding: 1rem 0;
+}
+
+.question--link:hover {
+  background-color: royalblue;
+}
+
+
+
 @media screen and (min-width: 900px) {
   main {
     display: flex;
@@ -225,11 +258,11 @@ main {
   }
 
   .questions {
-    width: 65%;
+    width: 70%;
   }
 
   .meetup-details {
-    width: 35%;
+    width: 30%;
     margin-right: .3rem;
   }
 }

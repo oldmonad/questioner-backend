@@ -11,6 +11,7 @@ main {
   margin-bottom: .6rem;
   padding: 1rem;
   border-radius: .2rem;
+  /* width: 100%; */
 }
 
 .top--questions__container {
@@ -48,21 +49,6 @@ main {
   transition: .2s ease all;
   cursor: pointer;
 }
-
-/* .questions--number:hover,
-.comments--number:hover {
-  background-color: #3F45FF;
-  width: 35px;
-  height: 35px;
-  font-size: 1rem;
-  font-weight: 900;
-} */
-
-/* 
-.questions {
-  margin-top: .6rem;
-}
-*/
 
 .comments {
   margin-top: 1.5rem;
@@ -131,6 +117,13 @@ main {
   margin-right: 0 !important;
 }
 
+.meetup--image {
+  width: 100%;
+}
+
+.statisitcs--image {
+  padding: .3rem;
+}
 
 @media screen and (min-width: 500px) {
 
@@ -157,8 +150,6 @@ main {
   }
 
   .statistics {
-    width: 50% !important;
-    margin-right: .5rem;
     height: 100px;
   }
 
@@ -196,13 +187,15 @@ main {
   }
 
   .statistics {
-    width: 50% !important;
-    margin-right: .5rem;
     height: 80px;
   }
 
+  .statisitcs--image {
+    width: 30%;
+  }
+
   .top--questions {
-    width: 50%;
+    width: 70%;
   }
 
 }
@@ -218,6 +211,8 @@ main {
   .comments--number {
     font-size: 1.5rem;
     padding: .2rem;
+    width: 65px;
+    height: 40px;
   }
 
   .top--questions__container {
@@ -229,9 +224,7 @@ main {
   }
 
   .statistics {
-    width: 50% !important;
-    margin-right: .5rem;
-    height: 120px;
+    height: 160px;
   }
 
   .top--question__title {
@@ -279,8 +272,6 @@ main {
   }
 
   .statistics {
-    width: 50% !important;
-    margin-right: .5rem;
     height: 200px;
   }
 
