@@ -1,7 +1,11 @@
 /* eslint-disable radix */
 /* eslint-disable eol-last */
-import MeetupModels from '../models/meetup';
-import RsvpModels from '../models/rsvp';
+import Meetup from '../models/meetup';
+import Rsvp from '../models/rsvp';
+import {
+  errorResponse,
+  successResponse,
+} from '../utilities/responseformat';
 
 const rsvpController = {
   async respondToRsvp(req, res) {
@@ -11,27 +15,28 @@ const rsvpController = {
       response,
     } = req.body;
 
-    const checkForMeetup = await MeetupModels.retrieveSingleMeetup(meetupId);
+    const checkForMeetup = await Meetup.retrieveSingleMeetup(meetupId);
+
     if (!checkForMeetup) {
-      res.status(404).json({
-        status: 404,
-        error: 'Meetup not found',
-      });
+      return errorResponse(res, 404, 'Meetup not found');
     }
 
-    const responseInstance = new RsvpModels(req.body);
+    const responseInstance = new Rsvp(req.body);
     const newResponseData = await responseInstance.responseToMeetup(meetupId, userId);
     if (response === 'yes') {
-      res.status(200).json({
-        status: 200,
-        message: 'You have registered for this meetup',
-        data: newResponseData,
-      });
+      return successResponse(res, 200, 'You are scheduled to attend this meetup', newResponseData);
     }
-    return res.status(200).json({
-      status: 200,
-      message: 'Your response has been recorded',
-    });
+    return successResponse(res, 200, 'Your response has been recorded', null);
+  },
+
+  async getJoinedMeetups(req, res) {
+    const {
+      id,
+    } = req.user;
+    const response = 'yes';
+    const result = await Rsvp.userResponses(id, response);
+    if (result.length === 0) return errorResponse(res, 404, 'You have not joined any meetups yet.');
+    return successResponse(res, 200, 'Joined meetups found.', result);
   },
 };
 
