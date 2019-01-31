@@ -5,7 +5,6 @@ import express from 'express';
 const router = express.Router();
 
 import questionsController from '../controller/questions';
-// import voteController from '../controller/vote';
 import validate from '../middleware/validatequestion';
 import tryCatch from '../utilities/trycatch';
 
