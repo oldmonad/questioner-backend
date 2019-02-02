@@ -26,7 +26,7 @@ describe('Login an admin', async () => {
       .expect('Content-Type', /json/)
       .end((err, res) => {
         if (err) return done(err);
-        adminToken = res.body.token;
+        adminToken = res.body.data.token;
         return done();
       });
   });

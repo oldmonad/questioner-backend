@@ -57,8 +57,8 @@ describe('Login an existing User', async () => {
         if (err) return done(err);
         expect(res.body.status).to.equal(200);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('token');
-        userToken = res.body.token;
+        expect(res.body.data).to.have.property('token');
+        userToken = res.body.data.token;
         return done();
       });
   });
