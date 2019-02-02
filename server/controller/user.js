@@ -59,11 +59,10 @@ const UserController = {
     const token = await jwt.generateToken(tokenData);
     const loginData = await UserModel.logIn(email);
 
-    const response = {
-      loginData,
-      admin,
-    };
-    return successfullLogin(res, 200, admin ? 'You are logged in as an admin' : 'You are logged in as a normal user', token, response);
+    const data = loginData;
+    data.token = token;
+    data.admin = admin;
+    return successfullLogin(res, 200, admin ? 'You are logged in as an admin' : 'You are logged in as a normal user', data);
   },
 };
 
