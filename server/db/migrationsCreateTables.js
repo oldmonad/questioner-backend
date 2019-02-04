@@ -58,7 +58,7 @@ console.log('Creating tables...');
         await pool.query(`CREATE TABLE IF NOT EXISTS questions(
         id SERIAL PRIMARY KEY,
         meetup_id INT NOT NULL,
-        title VARCHAR(255) NOT NULL,
+        title VARCHAR(255),
         body TEXT NOT NULL,
         up_votes INT DEFAULT 0,
         down_votes INT DEFAULT 0,
