@@ -11,7 +11,7 @@ export default class QuestionValidation {
 
     const questionProperties = {
       meetupId: 'required|numeric',
-      title: 'required|string|max:200',
+      // title: 'required|string|max:200',
       body: 'required|string|max:500',
     };
 
