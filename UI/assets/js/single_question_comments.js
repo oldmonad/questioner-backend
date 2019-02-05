@@ -1,246 +1,246 @@
-// const question = document.getElementById('question');
-// const showOverlay = () => {
-//   document.querySelector('.loading').style.display = 'block';
-// };
+const comment = document.getElementById('comment');
+const showOverlay = () => {
+  document.querySelector('.loading').style.display = 'block';
+};
 
-// const hideOverlay = () => {
-//   document.querySelector('.loading').style.display = 'none';
-// };
+const hideOverlay = () => {
+  document.querySelector('.loading').style.display = 'none';
+};
 
-// const getQuestionId = () => {
-//   const urlString = window.location.href;
-//   const url = new URL(urlString);
-//   const questionId = url.searchParams.get('id');
+const getQuestionId = () => {
+  const urlString = window.location.href;
+  const url = new URL(urlString);
+  const questionId = url.searchParams.get('id');
 
-//   return questionId;
-// };
-// const {
-//   body,
-// } = window.document;
+  return questionId;
+};
+const {
+  body,
+} = window.document;
 
-// const convertDate = (createdon) => {
-//   const dateObject = new Date(createdon);
-//   const formattedDate = new Intl.DateTimeFormat('en-GB', {
-//     day: '2-digit',
-//     month: 'short',
-//     year: 'numeric',
-//     hour: '2-digit',
-//     minute: 'numeric',
-//   }).format(dateObject);
+const convertDate = (createdon) => {
+  const dateObject = new Date(createdon);
+  const formattedDate = new Intl.DateTimeFormat('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: 'numeric',
+  }).format(dateObject);
 
-//   return formattedDate;
-// };
+  return formattedDate;
+};
 
-// const getSingleQuestion = async () => {
-//   const meetupId = getMeetupId();
-//   const singleMeetupApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/questions/${questionId}`;
-//   showOverlay();
-
-
-
-//   let userToken;
-//   if (localStorage.getItem('user')) {
-//     const userData = JSON.parse(localStorage.getItem('user'));
-//     const {
-//       token,
-//     } = userData;
-
-//     userToken = token;
-//   }
+const getSingleQuestion = async () => {
+  const meetupId = getMeetupId();
+  const singleMeetupApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/questions/${questionId}`;
+  showOverlay();
 
 
-//   await fetch(singleMeetupApiUrl, {
-//       method: 'GET',
-//       mode: 'cors',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': `Bearer ${userToken}`,
-//       },
-//     })
-//     .then(res => res.json())
-//     .then((response) => {
-//       hideOverlay();
 
-//       // check for success status
-//       if (response.status === 200) {
-//         const meetup = response.data;
+  let userToken;
+  if (localStorage.getItem('user')) {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const {
+      token,
+    } = userData;
 
-//         const creationDate = convertDate(meetup.created_on);
-//         const happeningOn = convertDate(meetup.happening_on);
-//         output = `<div class="meetup">
-//             <div class="meetup--header">
-//               <img class="meetup--image" src="./assets/img/woman.png" />
-//               <h1 class="meetup--title">
-//                 ${meetup.topic}
-//               </h1>
-//             </div>
-
-//             <div class="meetup--details">
-//               <div class="meetup--detail">
-//                 <p class="meetup--detail__label">Location:</p>
-//                 <p class="meetup--detail__information">
-//                   ${meetup.location}
-//                 </p>
-//               </div>
-
-//               <div class="meetup--detail">
-//                 <p class="meetup--detail__label">Date:</p>
-//                 <p class="meetup--detail__information">${happeningOn}</p>
-//               </div>
-
-//               <div class="meetup--detail">
-//                 <p class="meetup--detail__label">Location URL:</p>
-//                 <p class="meetup--detail__information">www.google.com</p>
-//               </div>
-
-//               <div class="meetup--detail">
-//                 <p class="meetup--detail__label">Created on:</p>
-//                 <p class="meetup--detail__information">${creationDate}</p>
-//               </div>
-//             </div>
-//             <div class="tags">
-//               <div class="tag">technology</div>
-//               <div class="tag">technology</div>
-//             </div>
-//             <div>
-//               <span class="closeBtn"><i class="fas fa-trash"></i></span>
-//             </div>
-//           </div>`;
+    userToken = token;
+  }
 
 
-//         const meetupContainer = document.getElementById('meetup--detail');
+  await fetch(singleMeetupApiUrl, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`,
+      },
+    })
+    .then(res => res.json())
+    .then((response) => {
+      hideOverlay();
+
+      // check for success status
+      if (response.status === 200) {
+        const meetup = response.data;
+
+        const creationDate = convertDate(meetup.created_on);
+        const happeningOn = convertDate(meetup.happening_on);
+        output = `<div class="meetup">
+            <div class="meetup--header">
+              <img class="meetup--image" src="./assets/img/woman.png" />
+              <h1 class="meetup--title">
+                ${meetup.topic}
+              </h1>
+            </div>
+
+            <div class="meetup--details">
+              <div class="meetup--detail">
+                <p class="meetup--detail__label">Location:</p>
+                <p class="meetup--detail__information">
+                  ${meetup.location}
+                </p>
+              </div>
+
+              <div class="meetup--detail">
+                <p class="meetup--detail__label">Date:</p>
+                <p class="meetup--detail__information">${happeningOn}</p>
+              </div>
+
+              <div class="meetup--detail">
+                <p class="meetup--detail__label">Location URL:</p>
+                <p class="meetup--detail__information">www.google.com</p>
+              </div>
+
+              <div class="meetup--detail">
+                <p class="meetup--detail__label">Created on:</p>
+                <p class="meetup--detail__information">${creationDate}</p>
+              </div>
+            </div>
+            <div class="tags">
+              <div class="tag">technology</div>
+              <div class="tag">technology</div>
+            </div>
+            <div>
+              <span class="closeBtn"><i class="fas fa-trash"></i></span>
+            </div>
+          </div>`;
 
 
-//         meetupContainer.innerHTML = output;
-
-//       } else {
-//         console.log(response);
-//       }
-//     })
-//     .catch(err => err);
-// };
-
-// // Create new  question
-// const createQuestion = async (e) => {
-//   e.preventDefault();
-//   showOverlay();
-//   const meetupId = getMeetupId();
-//   const questionApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/questions`;
-//   // User input data object
-//   const formData = {
-//     meetupId,
-//     body: question.value,
-//   };
+        const meetupContainer = document.getElementById('meetup--detail');
 
 
-//   let userToken;
-//   if (localStorage.getItem('user')) {
-//     const userData = JSON.parse(localStorage.getItem('user'));
-//     const {
-//       token,
-//     } = userData;
+        meetupContainer.innerHTML = output;
 
-//     userToken = token;
-//   }
+      } else {
+        console.log(response);
+      }
+    })
+    .catch(err => err);
+};
 
-//   // Make a post request to sign up endpoint
-//   await fetch(questionApiUrl, {
-//       method: 'POST',
-//       mode: 'cors',
-//       body: JSON.stringify(formData),
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': `Bearer ${userToken}`,
-//       },
-//     })
-//     .then(res => res.json())
-//     .then((response) => {
-//       // console.log(response)
-//       // window.location.reload();
-//       hideOverlay();
-
-//       // check for success status
-//       if (response.status === 201) {
-
-//       } else {
-//         console.log(response);
-//       }
-//     })
-//     .catch(err => err);
-// };
+// Create new  question
+const createQuestion = async (e) => {
+  e.preventDefault();
+  showOverlay();
+  const meetupId = getMeetupId();
+  const questionApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/questions`;
+  // User input data object
+  const formData = {
+    meetupId,
+    body: question.value,
+  };
 
 
-// // Create new  question
-// const getQuestions = async (e) => {
-//   showOverlay();
-//   const meetupId = getMeetupId();
-//   const meetupQuestionsApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/meetups/${meetupId}/questions`;
+  let userToken;
+  if (localStorage.getItem('user')) {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const {
+      token,
+    } = userData;
+
+    userToken = token;
+  }
+
+  // Make a post request to sign up endpoint
+  await fetch(questionApiUrl, {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`,
+      },
+    })
+    .then(res => res.json())
+    .then((response) => {
+      // console.log(response)
+      // window.location.reload();
+      hideOverlay();
+
+      // check for success status
+      if (response.status === 201) {
+
+      } else {
+        console.log(response);
+      }
+    })
+    .catch(err => err);
+};
 
 
-//   let userToken;
-//   if (localStorage.getItem('user')) {
-//     const userData = JSON.parse(localStorage.getItem('user'));
-//     const {
-//       token,
-//     } = userData;
-
-//     userToken = token;
-//   }
-
-//   // Make a post request to sign up endpoint
-//   await fetch(meetupQuestionsApiUrl, {
-//       method: 'GET',
-//       mode: 'cors',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': `Bearer ${userToken}`,
-//       },
-//     })
-//     .then(res => res.json())
-//     .then((response) => {
-//       // window.location.reload();
-//       hideOverlay();
-
-//       // check for success status
-//       if (response.status === 200) {
-//         const questions = response.data;
-//         console.log(questions)
-//         let output = '';
-
-//         questions.forEach((question) => {
-//           const creationDate = convertDate(question.created_on);
-
-//           output += `<div class="question">
-//             <a>
-//               <div class="question__poster">
-//                 John doe
-//               </div>
-//               <span class="question__time">
-//                 ${creationDate}
-//               </span>
-//               <div class="question__body">${question.body}
-//               </div>
-//               <div class="comments--vote">
-//                 <div class="upvote comments--vote__item">Downvote <span class="downvote--number">${question.up_votes}</span></div>
-//                 <div class="downvote comments--vote__item">Upvote <span class="upvote--number">${question.down_votes}</span></div>
-//               </div>
-//               </a>
-//             </div>`;
-//         });
+// Create new  question
+const getQuestions = async (e) => {
+  showOverlay();
+  const meetupId = getMeetupId();
+  const meetupQuestionsApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/meetups/${meetupId}/questions`;
 
 
-//         const questionContainer = document.getElementById('questions--container');
+  let userToken;
+  if (localStorage.getItem('user')) {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const {
+      token,
+    } = userData;
 
-//         questionContainer.innerHTML = output;
+    userToken = token;
+  }
 
-//       } else {
-//         console.log(response);
-//       }
-//     })
-//     .catch(err => err);
-// };
+  // Make a post request to sign up endpoint
+  await fetch(meetupQuestionsApiUrl, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`,
+      },
+    })
+    .then(res => res.json())
+    .then((response) => {
+      // window.location.reload();
+      hideOverlay();
 
-// body.addEventListener('load', getSingleMeetup());
-// body.addEventListener('load', getQuestions());
-// const submitBtn = document.getElementById('submit');
-// submitBtn.addEventListener('click', createQuestion);
+      // check for success status
+      if (response.status === 200) {
+        const questions = response.data;
+        console.log(questions)
+        let output = '';
+
+        questions.forEach((question) => {
+          const creationDate = convertDate(question.created_on);
+
+          output += `<div class="question">
+            <a>
+              <div class="question__poster">
+                John doe
+              </div>
+              <span class="question__time">
+                ${creationDate}
+              </span>
+              <div class="question__body">${question.body}
+              </div>
+              <div class="comments--vote">
+                <div class="upvote comments--vote__item">Downvote <span class="downvote--number">${question.up_votes}</span></div>
+                <div class="downvote comments--vote__item">Upvote <span class="upvote--number">${question.down_votes}</span></div>
+              </div>
+              </a>
+            </div>`;
+        });
+
+
+        const questionContainer = document.getElementById('questions--container');
+
+        questionContainer.innerHTML = output;
+
+      } else {
+        console.log(response);
+      }
+    })
+    .catch(err => err);
+};
+
+body.addEventListener('load', getSingleMeetup());
+body.addEventListener('load', getQuestions());
+const submitBtn = document.getElementById('submit');
+submitBtn.addEventListener('click', createQuestion);

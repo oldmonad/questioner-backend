@@ -211,7 +211,7 @@ const getQuestions = async (e) => {
           const creationDate = convertDate(question.created_on);
 
           output += `<div class="question">
-            <a href="question_comments.html?id=${question.id}">
+              <a class "single-question" href="question_comments.html?id=${question.id}">
               <div class="question__poster">
                 John doe
               </div>
