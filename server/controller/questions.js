@@ -25,6 +25,15 @@ export default {
     return successResponse(res, 201, 'Question created', newQuestion);
   },
 
+  async getQuestion(req, res) {
+    const {
+      id,
+    } = req.params;
+    const questionExists = await Question.getById(id);
+    if (!questionExists) return errorResponse(res, 404, 'Question not found.');
+    return successResponse(res, 200, 'Question retrieved', questionExists);
+  },
+
   async upvote(req, res) {
     const questionId = req.params.id;
     const userId = req.user.id;
