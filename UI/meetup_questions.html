@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./assets/css/reset.css" />
+  <link rel="stylesheet" href="./assets/css/header.css" />
+  <link rel="stylesheet" href="./assets/css/questions.css">
+  <link rel="stylesheet" href="./assets/css/modal.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="https:/use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+    crossorigin="anonymous" />
+  <title>Questioner</title>
+</head>
+
+<body>
+
+  <body>
+    <div class="loading">Loading&#8230;</div>
+    <div class="page--content">
+
+      <header>
+        <div class="topnav" id="myTopnav">
+          <a href="#home" class="logo active">Questioner</a>
+          <div class="dropdown">
+            <div class="dropdown">
+              <a class="dummy-login">Login</a>
+              <a href="./signup.html" class="">Logout</a>
+            </div>
+          </div>
+          <a href="javascript:void(0);" style="font-size:30px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+      </header>
+
+      <main>
+        <div class="meetup-details">
+          <div id="meetup--detail"></div>
+          <div class="question--links">
+            <a class="question--link" href="./dashboard.html">Dashboard</a>
+            <a class="question--link" href="./adminMeetups.html">Meetups</a>
+            <a class="question--link" href="./comments.html">Comments</a>
+          </div>
+        </div>
+
+        <div class="questions">
+          <div class="questions--header">
+            <div class="question__title">
+              Questions
+            </div>
+            <a id="modalBtn" class="post--question" href="#">Post question</a>
+          </div>
+
+
+          <div id="questions--container" class="questions__container">
+            <!-- <div class="question">
+              <div class="question__poster">
+                John doe
+              </div>
+              <span class="question__time">
+                10h ago
+              </span>
+              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+                explicabo
+                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+                quo
+                molestias officiis nisi necessitatibus!
+              </div>
+              <div class="comments--vote">
+                <div class="comments comments--vote__item">
+                  comments
+                </div>
+                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+              </div>
+            </div> -->
+            <!-- <div class="question">
+              <div class="question__poster">
+                John doe
+              </div>
+              <span class="question__time">
+                10h ago
+              </span>
+              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+                explicabo
+                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+                quo
+                molestias officiis nisi necessitatibus!
+              </div>
+              <div class="comments--vote">
+                <div class="comments comments--vote__item">
+                  comments
+                </div>
+                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question__poster">
+                John doe
+              </div>
+              <span class="question__time">
+                10h ago
+              </span>
+              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+                explicabo
+                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+                quo
+                molestias officiis nisi necessitatibus!
+              </div>
+              <div class="comments--vote">
+                <div class="comments comments--vote__item">
+                  comments
+                </div>
+                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question__poster">
+                John doe
+              </div>
+              <span class="question__time">
+                10h ago
+              </span>
+              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+                explicabo
+                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+                quo
+                molestias officiis nisi necessitatibus!
+              </div>
+              <div class="comments--vote">
+                <div class="comments comments--vote__item">
+                  comments
+                </div>
+                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <div id="simpleModal" class="modal">
+          <div class="modal--content">
+            <h1 class="post--question__header">Post Question</h1>
+            <span id="closeBtn" class="closeBtn">&times;</span>
+            <div class="question--input">
+              <textarea name="feedback" id="question" rows="10" placeholder="Enter your question"></textarea>
+              <div class="submit--button">
+                <input id="submit" type="submit" value="Submit question" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+
+    <footer>
+      <ul>
+        <li><a href="">Contact</a></li>
+        <li><a href="">Privacy</a></li>
+        <li><a href="">Terms of use</a></li>
+        <li><a href="">Assecibility</a></li>
+      </ul>
+    </footer>
+
+    <script src="./assets/js/accordion.js"></script>
+    <script src="./assets/js/modal.js"></script>
+    <script src="./assets/js/toggle-navbar.js"></script>
+    <script src="./assets/js/single_meetup_questions.js"></script>
+  </body>
+
+</html>

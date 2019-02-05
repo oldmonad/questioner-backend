@@ -20,7 +20,7 @@ main {
   border: 1px solid #444444;
   cursor: pointer;
   overflow: hidden;
-  width: fit-content;
+  /* width: fit-content; */
 }
 
 .closeBtn i {
@@ -157,6 +157,7 @@ main {
   padding-bottom: 1.2rem;
   border-bottom: .1px solid #888888;
   margin-top: .6rem;
+  cursor: pointer;
 }
 
 .question__poster {

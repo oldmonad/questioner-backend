@@ -19,7 +19,7 @@ main {
 	display: block;
 	margin: .5rem auto;
 	background-color: #ffffff;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 0.5rem;
 	border-radius: 0.2rem;
 	border: 1px solid #444444;
 	cursor: pointer;
