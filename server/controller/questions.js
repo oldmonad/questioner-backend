@@ -90,4 +90,24 @@ export default {
     await Question.createVoteRecord(userId, questionId, vote);
     return successResponse(res, 200, `Question ${vote}.`, result);
   },
+
+  async meetupQuestions(req, res) {
+    const {
+      id,
+    } = req.params;
+
+    const retrievedMeetup = await Meetup.retrieveSingleMeetup(id);
+
+    if (!retrievedMeetup) {
+      return errorResponse(res, 404, 'Meetup not found');
+    }
+
+    const questions = await Question.getQuestionByMeetup(id);
+
+    if (questions.length === 0) {
+      return errorResponse(res, 204, 'Empty Resource');
+    }
+
+    return successResponse(res, 200, 'All available questions for this meetup', questions);
+  },
 };

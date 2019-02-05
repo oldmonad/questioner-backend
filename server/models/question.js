@@ -10,13 +10,22 @@ class Question {
   }
 
   async post() {
-    const queryString = `INSERT INTO questions (meetup_id, title, body, user_id)
+    const queryPlaceholder = `INSERT INTO questions (meetup_id, title, body, user_id)
     VALUES ($1, $2, $3, $4) RETURNING *`;
-    const values = [this.meetupId, this.title, this.body, this.userId];
+    const queryValues = [this.meetupId, this.title, this.body, this.userId];
     const {
       rows,
-    } = await pool.query(queryString, values);
+    } = await pool.query(queryPlaceholder, queryValues);
     return rows[0];
+  }
+
+  static async getQuestionByMeetup(meetupId) {
+    const queryPlaceholder = 'SELECT * FROM questions WHERE meetup_id = $1';
+    const queryValues = [meetupId];
+    const {
+      rows,
+    } = await pool.query(queryPlaceholder, queryValues);
+    return rows;
   }
 
   static async getById(id) {

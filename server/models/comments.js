@@ -19,7 +19,7 @@ export default class Comment {
   }
 
   static async getCommentsByQuestion(id) {
-    const queryPlaceholder = 'SELECT * FROM comments WHERE questionid = $1';
+    const queryPlaceholder = 'SELECT * FROM comments WHERE question_id = $1';
     const queryValues = [id];
     const {
       rows,

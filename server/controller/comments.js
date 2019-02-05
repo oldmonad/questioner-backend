@@ -26,6 +26,20 @@ const commentsController = {
     const createdComment = await latestComment.createComment();
     return successResponse(res, 201, 'Comment posted', createdComment);
   },
+
+  async getByQuestion(req, res) {
+    const {
+      id,
+    } = req.params;
+
+    const checkquestion = await Question.getById(id);
+
+    if (!checkquestion) {
+      return errorResponse(res, 404, 'Question does not exist');
+    }
+    const comments = await Comments.getCommentsByQuestion(id);
+    return successResponse(res, 201, 'All comments for this question', comments);
+  },
 };
 
 export default commentsController;
