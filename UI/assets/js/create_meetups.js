@@ -172,8 +172,8 @@ const fetchMeetups = async () => {
         const meetupContainer = document.getElementById('meetups--container');
         meetupContainer.innerHTML = output;
       }
-      if (response.status === 204) {
-        console.log('empty resource');
+      if (response.status === 404) {
+        console.log(response)
         hideOverlay();
       }
     })
@@ -182,6 +182,6 @@ const fetchMeetups = async () => {
 
 
 
-// body.addEventListener('load', fetchMeetups());
+body.addEventListener('load', fetchMeetups());
 const createMeetupForm = document.getElementById('meetup--custom__form');
 createMeetupForm.addEventListener('submit', createMeetup);
