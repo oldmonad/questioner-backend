@@ -114,7 +114,7 @@ export default {
     const questions = await Question.getQuestionByMeetup(id);
 
     if (questions.length === 0) {
-      return errorResponse(res, 204, 'Empty Resource');
+      return errorResponse(res, 404, 'Empty Resource');
     }
 
     return successResponse(res, 200, 'All available questions for this meetup', questions);

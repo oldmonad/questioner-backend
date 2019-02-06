@@ -18,7 +18,7 @@ const MeetupController = {
     const allMeetups = await MeetupModels.retrieveAllMeetups();
 
     if (allMeetups.length === 0) {
-      return errorResponse(res, 204, 'Empty Resource');
+      return errorResponse(res, 404, 'Empty Resource');
     }
 
     return successResponse(res, 200, 'All available meetups', allMeetups);
