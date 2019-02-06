@@ -33,7 +33,7 @@ function showAlert(message, className) {
   //Timeout after 5 seconds
   setTimeout(function () {
     document.querySelector('.alert').remove();
-  }, 5000);
+  }, 3000);
 }
 
 
@@ -75,11 +75,7 @@ const login = async (e) => {
 
         localStorage.setItem('user', JSON.stringify(data));
 
-        if (data.admin === true) {
-          window.location.href = `${windowUrl}/admin_meetups.html`;
-        } else {
-          window.location.href = `${windowUrl}/user_meetups.html`;
-        }
+        window.location.href = `${windowUrl}/meetups.html`;
       }
       return true;
     })

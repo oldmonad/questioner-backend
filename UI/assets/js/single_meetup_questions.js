@@ -1,4 +1,8 @@
+const windowUrlArray = window.location.href.split('/');
+windowUrlArray.pop();
+const windowUrl = windowUrlArray.join('/');
 const question = document.getElementById('question');
+
 const showOverlay = () => {
   document.querySelector('.loading').style.display = 'block';
 };
@@ -6,6 +10,25 @@ const showOverlay = () => {
 const hideOverlay = () => {
   document.querySelector('.loading').style.display = 'none';
 };
+
+function showAlert(message, className) {
+  const div = document.createElement('div');
+  //Add ClassName
+  div.className = `alert ${className}`;
+  const p = document.createElement("p");
+  p.appendChild(document.createTextNode(message));
+  div.appendChild(p);
+
+  const container = document.querySelector('.login--section');
+  const form = document.querySelector('.custom--form');
+
+  //Insert alert
+  container.insertBefore(div, form);
+  //Timeout after 5 seconds
+  setTimeout(function () {
+    document.querySelector('.alert').remove();
+  }, 3000);
+}
 
 const getMeetupId = () => {
   const urlString = window.location.href;
@@ -46,6 +69,10 @@ const getSingleMeetup = async () => {
     } = userData;
 
     userToken = token;
+  }
+
+  if (!userToken) {
+    window.location.href = `${windowUrl}/login.html`;
   }
 
 
@@ -115,6 +142,50 @@ const getSingleMeetup = async () => {
 
       } else {
         console.log(response);
+      }
+    })
+    .catch(err => err);
+};
+
+const deleteMeetup = async () => {
+  const meetupId = getMeetupId();
+  e.preventDefault();
+  showOverlay();
+
+
+  const deleteMeetupUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/meetups/delete/${meetupId}`;
+
+
+  let userToken;
+  if (localStorage.getItem('user')) {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const {
+      token,
+    } = userData;
+
+    userToken = token;
+  }
+
+
+  await fetch(deleteMeetupUrl, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`,
+      },
+    })
+    .then(res => res.json())
+    .then((response) => {
+      window.location.reload();
+      hideOverlay();
+
+      // check for success status
+      if (response.status === 200) {
+
+      } else {
+        console.log(response);
+
       }
     })
     .catch(err => err);
@@ -240,3 +311,5 @@ body.addEventListener('load', getSingleMeetup());
 body.addEventListener('load', getQuestions());
 const submitBtn = document.getElementById('submit');
 submitBtn.addEventListener('click', createQuestion);
+const deleteBtn = document.getElementById('delete--meetup');
+deleteBtn.addEventListener('click', deleteMeetup);

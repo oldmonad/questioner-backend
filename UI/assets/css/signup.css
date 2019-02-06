@@ -1,3 +1,8 @@
+#password-error {
+  color: red;
+  font-size: .9rem;
+}
+
 #red {
   color: red;
   font-size: .9rem;
@@ -83,24 +88,6 @@ main {
   width: 100%;
 }
 
-.form--control:focus {
-  box-shadow: none;
-  outline: none;
-  border-bottom-color: rgba(0, 0, 0, 0.12);
-}
-
-.form--control:focus~.animated--label {
-  top: 0;
-  opacity: 1;
-  color: #3F45FF;
-  font-size: .9rem;
-}
-
-.form--control:focus~.animated--label:after {
-  visibility: visible;
-  width: 100%;
-  left: 0;
-}
 
 .submit--button input[type=submit] {
   cursor: pointer;
@@ -139,10 +126,66 @@ main {
 }
 
 
-/* @media screen and (min-width: 500px) {
+@media screen and (min-width: 500px) {
   main {
-    height: 135vh;
+    height: 80vh;
   }
+
+  .signup--section {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: .4rem;
+    width: 500px;
+  }
+
+  .signup--section__header {
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+  }
+
+  .custom--form {
+    font-weight: 400;
+    font-size: 1.1rem;
+  }
+
+  .form--control {
+    padding: .5rem 0 .5rem;
+  }
+
+  .form--control:focus {
+    box-shadow: none;
+    outline: none;
+    border-bottom-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .form--control:focus~.animated--label:after {
+    visibility: visible;
+    width: 100%;
+    left: 0;
+  }
+
+  .submit--button input[type=submit] {
+    font-size: 1.5rem;
+  }
+
+  .submit--button input[type=submit]:hover {
+    font-size: 1.5rem;
+  }
+
+  .instruction__acount {
+    color: #444444;
+    margin-right: .5rem;
+  }
+
+  .instruction__signup a {
+    color: #3F45FF;
+  }
+}
+
+@media screen and (min-width: 768px) {}
+
+@media screen and (min-width: 1024px) {
+
 
   .signup--section {
     padding: 2rem;
@@ -163,33 +206,10 @@ main {
 
 
 
-  .form--group.not-empty .animated--label {
-    top: 0;
-    font-size: 1rem;
-  }
-
   .form--control {
     padding: .5rem 0 .5rem;
   }
 
-  .form--control:focus {
-    box-shadow: none;
-    outline: none;
-    border-bottom-color: rgba(0, 0, 0, 0.12);
-  }
-
-  .form--control:focus~.animated--label {
-    top: 0;
-    opacity: 1;
-    color: #3F45FF;
-    font-size: 1.2rem;
-  }
-
-  .form--control:focus~.animated--label:after {
-    visibility: visible;
-    width: 100%;
-    left: 0;
-  }
 
   .submit--button input[type=submit] {
     font-size: 1.5rem;
@@ -207,78 +227,4 @@ main {
   .instruction__signup a {
     color: #3F45FF;
   }
-} */
-
-/* @media screen and (min-width: 768px) {
-  main {
-    height: 100vh !important;
-  }
-} */
-
-@media screen and (min-width: 1024px) {
-  /* main {
-    height: 70vh !important;
-  } */
-
-  /* .signup--section {
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: .4rem;
-    width: 500px;
-  }
-
-  .signup--section__header {
-    margin-bottom: 1rem;
-    font-size: 1.7rem;
-  }
-
-  .custom--form {
-    font-weight: 400;
-    font-size: 1.1rem;
-  }
-
-  .form--group.not-empty .animated--label {
-    top: 0;
-    font-size: 1rem;
-  }
-
-  .form--control {
-    padding: .5rem 0 .5rem;
-  }
-
-  .form--control:focus {
-    box-shadow: none;
-    outline: none;
-    border-bottom-color: rgba(0, 0, 0, 0.12);
-  }
-
-  .form--control:focus~.animated--label {
-    top: 0;
-    opacity: 1;
-    color: #3F45FF;
-    font-size: 1.2rem;
-  }
-
-  .form--control:focus~.animated--label:after {
-    visibility: visible;
-    width: 100%;
-    left: 0;
-  }
-
-  .submit--button input[type=submit] {
-    font-size: 1.5rem;
-  }
-
-  .submit--button input[type=submit]:hover {
-    font-size: 1.5rem;
-  }
-
-  .instruction__acount {
-    color: #444444;
-    margin-right: .5rem;
-  }
-
-  .instruction__signup a {
-    color: #3F45FF;
-  } */
 }

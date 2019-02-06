@@ -1,7 +1,12 @@
 const apiUrl = 'https://enigmatic-refuge-95413.herokuapp.com/api/v1/meetups';
+const windowUrlArray = window.location.href.split('/');
+windowUrlArray.pop();
+const windowUrl = windowUrlArray.join('/');
 const meetup_topic = document.getElementById('event-title');
 const meetup_location = document.getElementById('address');
 const meetup_date = document.getElementById('date');
+const deleteBtn = document.getElementById('delete--meetup');
+
 const {
   body,
 } = window.document;
@@ -30,10 +35,6 @@ const convertDate = (createdon) => {
 
 
 
-
-
-
-// Create new user account
 const createMeetup = async (e) => {
   e.preventDefault();
   showOverlay();
@@ -60,7 +61,7 @@ const createMeetup = async (e) => {
     userToken = token;
   }
 
-  // Make a post request to sign up endpoint
+
   await fetch(apiUrl, {
       method: 'POST',
       mode: 'cors',
@@ -87,11 +88,12 @@ const createMeetup = async (e) => {
 };
 
 
+
+
 // Create new user account
 const fetchMeetups = async () => {
   showOverlay();
 
-  // get user object from
   let userToken;
   if (localStorage.getItem('user')) {
     const userData = JSON.parse(localStorage.getItem('user'));
@@ -102,7 +104,10 @@ const fetchMeetups = async () => {
     userToken = token;
   }
 
-  // Make a get request to meetups endpoint
+  if (!userToken) {
+    window.location.href = `${windowUrl}/login.html`;
+  }
+
   await fetch(apiUrl, {
       method: 'GET',
       mode: 'cors',
@@ -159,21 +164,17 @@ const fetchMeetups = async () => {
         			<div class="tag">technology</div>
         			<div class="tag">technology</div>
         		</div>
-        		<div>
-        			<span id="delete--meetup" class="closeBtn"><i class="fas fa-trash"></i></span>
-        		</div>
         	</a>
         </div>`;
         });
 
 
         const meetupContainer = document.getElementById('meetups--container');
-
         meetupContainer.innerHTML = output;
-
-      } else {
-        console.log(response);
-
+      }
+      if (response.status === 204) {
+        console.log('empty resource');
+        hideOverlay();
       }
     })
     .catch(err => err);
@@ -181,6 +182,6 @@ const fetchMeetups = async () => {
 
 
 
-body.addEventListener('load', fetchMeetups());
+// body.addEventListener('load', fetchMeetups());
 const createMeetupForm = document.getElementById('meetup--custom__form');
 createMeetupForm.addEventListener('submit', createMeetup);

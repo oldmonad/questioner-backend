@@ -1,3 +1,6 @@
+const windowUrlArray = window.location.href.split('/');
+windowUrlArray.pop();
+const windowUrl = windowUrlArray.join('/');
 const comment = document.getElementById('comment');
 const showOverlay = () => {
   document.querySelector('.loading').style.display = 'block';
@@ -49,7 +52,9 @@ const getSingleQuestion = async () => {
     userToken = token;
   }
 
-
+  if (!userToken) {
+    window.location.href = `${windowUrl}/login.html`;
+  }
   await fetch(singleQuestionApiUrl, {
       method: 'GET',
       mode: 'cors',
@@ -106,7 +111,7 @@ const createComment = async (e) => {
   const questionId = getQuestionId();
   const commentApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/comments`;
   // User input data object
-  
+
   const formData = {
     questionId,
     comment: comment.value,

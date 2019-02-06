@@ -86,15 +86,21 @@ const usernameErrorHandler = (errorData) => {
   `);
 };
 
-function validation() {
 
-}
+
+// function validation() {
+//   const password = pass_word.value;
+//   const confirmPassword = confirm_password.value;
+
+
+
+// }
 
 
 
 const register = async (e) => {
   e.preventDefault();
-  showOverlay();
+
 
 
   const firstname = first_name.value;
@@ -105,8 +111,12 @@ const register = async (e) => {
   const password = pass_word.value;
   const confirmPassword = confirm_password.value;
 
+  if (password !== confirmPassword) {
+    document.getElementById('password-error').innerHTML = "The passwords are not matching";
+    return false;
+  }
 
-
+  showOverlay();
   const userInput = {
     firstname,
     lastname,
@@ -130,12 +140,14 @@ const register = async (e) => {
       hideOverlay()
       if (data.error) {
         if (data.status === 400) {
+          console.log(data)
           const errorData = data.error;
           const errorArray = Object.keys(errorData);
           return inputErrorHandler(errorArray, errorData);
         }
         if (data.status === 409) {
           const errorData = data.error;
+
           if (errorData.includes('email')) return emailErrorHandler(errorData);
           return usernameErrorHandler(errorData);
         }
@@ -145,7 +157,7 @@ const register = async (e) => {
         showAlert('Account created successfully you would be redirected to the login page', 'success');
         setTimeout(() => {
           window.location.href = `${windowUrl}/login.html`;
-        }, 5000);
+        }, 3000);
       }
     })
     .catch((err) => {
