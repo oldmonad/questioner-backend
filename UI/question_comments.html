@@ -45,25 +45,10 @@
       <main>
 
         <div class="question--section">
+          <div id="question--detail">
 
-          <div class="question">
-            <div class="question__poster">
-              John doe
-            </div>
-            <span class="question__time">
-              10h ago
-            </span>
-            <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
-              explicabo
-              voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
-              quo
-              molestias officiis nisi necessitatibus!
-            </div>
-            <div class="comments--vote">
-              <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
-              <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
-            </div>
           </div>
+
 
           <div class="comment--links">
             <a class="comment--link" href="./dashboard.html">Dashboard</a>
@@ -80,37 +65,10 @@
             <a id="modalBtn" class="post--comment" href="#">Post comment</a>
           </div>
 
-          <div class="comments__container">
-            <div id="single--comment" class="comment">
-              <div class="comment__poster">
-                John doe
-              </div>
-              <span class="comment__time">
-                10h ago
-              </span>
-              <div id="comment" class="comment__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-                non
-                explicabo
-                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
-                quo
-                molestias officiis nisi necessitatibus!
-              </div>
-            </div>
+          <div id="comments--container" class="comments__container">
+
+
             <!-- <div class="comment">
-              <div class="comment__poster">
-                John doe
-              </div>
-              <span class="comment__time">
-                10h ago
-              </span>
-              <div class="comment__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
-                explicabo
-                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
-                quo
-                molestias officiis nisi necessitatibus!
-              </div>
-            </div>
-            <div class="comment">
               <div class="comment__poster">
                 John doe
               </div>
@@ -218,7 +176,7 @@
             <div class="comment--input">
               <textarea name="feedback" id="comment" rows="10" placeholder="Enter your comment"></textarea>
               <div class="submit--button">
-                <input type="submit" value="Submit comment" />
+                <input id="submit" type="submit" value="Submit comment" />
               </div>
             </div>
           </div>
@@ -239,6 +197,7 @@
     <script src="./assets/js/accordion.js"></script>
     <script src="./assets/js/modal.js"></script>
     <script src="./assets/js/toggle-navbar.js"></script>
+    <script src="./assets/js/single_question_comments.js"></script>
   </body>
 
 </html>

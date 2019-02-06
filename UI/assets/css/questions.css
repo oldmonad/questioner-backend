@@ -136,6 +136,7 @@ main {
   overflow-x: hidden !important;
   overflow-y: auto !important;
   overflow: hidden;
+  width: 100%;
 }
 
 .question__title {

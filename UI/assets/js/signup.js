@@ -2,13 +2,22 @@ const apiUrl = 'https://enigmatic-refuge-95413.herokuapp.com/api/v1/auth/signup'
 const windowUrlArray = window.location.href.split('/');
 windowUrlArray.pop();
 const windowUrl = windowUrlArray.join('/');
-const first_name = document.querySelector('#first-name');
-const last_name = document.querySelector('#last-name');
+const first_name = document.querySelector('#firstname');
+const last_name = document.querySelector('#lastname');
 const e_mail = document.querySelector('#email');
-const phone_number = document.querySelector('#phone-number');
-const user_name = document.querySelector('#user-name');
+const phone_number = document.querySelector('#phonenumber');
+const user_name = document.querySelector('#username');
 const pass_word = document.querySelector('#password');
-const confirm_password = document.querySelector('#confirm-password');
+const confirm_password = document.querySelector('#confirmPassword');
+
+const showOverlay = () => {
+  document.querySelector('.loading').style.display = 'block';
+};
+
+const hideOverlay = () => {
+  document.querySelector('.loading').style.display = 'none';
+};
+
 
 //NOT YET FUNCTIONAL
 const inputFields = [
@@ -50,7 +59,6 @@ const removeClass = (errorclass) => {
 };
 
 
-//NOT YET FUNCTIONAL
 const inputErrorHandler = (errorArray, errorData) => {
   errorArray.forEach((errorKey) => {
     const errorId = `${errorKey}`;
@@ -62,14 +70,13 @@ const inputErrorHandler = (errorArray, errorData) => {
   });
 };
 
-//NOT YET FUNCTIONAL
 const emailErrorHandler = (errorData) => {
   removeClass('.emailerror');
   emailInput.insertAdjacentHTML('afterend', `
   <p class="emailerror" id="red">${errorData}</p><br>
   `);
 };
-//NOT YET FUNCTIONAL
+
 const usernameErrorHandler = (errorData) => {
   removeClass('.usernameerror');
   usernameInput.insertAdjacentHTML('afterend', `
@@ -78,10 +85,11 @@ const usernameErrorHandler = (errorData) => {
 };
 
 
+
 const register = async (e) => {
   e.preventDefault();
   // resetInputFields();
-  // showLoader();
+  showOverlay();
 
 
   const firstname = first_name.value;
@@ -112,10 +120,24 @@ const register = async (e) => {
     })
     .then(res => res.json())
     .then((data) => {
-      if (data.status !== 201) {
-        console.log(data.error);
-        showAlert('Some inputs are incorrect check console for directives this is not a permanent fix', 'error');
+      hideOverlay()
+      if (data.error) {
+        if (data.status !== 400) {
+          console.log(data);
+          // console.log(data.error);
+          // const errorData = data.error;
+          // const errorArray = Object.keys(errorData);
+          // console.log(errorArray)
+          // return inputErrorHandler(errorArray, errorData);
+          showAlert('Some inputs are incorrect check console for directives this is not a permanent fix', 'error');
+        }
+        if (data.status !== 409) {
+          console.log(data.error);
+          showAlert('Some inputs are incorrect check console for directives this is not a permanent fix', 'error');
+        }
       }
+
+
 
       if (data.status === 201) {
         showAlert('Account created successfully you would be redirected to the login page', 'success');

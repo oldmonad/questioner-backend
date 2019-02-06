@@ -32,8 +32,9 @@ const convertDate = (createdon) => {
 };
 
 const getSingleQuestion = async () => {
-  const meetupId = getMeetupId();
-  const singleMeetupApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/questions/${questionId}`;
+  const questionId = getQuestionId();
+
+  const singleQuestionApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/questions/${questionId}`;
   showOverlay();
 
 
@@ -49,7 +50,7 @@ const getSingleQuestion = async () => {
   }
 
 
-  await fetch(singleMeetupApiUrl, {
+  await fetch(singleQuestionApiUrl, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -63,55 +64,32 @@ const getSingleQuestion = async () => {
 
       // check for success status
       if (response.status === 200) {
-        const meetup = response.data;
+        const question = response.data;
+        // console.log(question);
 
-        const creationDate = convertDate(meetup.created_on);
-        const happeningOn = convertDate(meetup.happening_on);
-        output = `<div class="meetup">
-            <div class="meetup--header">
-              <img class="meetup--image" src="./assets/img/woman.png" />
-              <h1 class="meetup--title">
-                ${meetup.topic}
-              </h1>
+        const creationDate = convertDate(question.created_on);
+
+        output = `<div class="question">
+            <div class="question__poster">
+              John doe
             </div>
-
-            <div class="meetup--details">
-              <div class="meetup--detail">
-                <p class="meetup--detail__label">Location:</p>
-                <p class="meetup--detail__information">
-                  ${meetup.location}
-                </p>
-              </div>
-
-              <div class="meetup--detail">
-                <p class="meetup--detail__label">Date:</p>
-                <p class="meetup--detail__information">${happeningOn}</p>
-              </div>
-
-              <div class="meetup--detail">
-                <p class="meetup--detail__label">Location URL:</p>
-                <p class="meetup--detail__information">www.google.com</p>
-              </div>
-
-              <div class="meetup--detail">
-                <p class="meetup--detail__label">Created on:</p>
-                <p class="meetup--detail__information">${creationDate}</p>
-              </div>
+            <span class="question__time">
+              ${creationDate}
+            </span>
+            <div class="question__body">
+            ${question.body}
             </div>
-            <div class="tags">
-              <div class="tag">technology</div>
-              <div class="tag">technology</div>
-            </div>
-            <div>
-              <span class="closeBtn"><i class="fas fa-trash"></i></span>
+            <div class="comments--vote">
+              <div class="upvote comments--vote__item">Downvote <span class="downvote--number">${question.down_votes}</span></div>
+              <div class="downvote comments--vote__item">Upvote <span class="upvote--number">${question.up_votes}</span></div>
             </div>
           </div>`;
 
 
-        const meetupContainer = document.getElementById('meetup--detail');
+        const questionContainer = document.getElementById('question--detail');
 
 
-        meetupContainer.innerHTML = output;
+        questionContainer.innerHTML = output;
 
       } else {
         console.log(response);
@@ -120,16 +98,18 @@ const getSingleQuestion = async () => {
     .catch(err => err);
 };
 
-// Create new  question
-const createQuestion = async (e) => {
+
+
+const createComment = async (e) => {
   e.preventDefault();
   showOverlay();
-  const meetupId = getMeetupId();
-  const questionApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/questions`;
+  const questionId = getQuestionId();
+  const commentApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/comments`;
   // User input data object
+  
   const formData = {
-    meetupId,
-    body: question.value,
+    questionId,
+    comment: comment.value,
   };
 
 
@@ -143,8 +123,8 @@ const createQuestion = async (e) => {
     userToken = token;
   }
 
-  // Make a post request to sign up endpoint
-  await fetch(questionApiUrl, {
+
+  await fetch(commentApiUrl, {
       method: 'POST',
       mode: 'cors',
       body: JSON.stringify(formData),
@@ -155,26 +135,22 @@ const createQuestion = async (e) => {
     })
     .then(res => res.json())
     .then((response) => {
-      // console.log(response)
-      // window.location.reload();
+      console.log(response)
+
       hideOverlay();
 
       // check for success status
       if (response.status === 201) {
-
-      } else {
-        console.log(response);
+        window.location.reload();
       }
     })
     .catch(err => err);
 };
 
-
-// Create new  question
-const getQuestions = async (e) => {
+const getComments = async () => {
   showOverlay();
-  const meetupId = getMeetupId();
-  const meetupQuestionsApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/meetups/${meetupId}/questions`;
+  const questionId = getQuestionId();
+  const questionCommentsApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/questions/${questionId}/comments`;
 
 
   let userToken;
@@ -187,8 +163,8 @@ const getQuestions = async (e) => {
     userToken = token;
   }
 
-  // Make a post request to sign up endpoint
-  await fetch(meetupQuestionsApiUrl, {
+
+  await fetch(questionCommentsApiUrl, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -198,49 +174,42 @@ const getQuestions = async (e) => {
     })
     .then(res => res.json())
     .then((response) => {
-      // window.location.reload();
+
       hideOverlay();
 
       // check for success status
-      if (response.status === 200) {
-        const questions = response.data;
-        console.log(questions)
+      if (response.status === 201) {
+        const comments = response.data;
+        console.log(comments);
         let output = '';
 
-        questions.forEach((question) => {
-          const creationDate = convertDate(question.created_on);
+        comments.forEach((comment) => {
+          const creationDate = convertDate(comment.created_on);
 
-          output += `<div class="question">
-            <a>
-              <div class="question__poster">
+          output += `<div class="comment">
+              <div class="comment__poster">
                 John doe
               </div>
-              <span class="question__time">
+              <span class="comment__time">
                 ${creationDate}
               </span>
-              <div class="question__body">${question.body}
+              <div class="comment__body">
+              ${comment.comment}
               </div>
-              <div class="comments--vote">
-                <div class="upvote comments--vote__item">Downvote <span class="downvote--number">${question.up_votes}</span></div>
-                <div class="downvote comments--vote__item">Upvote <span class="upvote--number">${question.down_votes}</span></div>
-              </div>
-              </a>
             </div>`;
         });
 
 
-        const questionContainer = document.getElementById('questions--container');
+        const commentsContainer = document.getElementById('comments--container');
 
-        questionContainer.innerHTML = output;
-
-      } else {
-        console.log(response);
+        commentsContainer.innerHTML = output;
       }
+
     })
     .catch(err => err);
 };
 
-body.addEventListener('load', getSingleMeetup());
-body.addEventListener('load', getQuestions());
+body.addEventListener('load', getSingleQuestion());
+body.addEventListener('load', getComments());
 const submitBtn = document.getElementById('submit');
-submitBtn.addEventListener('click', createQuestion);
+submitBtn.addEventListener('click', createComment);

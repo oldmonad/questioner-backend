@@ -143,7 +143,7 @@ const createQuestion = async (e) => {
     userToken = token;
   }
 
-  // Make a post request to sign up endpoint
+
   await fetch(questionApiUrl, {
       method: 'POST',
       mode: 'cors',
@@ -156,22 +156,19 @@ const createQuestion = async (e) => {
     .then(res => res.json())
     .then((response) => {
       // console.log(response)
-      // window.location.reload();
+
       hideOverlay();
 
       // check for success status
       if (response.status === 201) {
-
-      } else {
-        console.log(response);
+        window.location.reload();
       }
     })
     .catch(err => err);
 };
 
 
-// Create new  question
-const getQuestions = async (e) => {
+const getQuestions = async () => {
   showOverlay();
   const meetupId = getMeetupId();
   const meetupQuestionsApiUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/meetups/${meetupId}/questions`;
@@ -187,7 +184,7 @@ const getQuestions = async (e) => {
     userToken = token;
   }
 
-  // Make a post request to sign up endpoint
+
   await fetch(meetupQuestionsApiUrl, {
       method: 'GET',
       mode: 'cors',
@@ -198,13 +195,12 @@ const getQuestions = async (e) => {
     })
     .then(res => res.json())
     .then((response) => {
-      // window.location.reload();
+
       hideOverlay();
 
       // check for success status
       if (response.status === 200) {
         const questions = response.data;
-        console.log(questions)
         let output = '';
 
         questions.forEach((question) => {
@@ -232,7 +228,7 @@ const getQuestions = async (e) => {
         const questionContainer = document.getElementById('questions--container');
 
         questionContainer.innerHTML = output;
-
+        // window.location.reload();
       } else {
         console.log(response);
       }
