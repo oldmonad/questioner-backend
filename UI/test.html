@@ -1,12 +1,273 @@
- <div id="simpleModal" class="modal">
-            <div class="modal--content">
-              <h1 class="post--question__header">Post Question</h1>
-              <span id="closeBtn" class="closeBtn">&times;</span>
-              <div class="question--input">
-                <textarea name="feedback" id="question" rows="10" placeholder="Enter your question"></textarea>
-                <div class="submit--button">
-                  <input type="submit" value="Submit question" />
-                </div>
-              </div>
-            </div>
-          </div>
+<div id="simpleModal" class="modal">
+	<div class="modal--content">
+		<h1 class="post--question__header">Post Question</h1>
+		<span id="closeBtn" class="closeBtn">&times;</span>
+		<div class="question--input">
+			<textarea name="feedback" id="question" rows="10" placeholder="Enter your question"></textarea>
+			<div class="submit--button">
+				<input type="submit" value="Submit question" />
+			</div>
+		</div>
+	</div>
+</div>
+
+
+// document.getElementById('meetup--custom__form').addEventListener('submit', function (e) {
+// //prevent the normal submission of the form
+// e.preventDefault();
+// const local = JSON.parse(localStorage.getItem('user'));
+// console.log(local);
+
+// });
+
+https://dbytecoderc.github.io/Questioner/UI/
+
+
+
+<!-- <div class="meetup">
+				<a href="./questions.html">
+					<div class="meetup--header">
+						<img class="meetup--image" src="./assets/img/woman.png" />
+						<h1 class="meetup--title">
+							Neque porro quisquam est qui dolorem Neque
+						</h1>
+					</div>
+
+					<div class="meetup--details">
+						<div class="meetup--detail">
+							<p class="meetup--detail__label">Location:</p>
+							<p class="meetup--detail__information">
+								Neque porro quisquam est qui dolorem Neque porro quisquam est qui
+								dolorem
+							</p>
+						</div>
+
+						<div class="meetup--detail">
+							<p class="meetup--detail__label">Date:</p>
+							<p class="meetup--detail__information">7th january 2019</p>
+						</div>
+
+						<div class="meetup--detail">
+							<p class="meetup--detail__label">Location URL:</p>
+							<p class="meetup--detail__information">www.google.com</p>
+						</div>
+
+						<div class="meetup--detail">
+							<p class="meetup--detail__label">Created on:</p>
+							<p class="meetup--detail__information">7th january 2019</p>
+						</div>
+					</div>
+					<div class="tags">
+						<div class="tag">technology</div>
+						<div class="tag">technology</div>
+					</div>
+					<div>
+						<span class="closeBtn"><i class="fas fa-trash"></i></span>
+					</div>
+				</a>
+			</div> -->
+
+<!-- <div class="meetup">
+				<div class="meetup--header">
+					<img class="meetup--image" src="./assets/img/woman.png" />
+					<h1 class="meetup--title">
+						Neque porro quisquam est qui dolorem Neque
+					</h1>
+				</div>
+
+				<div class="meetup--details">
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Location:</p>
+						<p class="meetup--detail__information">
+							Neque porro quisquam est qui dolorem Neque porro quisquam est qui
+							dolorem
+						</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Date:</p>
+						<p class="meetup--detail__information">7th january 2019</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Location URL:</p>
+						<p class="meetup--detail__information">www.google.com</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Created on:</p>
+						<p class="meetup--detail__information">7th january 2019</p>
+					</div>
+				</div>
+				<div class="tags">
+					<div class="tag">technology</div>
+					<div class="tag">technology</div>
+				</div>
+				<div>
+					<span class="closeBtn"><i class="fas fa-trash"></i></span>
+				</div>
+			</div>
+
+			<div class="meetup">
+				<div class="meetup--header">
+					<img class="meetup--image" src="./assets/img/woman.png" />
+					<h1 class="meetup--title">
+						Neque porro quisquam est qui dolorem Neque
+					</h1>
+				</div>
+
+				<div class="meetup--details">
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Location:</p>
+						<p class="meetup--detail__information">
+							Neque porro quisquam est qui dolorem Neque porro quisquam est qui
+							dolorem
+						</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Date:</p>
+						<p class="meetup--detail__information">7th january 2019</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Location URL:</p>
+						<p class="meetup--detail__information">www.google.com</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Created on:</p>
+						<p class="meetup--detail__information">7th january 2019</p>
+					</div>
+				</div>
+				<div class="tags">
+					<div class="tag">technology</div>
+					<div class="tag">technology</div>
+				</div>
+				<div>
+					<span class="closeBtn"><i class="fas fa-trash"></i></span>
+				</div>
+			</div>
+
+			<div class="meetup">
+				<div class="meetup--header">
+					<img class="meetup--image" src="./assets/img/woman.png" />
+					<h1 class="meetup--title">
+						Neque porro quisquam est qui dolorem Neque
+					</h1>
+				</div>
+
+				<div class="meetup--details">
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Location:</p>
+						<p class="meetup--detail__information">
+							Neque porro quisquam est qui dolorem Neque porro quisquam est qui
+							dolorem
+						</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Date:</p>
+						<p class="meetup--detail__information">7th january 2019</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Location URL:</p>
+						<p class="meetup--detail__information">www.google.com</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Created on:</p>
+						<p class="meetup--detail__information">7th january 2019</p>
+					</div>
+				</div>
+				<div class="tags">
+					<div class="tag">technology</div>
+					<div class="tag">technology</div>
+				</div>
+				<div>
+					<span class="closeBtn"><i class="fas fa-trash"></i></span>
+				</div>
+			</div>
+
+			<div class="meetup">
+				<div class="meetup--header">
+					<img class="meetup--image" src="./assets/img/woman.png" />
+					<h1 class="meetup--title">
+						Neque porro quisquam est qui dolorem Neque
+					</h1>
+				</div>
+
+				<div class="meetup--details">
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Location:</p>
+						<p class="meetup--detail__information">
+							Neque porro quisquam est qui dolorem Neque porro quisquam est qui
+							dolorem
+						</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Date:</p>
+						<p class="meetup--detail__information">7th january 2019</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Location URL:</p>
+						<p class="meetup--detail__information">www.google.com</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Created on:</p>
+						<p class="meetup--detail__information">7th january 2019</p>
+					</div>
+				</div>
+				<div class="tags">
+					<div class="tag">technology</div>
+					<div class="tag">technology</div>
+				</div>
+				<div>
+					<span class="closeBtn"><i class="fas fa-trash"></i></span>
+				</div>
+			</div>
+
+			<div class="meetup">
+				<div class="meetup--header">
+					<img class="meetup--image" src="./assets/img/woman.png" />
+					<h1 class="meetup--title">
+						Neque porro quisquam est qui dolorem Neque
+					</h1>
+				</div>
+
+				<div class="meetup--details">
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Location:</p>
+						<p class="meetup--detail__information">
+							Neque porro quisquam est qui dolorem Neque porro quisquam est qui
+							dolorem
+						</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Date:</p>
+						<p class="meetup--detail__information">7th january 2019</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Location URL:</p>
+						<p class="meetup--detail__information">www.google.com</p>
+					</div>
+
+					<div class="meetup--detail">
+						<p class="meetup--detail__label">Created on:</p>
+						<p class="meetup--detail__information">7th january 2019</p>
+					</div>
+				</div>
+				<div class="tags">
+					<div class="tag">technology</div>
+					<div class="tag">technology</div>
+				</div>
+				<div>
+					<span class="closeBtn"><i class="fas fa-trash"></i></span>
+				</div>
+			</div> -->

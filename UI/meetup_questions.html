@@ -18,20 +18,13 @@
 <body>
 
   <body>
-
+    <div class="loading">Loading&#8230;</div>
     <div class="page--content">
 
       <header>
         <div class="topnav" id="myTopnav">
           <a href="#home" class="logo active">Questioner</a>
           <div class="dropdown">
-            <!-- <button class="dropbtn">Menu
-              <i class="fa fa-caret-down"></i>
-            </button> -->
-            <!-- <div class="dropdown-content">
-              <a href="./dashboard.html">Dashboard</a>
-              <a href="./index.html">Logout</a>
-            </div> -->
             <div class="dropdown">
               <a class="dummy-login">Login</a>
               <a href="./signup.html" class="">Logout</a>
@@ -43,49 +36,10 @@
 
       <main>
         <div class="meetup-details">
-          <div class="meetup">
-            <div class="meetup--header">
-              <img class="meetup--image" src="./assets/img/woman.png" />
-              <h1 class="meetup--title">
-                Neque porro quisquam est qui dolorem Neque
-              </h1>
-            </div>
-
-            <div class="meetup--details">
-              <div class="meetup--detail">
-                <p class="meetup--detail__label">Location:</p>
-                <p class="meetup--detail__information">
-                  Neque porro quisquam est qui dolorem Neque porro quisquam est qui
-                  dolorem
-                </p>
-              </div>
-
-              <div class="meetup--detail">
-                <p class="meetup--detail__label">Date:</p>
-                <p class="meetup--detail__information">7th january 2019</p>
-              </div>
-
-              <div class="meetup--detail">
-                <p class="meetup--detail__label">Location URL:</p>
-                <p class="meetup--detail__information">www.google.com</p>
-              </div>
-
-              <div class="meetup--detail">
-                <p class="meetup--detail__label">Created on:</p>
-                <p class="meetup--detail__information">7th january 2019</p>
-              </div>
-            </div>
-            <div class="tags">
-              <div class="tag">technology</div>
-              <div class="tag">technology</div>
-            </div>
-            <div>
-              <span class="closeBtn"><i class="fas fa-trash"></i></span>
-            </div>
-          </div>
+          <div id="meetup--detail"></div>
           <div class="question--links">
             <a class="question--link" href="./dashboard.html">Dashboard</a>
-            <a class="question--link" href="./adminMeetups.html">Meetups</a>
+            <a class="question--link" href="./meetups.html">Meetups</a>
             <a class="question--link" href="./comments.html">Comments</a>
           </div>
         </div>
@@ -98,8 +52,30 @@
             <a id="modalBtn" class="post--question" href="#">Post question</a>
           </div>
 
-          <div class="questions__container">
+
+          <div id="questions--container" class="questions__container">
             <div class="question">
+              <div class="question__poster">
+                John doe
+              </div>
+              <span class="question__time">
+                10h ago
+              </span>
+              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
+                explicabo
+                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
+                quo
+                molestias officiis nisi necessitatibus!
+              </div>
+              <div class="comments--vote">
+                <div class="comments comments--vote__item">
+                  comments
+                </div>
+                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
+                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
+              </div>
+            </div>
+            <!-- <div class="question">
               <div class="question__poster">
                 John doe
               </div>
@@ -161,28 +137,7 @@
                 <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
                 <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
               </div>
-            </div>
-            <div class="question">
-              <div class="question__poster">
-                John doe
-              </div>
-              <span class="question__time">
-                10h ago
-              </span>
-              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
-                explicabo
-                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
-                quo
-                molestias officiis nisi necessitatibus!
-              </div>
-              <div class="comments--vote">
-                <div class="comments comments--vote__item">
-                  comments
-                </div>
-                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
-                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
-              </div>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -193,7 +148,7 @@
             <div class="question--input">
               <textarea name="feedback" id="question" rows="10" placeholder="Enter your question"></textarea>
               <div class="submit--button">
-                <input type="submit" value="Submit question" />
+                <input id="submit" type="submit" value="Submit question" />
               </div>
             </div>
           </div>
@@ -214,6 +169,7 @@
     <script src="./assets/js/accordion.js"></script>
     <script src="./assets/js/modal.js"></script>
     <script src="./assets/js/toggle-navbar.js"></script>
+    <script src="./assets/js/single_meetup_questions.js"></script>
   </body>
 
 </html>
