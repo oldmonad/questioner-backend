@@ -1,3 +1,8 @@
+#red {
+  color: red;
+  font-size: .9rem;
+}
+
 .error {
   background: red;
   color: white;
@@ -13,9 +18,9 @@
 .success {
   background: green;
   color: white;
-  padding: 5px 10px;
-  font-size: 35px;
-  font-weight: 700;
+  padding: 5px 5px;
+  font-size: .9rem;
+  font-weight: 600;
   text-transform: uppercase;
   text-align: center;
   margin: .5rem 0;
@@ -57,8 +62,8 @@ main {
 
 .form--group {
   position: relative;
-  padding-top: 16px;
-  margin-bottom: 16px;
+  padding-top: .3rem;
+  margin-bottom: .3rem;
 }
 
 

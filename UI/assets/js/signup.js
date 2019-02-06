@@ -18,8 +18,6 @@ const hideOverlay = () => {
   document.querySelector('.loading').style.display = 'none';
 };
 
-
-//NOT YET FUNCTIONAL
 const inputFields = [
   first_name, last_name, e_mail, phone_number,
   user_name, pass_word, confirm_password,
@@ -35,28 +33,31 @@ function showAlert(message, className) {
   div.appendChild(p);
 
   const container = document.querySelector('.signup--section');
-  const form = document.querySelector('.signup--form');
+  const form = document.getElementById('signup--form');
 
   //Insert alert
   container.insertBefore(div, form);
   //Timeout after 5 seconds
-  setTimeout(function () {
+  setTimeout(() => {
     document.querySelector('.alert').remove();
   }, 5000);
 }
+
 
 function clearAlert() {
   document.getElementById('number').value = '';
 }
 
-//NOT YET FUNCTIONAL
+
 const removeClass = (errorclass) => {
   const errorText = document.querySelector(errorclass);
   if (errorText) {
-    errorText.display.hidden = true;
+    errorText.previousSibling.remove();
+    errorText.nextSibling.remove();
     errorText.remove();
   }
 };
+
 
 
 const inputErrorHandler = (errorArray, errorData) => {
@@ -70,25 +71,29 @@ const inputErrorHandler = (errorArray, errorData) => {
   });
 };
 
+
 const emailErrorHandler = (errorData) => {
   removeClass('.emailerror');
-  emailInput.insertAdjacentHTML('afterend', `
+  e_mail.insertAdjacentHTML('afterend', `
   <p class="emailerror" id="red">${errorData}</p><br>
   `);
 };
 
 const usernameErrorHandler = (errorData) => {
   removeClass('.usernameerror');
-  usernameInput.insertAdjacentHTML('afterend', `
+  user_name.insertAdjacentHTML('afterend', `
   <p class="usernameerror" id="red">${errorData}</p><br>
   `);
 };
+
+function validation() {
+
+}
 
 
 
 const register = async (e) => {
   e.preventDefault();
-  // resetInputFields();
   showOverlay();
 
 
@@ -99,6 +104,8 @@ const register = async (e) => {
   const username = user_name.value;
   const password = pass_word.value;
   const confirmPassword = confirm_password.value;
+
+
 
   const userInput = {
     firstname,
@@ -122,22 +129,17 @@ const register = async (e) => {
     .then((data) => {
       hideOverlay()
       if (data.error) {
-        if (data.status !== 400) {
-          console.log(data);
-          // console.log(data.error);
-          // const errorData = data.error;
-          // const errorArray = Object.keys(errorData);
-          // console.log(errorArray)
-          // return inputErrorHandler(errorArray, errorData);
-          showAlert('Some inputs are incorrect check console for directives this is not a permanent fix', 'error');
+        if (data.status === 400) {
+          const errorData = data.error;
+          const errorArray = Object.keys(errorData);
+          return inputErrorHandler(errorArray, errorData);
         }
-        if (data.status !== 409) {
-          console.log(data.error);
-          showAlert('Some inputs are incorrect check console for directives this is not a permanent fix', 'error');
+        if (data.status === 409) {
+          const errorData = data.error;
+          if (errorData.includes('email')) return emailErrorHandler(errorData);
+          return usernameErrorHandler(errorData);
         }
       }
-
-
 
       if (data.status === 201) {
         showAlert('Account created successfully you would be redirected to the login page', 'success');

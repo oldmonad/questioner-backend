@@ -15,7 +15,6 @@
   <title>Questioner</title>
 </head>
 
-
 <body>
 
   <div class="loading">Loading&#8230;</div>
@@ -40,36 +39,37 @@
 
       <div id='signup-form__wrapper' class="signup--section">
         <h1 class="signup--section__header">Sign up</h1>
-        <form id="signup--form" action="#" class="custom--form">
+
+        <form id="signup--form" action="#" class="custom--form" onsubmit="return validation();">
 
           <div class="form--group">
-            <input type="text" class="form--control" placeholder="First name" id="firstname" maxlength="24" required />
+            <input type="text" class="form--control" placeholder="First name" id="firstname" maxlength="24" />
           </div>
 
           <div class="form--group">
-            <input type="text" class="form--control" placeholder="Last name" id="lastname" maxlength="24" required />
+            <input type="text" class="form--control" placeholder="Last name" id="lastname" maxlength="24" />
           </div>
 
           <div class="form--group">
-            <input type="email" class="form--control" placeholder="Email" id="email" required />
+            <input type="email" class="form--control" placeholder="Email" id="email" />
           </div>
 
           <div class="form--group">
-            <input type="text" class="form--control" placeholder="Phone number" id="phonenumber" maxlength="24"
-              required />
+            <input type="text" class="form--control" placeholder="Phone number" id="phonenumber" maxlength="24" />
           </div>
 
           <div class="form--group">
-            <input type="text" class="form--control" placeholder="Username" id="username" maxlength="24" required />
+            <input type="text" class="form--control" placeholder="Username" id="username" maxlength="24" />
           </div>
 
           <div class="form--group">
-            <input type="password" class="form--control" placeholder="Password" id="password" maxlength="18" required />
+            <input type="password" class="form--control" placeholder="Password" id="password" maxlength="18" />
+            <span id="password-error"></span>
           </div>
 
           <div class="form--group">
-            <input type="password" class="form--control" placeholder="Confirm Password" id="confirmPassword" maxlength="18"
-              required />
+            <input type="password" class="form--control" placeholder="Confirm Password" id="confirmPassword" maxlength="18" />
+            <span id="confirm-password-error"></span>
           </div>
 
           <div class="submit--button">
