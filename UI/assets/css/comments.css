@@ -210,6 +210,27 @@ main {
   background-color: royalblue;
 }
 
+.upvote {
+  font-size: 1rem;
+  color: #ccc;
+  margin-right: .5rem;
+}
+
+
+.downvote {
+  font-size: 1rem;
+  color: #ccc;
+  margin-right: .5rem;
+}
+
+.upvote:hover {
+  color: green;
+}
+
+.downvote:hover {
+  color: red;
+}
+
 @media screen and (min-width: 900px) {
   main {
     display: flex;

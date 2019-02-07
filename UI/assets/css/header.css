@@ -1,5 +1,7 @@
 header {
   background-color: #ffffff;
+  box-shadow: 0 8px 6px -6px #ccc;
+  border-bottom: 1px solid #3F45FF;
 }
 
 .topnav {

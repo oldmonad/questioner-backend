@@ -24,13 +24,16 @@
   float: right;
   cursor: pointer;
   font-size: 2rem;
-  color: #ccc;
-  transition: 0.1s ease all;
+  /* color: #ccc;
+  transition: 0.1s ease all; */
+  color: red;
 }
 
+
+/* 
 .closeBtn:hover {
   color: #000;
-}
+} */
 
 .event--information__header {
   margin-top: 2rem;

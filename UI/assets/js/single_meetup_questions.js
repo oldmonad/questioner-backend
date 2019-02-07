@@ -2,6 +2,7 @@ const windowUrlArray = window.location.href.split('/');
 windowUrlArray.pop();
 const windowUrl = windowUrlArray.join('/');
 const question = document.getElementById('question');
+const meetupContainer = document.getElementById('meetup--detail');
 
 const showOverlay = () => {
   document.querySelector('.loading').style.display = 'block';
@@ -53,6 +54,9 @@ const convertDate = (createdon) => {
 
   return formattedDate;
 };
+
+let deleteBtn;
+
 
 const getSingleMeetup = async () => {
   const meetupId = getMeetupId();
@@ -130,18 +134,15 @@ const getSingleMeetup = async () => {
               <div class="tag">technology</div>
             </div>
             <div>
-              <span class="closeBtn"><i class="fas fa-trash"></i></span>
+              <span id="delete--meetup" class ="closeBtn"><i class="fas fa-trash delete--btn"></i></span >
             </div>
           </div>`;
 
 
         const meetupContainer = document.getElementById('meetup--detail');
-
-
         meetupContainer.innerHTML = output;
 
-      } else {
-        console.log(response);
+        // deleteBtn = document.getElementById('delete--meetup');
       }
     })
     .catch(err => err);
@@ -149,11 +150,10 @@ const getSingleMeetup = async () => {
 
 const deleteMeetup = async () => {
   const meetupId = getMeetupId();
-  e.preventDefault();
   showOverlay();
 
 
-  const deleteMeetupUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/meetups/delete/${meetupId}`;
+  const deleteMeetupUrl = `https://enigmatic-refuge-95413.herokuapp.com/api/v1/meetups/${meetupId}`;
 
 
   let userToken;
@@ -168,7 +168,7 @@ const deleteMeetup = async () => {
 
 
   await fetch(deleteMeetupUrl, {
-      method: 'POST',
+      method: 'DELETE',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
@@ -177,8 +177,9 @@ const deleteMeetup = async () => {
     })
     .then(res => res.json())
     .then((response) => {
-      window.location.reload();
+      // window.location.reload();
       hideOverlay();
+      console.log(response);
 
       // check for success status
       if (response.status === 200) {
@@ -269,6 +270,7 @@ const getQuestions = async () => {
 
       hideOverlay();
 
+
       // check for success status
       if (response.status === 200) {
         const questions = response.data;
@@ -276,24 +278,29 @@ const getQuestions = async () => {
 
         questions.forEach((question) => {
           const creationDate = convertDate(question.created_on);
-
           output += `<div class="question">
-              <a class "single-question" href="question_comments.html?id=${question.id}">
-              <div class="question__poster">
+               <a class="single-question" href="question_comments.html?id=${question.id}" >
+                 <div class="question__poster">
                 John doe
               </div>
               <span class="question__time">
                 ${creationDate}
               </span>
-              <div class="question__body">${question.body}
+              <div class="question__body">
+               ${question.body}
               </div>
               <div class="comments--vote">
-                <div class="upvote comments--vote__item">Downvote <span class="downvote--number">${question.up_votes}</span></div>
-                <div class="downvote comments--vote__item">Upvote <span class="upvote--number">${question.down_votes}</span></div>
+                <div class="comments--vote__item"><span id="upvote" class="upvote" data-upvote=${question.id}><i class="fas fa-thumbs-up"></i></span><span
+                    class="upvote--number">${question.up_votes}</span>
+                </div>
+                <div class="comments--vote__item"><span id="downvote" class="downvote" data-downvote=${question.id}><i class="fas fa-thumbs-down"></i></span><span
+                    class="downvote--number">
+                    ${question.down_votes}</span></div>
               </div>
-              </a>
+                </a>
             </div>`;
         });
+
 
 
         const questionContainer = document.getElementById('questions--container');
@@ -307,9 +314,15 @@ const getQuestions = async () => {
     .catch(err => err);
 };
 
+
+
 body.addEventListener('load', getSingleMeetup());
 body.addEventListener('load', getQuestions());
 const submitBtn = document.getElementById('submit');
 submitBtn.addEventListener('click', createQuestion);
-const deleteBtn = document.getElementById('delete--meetup');
-deleteBtn.addEventListener('click', deleteMeetup);
+meetupContainer.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (e.target.classList.contains('delete--btn')) {
+    deleteMeetup();
+  }
+});
