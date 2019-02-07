@@ -2,9 +2,11 @@
 /* eslint-disable eol-last */
 import express from 'express';
 import '@babel/polyfill';
+import swaggerUi from 'swagger-ui-express';
 import logger from 'morgan';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import questionerApplication from '../swagger.json';
 
 // Set up express app
 const app = express();
@@ -28,6 +30,8 @@ app.all('/', (req, res) => {
     message: 'Welcome to the Questioner API.',
   });
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(questionerApplication));
 
 app.all('/*', (req, res) => res.status(404).json({
   status: 404,
