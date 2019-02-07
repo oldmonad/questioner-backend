@@ -18,7 +18,7 @@ const UserController = {
     const newUser = new UserModel(req.body);
     const isExistingUserMail = await UserModel.findUserByEmail(newUser.email);
     if (isExistingUserMail) {
-      return errorResponse(res, 409, 'This email address is not available');
+      return errorResponse(res, 409, 'This email address already exists');
     }
 
     const isExistingUsername = await UserModel.findUserByUsername(newUser.username);
