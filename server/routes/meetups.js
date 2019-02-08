@@ -17,7 +17,7 @@ import validateId from '../middleware/validateid';
 import validateRsvp from '../middleware/validatersvps';
 
 router.post('/', Auth.adminAuth, meetupValidation.validCreateMeetup, meetupValidation.checkDate, tryCatch(meetupController.createMeetup));
-router.get('/:id/questions', tryCatch(questionsController.meetupQuestions));
+router.get('/:id/questions', validateId, tryCatch(questionsController.meetupQuestions));
 router.get('/upcoming/', tryCatch(meetupController.getUpcomingMeetups));
 router.get('/:id', validateId, tryCatch(meetupController.getSingleMeetup));
 router.get('/', tryCatch(meetupController.getAllMeetups));
