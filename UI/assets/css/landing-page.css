@@ -66,8 +66,9 @@ main {
 
 .topnav a {
   margin-bottom: 0 !important;
-  color: #3F45FF !important;
+  color: #ffffff;
   cursor: pointer;
+  font-weight: 700 !important;
 }
 
 .dummy-login {

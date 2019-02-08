@@ -5,7 +5,6 @@ const windowUrl = windowUrlArray.join('/');
 const meetup_topic = document.getElementById('event-title');
 const meetup_location = document.getElementById('address');
 const meetup_date = document.getElementById('date');
-const deleteBtn = document.getElementById('delete--meetup');
 
 const {
   body,

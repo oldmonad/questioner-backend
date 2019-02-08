@@ -74,21 +74,41 @@ const getSingleQuestion = async () => {
 
         const creationDate = convertDate(question.created_on);
 
+        // output = `<div class="question">
+        //     <div class="question__poster">
+        //       John doe
+        //     </div>
+        //     <span class="question__time">
+        //       ${creationDate}
+        //     </span>
+        //     <div class="question__body">
+        //     ${question.body}
+        //     </div>
+        //     <div class="comments--vote">
+        //       <div class="comments--vote__item"><span class="upvote"><i class="fas fa-thumbs-up"></i></span><span class="upvote--number">${question.up_votes}</span></div>
+        //       <div class="downvote comments--vote__item"><span class="downvote"><i class="fas fa-thumbs-down"></i></span><span class="downvote--number">${question.down_votes}</span></div >
+        //     </div>
+        //   </div>`;
+
         output = `<div class="question">
-            <div class="question__poster">
-              John doe
-            </div>
-            <span class="question__time">
-              ${creationDate}
-            </span>
-            <div class="question__body">
-            ${question.body}
-            </div>
-            <div class="comments--vote">
-              <div class="upvote comments--vote__item">Downvote <span class="downvote--number">${question.down_votes}</span></div>
-              <div class="downvote comments--vote__item">Upvote <span class="upvote--number">${question.up_votes}</span></div>
-            </div>
-          </div>`;
+              <div class="question__poster">
+                John doe
+              </div>
+              <span class="question__time">
+                ${creationDate}
+              </span>
+              <div class="question__body">
+               ${question.body}
+              </div>
+              <div class="comments--vote">
+                <div class="comments--vote__item"><span class="upvote"><i class="fas fa-thumbs-up"></i></span><span
+                    class="upvote--number">${question.up_votes}</span>
+                </div>
+                <div class="comments--vote__item"><span class="downvote"><i class="fas fa-thumbs-down"></i></span><span
+                    class="downvote--number">
+                    ${question.down_votes}</span></div>
+              </div>
+            </div>`;
 
 
         const questionContainer = document.getElementById('question--detail');

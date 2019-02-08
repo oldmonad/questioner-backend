@@ -38,8 +38,15 @@ main {
 .question {
   padding: 1rem;
   border-radius: .2rem;
-  border: 1px solid #888888;
+  /* border: 1px solid #888888; */
   background-color: #ffffff;
+  /* width: fit-content; */
+  -webkit-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 1px 2px 2px #ccc;
+  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .question__poster {
@@ -74,7 +81,13 @@ main {
   background-color: #ffffff;
   padding: .4rem;
   margin-top: .4rem;
-  border-radius: .4rem;
+  border-radius: .2rem;
+  -webkit-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 1px 2px 2px #ccc;
+  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .comments--header {
@@ -85,7 +98,7 @@ main {
 }
 
 .comments__container {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
   padding: .4rem;
   height: 70vh;
   overflow-x: hidden !important;
@@ -109,9 +122,16 @@ main {
 
 
 .comment {
-  padding-bottom: 1.2rem;
-  border-bottom: .1px solid #888888;
-  margin-top: .6rem;
+  padding: .6rem;
+  border-radius: .2rem;
+  /*border-bottom: .1px solid #888888; */
+  margin-bottom: .6rem;
+  -webkit-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 1px 2px 2px #ccc;
+  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .comment__poster {
@@ -182,8 +202,7 @@ main {
 
 .topnav a {
   margin-bottom: 0 !important;
-  color: #3F45FF !important;
-  cursor: pointer;
+  font-size: 700 !important;
 }
 
 .dummy-login {
@@ -208,6 +227,27 @@ main {
 
 .comment--link:hover {
   background-color: royalblue;
+}
+
+.upvote {
+  font-size: 1rem;
+  color: #ccc;
+  margin-right: .5rem;
+}
+
+
+.downvote {
+  font-size: 1rem;
+  color: #ccc;
+  margin-right: .5rem;
+}
+
+.upvote:hover {
+  color: green;
+}
+
+.downvote:hover {
+  color: red;
 }
 
 @media screen and (min-width: 900px) {

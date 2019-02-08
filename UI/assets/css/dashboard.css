@@ -12,6 +12,12 @@ main {
   padding: 1rem;
   border-radius: .2rem;
   /* width: 100%; */
+  -webkit-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 1px 2px 2px #ccc;
+  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .top--questions__container {
@@ -59,11 +65,18 @@ main {
   background-color: #ffffff;
   color: #444444;
   border-radius: .2rem;
+  -webkit-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 1px 2px 2px #ccc;
+  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .top--questions__container {
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   padding: .4rem;
+
 }
 
 .top--question__title {
@@ -75,13 +88,21 @@ main {
 
 
 .top--question {
-  padding-bottom: 1.2rem;
-  border-bottom: .1px solid #888888;
-  margin-top: .6rem;
+  padding: .6rem;
+  /* border-bottom: .1px solid #888888; */
+  margin-bottom: .6rem;
+  /* box-shadow: 0 8px 6px -6px #666666; */
+  -webkit-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0px 1px 2px 2px #ccc;
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 1px 2px 2px #ccc;
+  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  border-radius: .2rem;
 }
 
 .top--question__poster {
-  font-size: 1.5rem;
+  font-size: 1.7rem !important;
   margin-bottom: .2rem;
   font-weight: 900;
 }
@@ -97,16 +118,43 @@ main {
   font-size: 1rem;
 }
 
-.reply--vote {
+.vote {
   display: flex;
 }
 
-.reply--vote__item {
+.vote--item {
   margin-right: .8rem;
   font-size: .8rem;
   cursor: pointer;
   color: #444444;
 }
+
+.upvote {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-right: .4rem;
+}
+
+
+.downvote {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-right: .4rem;
+}
+
+.upvote:hover {
+  color: green;
+}
+
+.downvote:hover {
+  color: red;
+}
+
+.upvote--number,
+.downvote--number {
+  font-size: 1rem;
+}
+
 
 .reply--vote__item:hover {
   font-size: 1rem;
@@ -224,7 +272,7 @@ main {
   }
 
   .statistics {
-    height: 160px;
+    height: 120px;
   }
 
   .top--question__title {

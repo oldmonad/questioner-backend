@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="./assets/css/questions.css">
   <link rel="stylesheet" href="./assets/css/modal.css" />
   <link rel="stylesheet" href="./assets/css/footer.css" />
-  <link rel="stylesheet" href="https:/use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
-    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
   <title>Questioner</title>
 </head>
 
@@ -24,10 +24,23 @@
       <header>
         <div class="topnav" id="myTopnav">
           <a href="#home" class="logo active">Questioner</a>
-          <div class="dropdown">
+          <!-- <div class="dropdown">
             <div class="dropdown">
               <a class="dummy-login">Login</a>
               <a href="./signup.html" class="">Logout</a>
+            </div>
+          </div> -->
+          <div class="dropdown">
+            <button class="dropbtn">Menu
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a id="modalBtn" href="./meetups.html">meetups</a>
+              <a href="#">Change password</a>
+              <a href="./dashboard.html">Dashboard</a>
+              <a href="./comments.html">comment</a>
+              <a href="./questions.html">questions</a>
+              <a href="./index.html">Logout</a>
             </div>
           </div>
           <a href="javascript:void(0);" style="font-size:30px;" class="icon" onclick="myFunction()">&#9776;</a>
@@ -38,9 +51,10 @@
         <div class="meetup-details">
           <div id="meetup--detail"></div>
           <div class="question--links">
-            <a class="question--link" href="./dashboard.html">Dashboard</a>
-            <a class="question--link" href="./meetups.html">Meetups</a>
-            <a class="question--link" href="./comments.html">Comments</a>
+            <div class="question--links__headers">Are you attending this meetup</div>
+            <a class="question--link" href="#">Yes</a>
+            <a class="question--link" href="#">No</a>
+            <a class="question--link" href="#">Maybe</a>
           </div>
         </div>
 
@@ -54,90 +68,7 @@
 
 
           <div id="questions--container" class="questions__container">
-            <div class="question">
-              <div class="question__poster">
-                John doe
-              </div>
-              <span class="question__time">
-                10h ago
-              </span>
-              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
-                explicabo
-                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
-                quo
-                molestias officiis nisi necessitatibus!
-              </div>
-              <div class="comments--vote">
-                <div class="comments comments--vote__item">
-                  comments
-                </div>
-                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
-                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
-              </div>
-            </div>
-            <!-- <div class="question">
-              <div class="question__poster">
-                John doe
-              </div>
-              <span class="question__time">
-                10h ago
-              </span>
-              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
-                explicabo
-                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
-                quo
-                molestias officiis nisi necessitatibus!
-              </div>
-              <div class="comments--vote">
-                <div class="comments comments--vote__item">
-                  comments
-                </div>
-                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
-                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
-              </div>
-            </div>
-            <div class="question">
-              <div class="question__poster">
-                John doe
-              </div>
-              <span class="question__time">
-                10h ago
-              </span>
-              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
-                explicabo
-                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
-                quo
-                molestias officiis nisi necessitatibus!
-              </div>
-              <div class="comments--vote">
-                <div class="comments comments--vote__item">
-                  comments
-                </div>
-                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
-                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
-              </div>
-            </div>
-            <div class="question">
-              <div class="question__poster">
-                John doe
-              </div>
-              <span class="question__time">
-                10h ago
-              </span>
-              <div class="question__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla non
-                explicabo
-                voluptate quasi quaerat aut possimus voluptatum sapiente et nesciunt a, labore fugiat harum recusandae
-                quo
-                molestias officiis nisi necessitatibus!
-              </div>
-              <div class="comments--vote">
-                <div class="comments comments--vote__item">
-                  comments
-                </div>
-                <div class="upvote comments--vote__item">Downvote <span class="downvote--number"> 2</span></div>
-                <div class="downvote comments--vote__item">Upvote <span class="upvote--number"> 10</span></div>
-              </div>
-            </div> -->
+
           </div>
         </div>
 
@@ -166,6 +97,7 @@
       </ul>
     </footer>
 
+    <script src="./assets/js/votes.js"></script>
     <script src="./assets/js/accordion.js"></script>
     <script src="./assets/js/modal.js"></script>
     <script src="./assets/js/toggle-navbar.js"></script>

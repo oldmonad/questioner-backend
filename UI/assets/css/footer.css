@@ -14,10 +14,14 @@ footer,
 }
 
 footer {
-  background-color: #ffffff;
+  background-color: #3f45ff14;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top: 1px solid #3F45FF;
+  -webkit-box-shadow: 0px -4px 3px #ccc;
+  -moz-box-shadow: 0px -4px 3px #ccc;
+  box-shadow: 0px -4px 3px #ccc;
 }
 
 footer ul {
