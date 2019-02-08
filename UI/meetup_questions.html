@@ -24,10 +24,23 @@
       <header>
         <div class="topnav" id="myTopnav">
           <a href="#home" class="logo active">Questioner</a>
-          <div class="dropdown">
+          <!-- <div class="dropdown">
             <div class="dropdown">
               <a class="dummy-login">Login</a>
               <a href="./signup.html" class="">Logout</a>
+            </div>
+          </div> -->
+          <div class="dropdown">
+            <button class="dropbtn">Menu
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a id="modalBtn" href="./meetups.html">meetups</a>
+              <a href="#">Change password</a>
+              <a href="./dashboard.html">Dashboard</a>
+              <a href="./comments.html">comment</a>
+              <a href="./questions.html">questions</a>
+              <a href="./index.html">Logout</a>
             </div>
           </div>
           <a href="javascript:void(0);" style="font-size:30px;" class="icon" onclick="myFunction()">&#9776;</a>
@@ -38,9 +51,10 @@
         <div class="meetup-details">
           <div id="meetup--detail"></div>
           <div class="question--links">
-            <a class="question--link" href="./dashboard.html">Dashboard</a>
-            <a class="question--link" href="./meetups.html">Meetups</a>
-            <a class="question--link" href="./comments.html">Comments</a>
+            <div class="question--links__headers">Are you attending this meetup</div>
+            <a class="question--link" href="#">Yes</a>
+            <a class="question--link" href="#">No</a>
+            <a class="question--link" href="#">Maybe</a>
           </div>
         </div>
 

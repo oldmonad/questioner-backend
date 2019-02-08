@@ -271,6 +271,12 @@ main {
   margin-right: 0 !important;
 }
 
+.question--links__headers {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: .3rem 0;
+}
+
 /* .topnav a {
   margin-bottom: 0 !important;
   color: #3F45FF !important;
