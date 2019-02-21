@@ -1,4 +1,3 @@
-/* eslint-disable eol-last */
 import Validator from 'validatorjs';
 import {
   errorResponse,
@@ -11,12 +10,12 @@ export default class UserValidation {
 
     const userProperties = {
       firstname: 'required|alpha|min:2|max:50',
-      lastname: 'required|alpha|min:2|max:50',
-      username: 'required|alpha_num|min:5|max:50',
+      lastname: 'alpha|min:2|max:50',
+      username: 'alpha_num|min:5|max:50',
       email: 'required|email|max:100',
       password: 'required|alpha_num|min:6|max:18',
       confirmPassword: 'required_with:password',
-      phonenumber: 'required|digits:11',
+      phonenumber: 'digits:11',
     };
 
     const validator = new Validator(user, userProperties, customErrorMessages);

@@ -1,5 +1,6 @@
 /* eslint-disable eol-last */
 import MeetupModels from '../models/meetup';
+import QuestionModels from '../models/question';
 import {
   errorResponse,
   successResponse,
@@ -9,7 +10,16 @@ import {
 const MeetupController = {
 
   async createMeetup(req, res) {
-    const meetupData = new MeetupModels(req.body);
+    const { topic, location, happeningOn } = req.body;
+    const { id } = req.user;
+    const meetupCredential = {
+      topic,
+      location,
+      happeningOn,
+      id,
+    };
+
+    const meetupData = new MeetupModels(meetupCredential);
     const createdMeetup = await meetupData.createMeetup();
     return successResponse(res, 201, 'Meetup created', createdMeetup);
   },
@@ -29,10 +39,13 @@ const MeetupController = {
       id,
     } = req.params;
     const retrievedMeetup = await MeetupModels.retrieveSingleMeetup(id);
+    const getMeetupQuestions = await QuestionModels.getQuestionByMeetup(id);
 
     if (!retrievedMeetup) {
       return errorResponse(res, 404, 'Meetup not found');
     }
+
+    retrievedMeetup.questions = getMeetupQuestions;
 
     return successResponse(res, 200, 'Meetup Found', retrievedMeetup);
   },

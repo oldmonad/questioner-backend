@@ -25,9 +25,9 @@ after_success:
 
 deploy:
   provider: heroku
-  app: enigmatic-refuge-95413
+  app: questioner-backend
   on:
-    repo: dbytecoderc/Questioner
+    repo: dbytecoderc/questioner-backend
     branch: develop
   api_key:
-    secure: "bc3e4504-76d1-4cbc-9686-1fb2ecaf15c7"
+    secure: "637f9376-119e-479f-a450-b273742cda77"

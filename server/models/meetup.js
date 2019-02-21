@@ -4,17 +4,18 @@ import pool from '../db/index';
 
 class Meetup {
   constructor(meetup) {
+    this.userId = meetup.id;
     this.topic = meetup.topic;
     this.location = meetup.location;
     this.happeningOn = meetup.happeningOn;
-    this.image = meetup.image;
+    this.imageUrl = meetup.imageUrl;
   }
 
   async createMeetup() {
-    const queryPlaceholder = `INSERT INTO meetups (topic, location, happening_on,
-      image) VALUES ($1, $2, $3, $4) RETURNING *`;
-    const entryValues = [this.topic, this.location, this.happeningOn,
-      this.image,
+    const queryPlaceholder = `INSERT INTO meetups (user_id, topic, location, happening_on,
+      image_url) VALUES ($1, $2, $3, $4, $5) RETURNING *`;
+    const entryValues = [this.userId, this.topic, this.location, this.happeningOn,
+      this.imageUrl,
     ];
     const {
       rows,
@@ -57,3 +58,5 @@ class Meetup {
 }
 
 export default Meetup;
+
+// const statement = `SELECT questions.body, questions.upvotes, questions.downvotes, questions.created_at, ( SELECT row_to_json(users) FROM (SELECT firstname, lastname, id, email FROM users  WHERE ${table}.user_id = users.id) AS users) AS user FROM ${table}  WHERE meetup_id = $1`;

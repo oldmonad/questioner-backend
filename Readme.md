@@ -1,4 +1,4 @@
-# SendIT
+# Questioner
 
 
 [![Build Status](https://travis-ci.org/dbytecoderc/Questioner.svg?branch=develop)](https://travis-ci.org/dbytecoderc/Questioner) [![Coverage Status](https://coveralls.io/repos/github/dbytecoderc/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/dbytecoderc/Questioner?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/97d87d1d2d257c503169/maintainability)](https://codeclimate.com/github/dbytecoderc/Questioner/maintainability)
@@ -41,7 +41,6 @@ End with an example of getting some data out of the system or using it for a lit
 ### Endpoints
 
 Using Postman to access these endpoints
-Please find the API documentation on [https://andela-sendit-api.herokuapp.com/api-docs](https://andela-sendit-api.herokuapp.com/api-docs)
 
 | Endpoint                                                | Methods  | Functionalities                       |
 | ------------------------------------------------------- | -------- | ------------------------------------- |
@@ -70,7 +69,7 @@ Give an example
 
 For deployment, the .env file or the running environment should have the following variable
 
-DATABASE_URL='dataase url'
+DATABASE_URL='database url'
 DATABASE_URL_TEST='test database'
 NODE_ENV='test'
 SECRET='jwt secret'

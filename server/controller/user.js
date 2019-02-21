@@ -18,18 +18,29 @@ const UserController = {
     const newUser = new UserModel(req.body);
     const isExistingUserMail = await UserModel.findUserByEmail(newUser.email);
     if (isExistingUserMail) {
-      return errorResponse(res, 409, 'This email address already exists');
+      return errorResponse(res, 409, 'This email address is not available');
     }
 
     const isExistingUsername = await UserModel.findUserByUsername(newUser.username);
     if (isExistingUsername) {
       return errorResponse(res, 409, 'This username is not available');
     }
+
     newUser.password = bcrypt.hashPassword(newUser.password);
 
     const createdUser = await newUser.newUserSignUp();
 
-    return successResponse(res, 201, 'You have created an account', createdUser);
+    const tokenData = {
+      id: createdUser.id,
+      username: createdUser.username,
+      admin: createdUser.admin,
+    };
+
+    const token = await jwt.generateToken(tokenData);
+    const data = createdUser;
+    data.token = token;
+
+    return successResponse(res, 201, 'You have created an account', data);
   },
 
   async loginUser(req, res) {
@@ -39,9 +50,7 @@ const UserController = {
     } = req.body;
 
     const isExistingUserMail = await UserModel.findUserByEmail(email);
-    const {
-      admin,
-    } = isExistingUserMail;
+
     if (!isExistingUserMail) {
       return errorResponse(res, 404, 'The credentials you provided is incorrect');
     }
@@ -61,8 +70,11 @@ const UserController = {
 
     const data = loginData;
     data.token = token;
-    data.admin = admin;
-    return successfullLogin(res, 200, admin ? 'You are logged in as an admin' : 'You are logged in as a normal user', data);
+
+    const {
+      admin,
+    } = isExistingUserMail;
+    return successfullLogin(res, 200, admin ? 'You are logged in as an admin' : 'You are logged in', data);
   },
 };
 

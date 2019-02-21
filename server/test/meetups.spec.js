@@ -46,6 +46,7 @@ describe('Create Meetups', async () => {
       .expect(201)
       .end((err, res) => {
         if (err) return done(err);
+        console.log(err);
         expect(res.body.status).to.equal(201);
         return done();
       });
