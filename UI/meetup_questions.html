@@ -63,7 +63,8 @@
             <div class="question__title">
               Questions
             </div>
-            <a id="modalBtn" class="post--question" href="#">Post question</a>
+            <a id="postQuestionModalBtn" class="post--question" href="#">Post question</a>
+            <!-- <a id="modalBtn" href="#">Create meetup</a> -->
           </div>
 
 
@@ -71,21 +72,20 @@
 
           </div>
         </div>
+      </main>
 
-        <div id="simpleModal" class="modal">
-          <div class="modal--content">
-            <h1 class="post--question__header">Post Question</h1>
-            <span id="closeBtn" class="closeBtn">&times;</span>
-            <div class="question--input">
-              <textarea name="feedback" id="question" rows="10" placeholder="Enter your question"></textarea>
-              <div class="submit--button">
-                <input id="submit" type="submit" value="Submit question" />
-              </div>
+      <div id="simpleModal" class="modal">
+        <div class="modal--content">
+          <h1 class="post--question__header">Post Question</h1>
+          <span id="closeQuestionBtn" class="closeBtn">&times;</span>
+          <div class="question--input">
+            <textarea name="feedback" id="question" rows="10" placeholder="Enter your question"></textarea>
+            <div class="submit--button">
+              <input id="submit" type="submit" value="Submit question" />
             </div>
           </div>
         </div>
-      </main>
-
+      </div>
     </div>
 
     <footer>
@@ -98,8 +98,7 @@
     </footer>
 
     <script src="./assets/js/votes.js"></script>
-    <script src="./assets/js/accordion.js"></script>
-    <script src="./assets/js/modal.js"></script>
+    <script src="./assets/js/questionsModal.js"></script>
     <script src="./assets/js/toggle-navbar.js"></script>
     <script src="./assets/js/single_meetup_questions.js"></script>
   </body>
